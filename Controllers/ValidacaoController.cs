@@ -60,9 +60,9 @@ namespace Office.Controllers
             ValidacaoModel data = new ValidacaoModel();
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
             data.idEntidade = _session.Id;
-            data.idIntervencao = id;
+            data.idIntervencao = idIntv;
             data.idEncargo = idEncargo;
-            data.idValidacao = idIntv;
+            data.idValidacao = id;
             data.descricao = aux.descricao;
             data.aprovado = aux.aprovado;
             api.HttpClient.PutAsJsonAsync("https://localhost:7271/validacao", data);

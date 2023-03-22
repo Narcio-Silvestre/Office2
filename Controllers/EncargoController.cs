@@ -98,7 +98,7 @@ namespace Office.Controllers
             if (id > 0)
             {
                 List<EncargoViewModel> list = new List<EncargoViewModel>();
-                HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/" + id.ToString()).Result;
+                HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/Completed" + id.ToString()).Result;
                 string dat = response.Content.ReadAsStringAsync().Result;
                 list.Add(JsonSerializer.Deserialize<EncargoViewModel>(dat));
                 ViewBag.encargo = list;
@@ -106,7 +106,7 @@ namespace Office.Controllers
             else
             {
 
-                HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo").Result;
+                HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/Completed").Result;
                 string dat = response.Content.ReadAsStringAsync().Result;
                 ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
             }
@@ -146,6 +146,18 @@ namespace Office.Controllers
             ViewBag.encargo = JsonSerializer.Deserialize<EncargoViewModel>(dat);
             return View();
         }
+
+        [HttpGet]
+        [Route("Encargo/{id}")]
+        public IActionResult InfoCompleted(int id)
+        {
+            HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/" + id.ToString()).Result;
+            string dat = response.Content.ReadAsStringAsync().Result;
+            ViewBag.encargo = JsonSerializer.Deserialize<EncargoViewModel>(dat);
+            return View();
+        }
+
+
 
 
 
