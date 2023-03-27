@@ -13,6 +13,7 @@ namespace Office.Models
         public int moldeid { get; set; }
         public string prioridadeid { get; set; }
         public int reparacaoid { get; set;}
+        public int qualidade { get; set; }
     }
 
     public class EncargoViewModel
@@ -28,6 +29,6 @@ namespace Office.Models
         public string prioridade { get; set; }
         public string reparacao { get; set; }
         public string estado { get; set; }
-
+        //public DateTime dataConc { get; set; }
     }
 }

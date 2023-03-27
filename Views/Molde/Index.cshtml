@@ -28,34 +28,6 @@
                 </form>
             </div>
         </div>
-  <div class="collapse bg-light" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-black">Sobre</h4>
-                        <p class="text-muted">Esta é a galeria de moldes, aqui pode consultar e procurar os moldes disponiveis na Fehst. </p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-                        <h4 class="text-black">Contatos</h4>
-          <ul class="list-unstyled">
-                            <li class="text-black">Fehst Componentes</li>
-                            <li class="text-black">Rua Max Grundig, nº 9 4705-820 Braga</li>
-                            <li class="text-black"> fehst.comp@fehstgroup.com</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="https://getbootstrap.com/docs/5.3/examples/album/#" class="navbar-brand d-flex align-items-center">
-        <strong>Moldes</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
 </header>
 <main>
   <div class="album py-5 bg-light shadow-lg s mt-3 ">
@@ -70,7 +42,8 @@
                                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a asp-action="Info" asp-controller="Molde" asp-route-id="@ViewBag.molde[x].id"><button type="button" class="btn btn-sm btn-outline-primary">View</button></a>
+                                            <a asp-action="Info" asp-controller="Molde" asp-route-id="@ViewBag.molde[x].id">
+                                                <button type="button" class="btn btn-sm btn-outline-primary">View</button></a>
                                             <button type="button" class="btn btn-sm btn-outline-success">Edit</button>
                                         </div>
                                         <small class="text-muted">@ViewBag.molde[x].nrMolde</small>

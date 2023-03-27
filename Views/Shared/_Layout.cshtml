@@ -118,50 +118,46 @@
   <header>
     <div class="px-3 py-2 text-bg-dark bg-dark">
       <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                        <a asp-action="Index" asp-controller="Home" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                            <img src="~/Imagens/letra-f (2).png" width="auto" height="50" />
-          </a>
-
-          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+        <nav class=" d-flex flex-lg-wrap align-items-center justify-content-center justify-content-lg-start">
+          <ul class="nav col-12  my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a asp-action="Index" asp-controller="Home"  class="nav-link text-secondary">
+              <a asp-action="Index" asp-controller="Home" role="navigation"  class="nav-link text-secondary">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use></svg>
                 Home
               </a>
             </li>
             <li>
-                                <a asp-action="Index" asp-controller="Encargo" class="nav-link text-white">
+                                <a asp-action="Index" role="navigation" asp-controller="Encargo" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
                 Encargos
               </a>
             </li>
             <li>
-                                <a asp-action="Index" asp-controller="Molde" class="nav-link text-white">
+                                <a asp-action="Index" role="navigation"  asp-controller="Molde" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
                 Moldes
               </a>
             </li>
             <li>
-                                <a asp-action ="Create" asp-controller="Intervencao" class="nav-link text-white">
+                                <a asp-action="Create" role="navigation"  asp-controller="Intervencao" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"></use></svg>
                 Intervenções
               </a>
             </li>
             <li>
-                                 <a asp-action="Index" asp-controller="Validacao" class="nav-link text-white">
+                                <a asp-action="Index" role="navigation"  asp-controller="Validacao" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#valid"></use></svg>
                 Validações
               </a>
             </li>
             <li>
-                                <a asp-action="Index" asp-controller="Profile" class="nav-link text-white">
+                                <a asp-action="Index" role="navigation" asp-controller="Profile" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
                 Perfil
               </a>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
     </div>
     

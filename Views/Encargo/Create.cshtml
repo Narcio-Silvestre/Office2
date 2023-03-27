@@ -103,20 +103,7 @@
 
     <div class="container">
         <main>
-            <div class="container my-5">
-                <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                        <h1 class="display-4 fw-bold lh-1">Criação de Encargos</h1>
-                        <p class="lead">"Os encargos são de grande responsabilidade para empresa, ao preencher é necessário relembrar que cada um deles representa uma importante missão a ser cumprida."</p>
-                    </div>
-                    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-                        <img class="rounded-lg-3" src="../Imagens/R.png" alt="" width="420">
-                    </div>
-                </div>
-            </div>
-    
-
-            <div class="row g-5 justify-content-center">
+            <div class="row g-5 justify-content-center mt-1">
                 
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Encargo de Oficina</h4>
@@ -190,42 +177,10 @@
                                 </div>
                             </div>
 
-                            <hr class="my-4">
-
-                            <h4 class="mb-3">Responsabilidade de Validação</h4>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="save-info">
-                                <label class="form-check-label" for="save-info">Qualidade</label>
-                            </div>
-
-                            
-                            <hr class="my-4">
-
-                            <h4 class="mb-3">Intervenção</h4>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="same-address">
-                                <label class="form-check-label" for="same-address">Ótica</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="save-info">
-                                <label class="form-check-label" for="save-info">Funcional</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="save-info">
-                                <label class="form-check-label" for="save-info">Dimensional</label>
-                            </div>
-
-                            <hr class="my-4">
-
-
                             <div class="col-md-4">
                                 <label for="prioridadeid" class="form-label">Prioridade</label>
 
-                                <select class="form-select"  id="prioridadeid" name="prioridadeid" required="">
+                                <select class="form-select" id="prioridadeid" name="prioridadeid" required="">
                                     <option value="">Escolher...</option>
                                     @for (int x = 0; x < ViewBag.prioridade.Count; x++)
                                     {
@@ -237,11 +192,14 @@
                                 </div>
                             </div>
 
-                            <hr class="my-4">
 
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="qualidade" value="1" autocomplete="off" id="qualidade">
+                                <label class="form-check-label" for="qualidade" >É necessário validação da qualidade?</label>
+                            </div>
 
                             <div class="col-12">
-                                <h4 class="mb-3">Anexos</h4>
                                 <label class="form-check-label" for="save-info">
                                     Selecione o arquivo de imagem a ser carregado no servidor:
                                 </label>

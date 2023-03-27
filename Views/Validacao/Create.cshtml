@@ -102,22 +102,12 @@
 
     <div class="container">
         <main>
-            <div class="container my-5">
-                <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                        <h1 class="display-4 fw-bold lh-1">Validar Encargos</h1>
-                        <p class="lead">"Validações são como um filtro que garante a qualidade e confiabilidade dos processos, poupando tempo e recursos ao prevenir erros e retrabalhos desnecessários."</p>
-                    </div>
-                    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-                        <img class="rounded-lg-3" src="/Imagens/attestation-deplacement-derogatoire.jpg" alt="" width="420">
-                    </div>
-                </div>
-            </div>
+            
 
 
-            <div class="row g-5 justify-content-center">
+            <div class="row g-5 justify-content-center mt-2 ">
 
-                <div class="col-md-7 col-lg-8">
+                <div class="col-md-7 col-lg-8" >
                     <h4 class="mb-3">Validação de Encargo</h4>
                     <form class="needs-validation was-validated" novalidate="" asp-controller="Validacao" asp-action="Create" asp-route-id="@ViewBag.validacao.idValidacao" asp-route-idEncargo="@ViewBag.validacao.idEncargo" asp-route-idIntv="@ViewBag.validacao.idIntervencao">
                         <div class="row g-3">
@@ -149,7 +139,7 @@
 
                             <hr class="my-4">
 
-                            <button class="w-100 btn btn-primary btn-lg" type="submit">Subtemer @ViewBag.validacao.numValidacoes ª Validação de Encargo</button>
+                            <button class="w-100 btn btn-primary btn-lg " type="submit">Subtemer @ViewBag.validacao.numValidacoes ª Validação de Encargo</button>
                     </form>
                 </div>
             </div>

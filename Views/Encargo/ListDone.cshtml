@@ -29,60 +29,40 @@
                 </form>
             </div>
         </div>
-        <div class="collapse bg-light" id="navbarHeader">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                        <h4 class="text-black">Sobre</h4>
-                        <p class="text-muted">Esta é a galeria de moldes, aqui pode consultar e procurar os moldes disponiveis na Fehst. </p>
-                    </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
-                        <h4 class="text-black">Contatos</h4>
-                        <ul class="list-unstyled">
-                            <li class="text-black">Fehst Componentes</li>
-                            <li class="text-black">Rua Max Grundig, nº 9 4705-820 Braga</li>
-                            <li class="text-black"> fehst.comp@fehstgroup.com</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-            <div class="container">
-                <a href="https://getbootstrap.com/docs/5.3/examples/album/#" class="navbar-brand d-flex align-items-center">
-                    <strong>Encargos</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </div>
     </header>
     <main>
-        <div class="album py-5 bg-light shadow-lg s mt-3 ">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    @for (int x = 0; x < ViewBag.encargo.Count; x++)
-                    {
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <img src="~/Imagens/R.jpg" width="100%" height="225">
-                                <div class="card-body">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id"><button type="button" class="btn btn-sm btn-outline-primary">View</button></a>
-                                            <button type="button" class="btn btn-sm btn-outline-success">Edit</button>
-                                        </div>
-                                        <small class="text-muted">@ViewBag.encargo[x].nrEncargo</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
+        <table class="table table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Nr. Encargo</th>
+                    <th scope="col">Requerente</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Prioridade</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Molde</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int x = 0; x < ViewBag.encargo.Count; x++){
+                <tr>
+                        <th scope="row">@ViewBag.encargo[x].nrEncargo</th>
+                        <td>@ViewBag.encargo[x].entidade</td>
+                        <td>@ViewBag.encargo[x].data</td>
+                        <td>@ViewBag.encargo[x].entidade</td>
+                        <td>@ViewBag.encargo[x].prioridade</td>
+                        <td>@ViewBag.encargo[x].estado</td>
+                        <td>@ViewBag.encargo[x].molde</td>
+               
+
+                        <td>
+                            <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id"><button type="button" class="btn btn-sm btn-outline-primary">Ver</button></a>
+                            <button type="button" class="btn btn-sm btn-outline-success">Download</button>
+                        </td>
+                </tr>
+                }
+            </tbody>
+        </table>
     </main>
     <footer class="text-muted py-5">
         <div class="container">

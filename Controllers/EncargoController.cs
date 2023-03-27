@@ -84,6 +84,7 @@ namespace Office.Controllers
             _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
             data.data = DateTime.Now.Date;
             data.entidadeid =_session.Id;
+            Console.WriteLine(data.qualidade);
             api.HttpClient.PostAsJsonAsync("https://localhost:7271/Encargo", data);
             return  RedirectToAction("Index","Home");
         }
@@ -147,15 +148,15 @@ namespace Office.Controllers
             return View();
         }
 
-        [HttpGet]
-        [Route("Encargo/{id}")]
-        public IActionResult InfoCompleted(int id)
-        {
-            HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/" + id.ToString()).Result;
-            string dat = response.Content.ReadAsStringAsync().Result;
-            ViewBag.encargo = JsonSerializer.Deserialize<EncargoViewModel>(dat);
-            return View();
-        }
+        //[HttpGet]
+        //[Route("Encargo/{id}")]
+        //public IActionResult InfoCompleted(int id)
+        //{
+        //    HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/" + id.ToString()).Result;
+        //    string dat = response.Content.ReadAsStringAsync().Result;
+        //    ViewBag.encargo = JsonSerializer.Deserialize<EncargoViewModel>(dat);
+        //    return View();
+        //}
 
 
 

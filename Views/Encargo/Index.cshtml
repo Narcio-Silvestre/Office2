@@ -23,65 +23,29 @@
     
 <main>
   <div class="container py-4">
-    <header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">Sobre</h4>
-                        <p class="text-muted">Esta é a galeria de moldes, aqui pode consultar e procurar os moldes disponiveis na Fehst. </p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contatos</h4>
-          <ul class="list-unstyled">
-                            <li class="text-white">Fehst Componentes</li>
-                            <li class="text-white">Rua Max Grundig, nº 9 4705-820 Braga</li>
-                            <li class="text-white"> fehst.comp@fehstgroup.com</li>
-          </ul>
+    <div class="row align-items-md-stretch">
+
+      <div class="col-md-6 p-2">
+        <div class="h-100 p-5 bg-dark rounded-3">
+           <h2 class="text-white">Criar Encargos</h2>
+           <p class="text-white">Pode criar os encargos de oficina!</p>
+           <a asp-controller="Encargo" asp-action="Create"><button class="btn btn-outline-light" type="button">Criar</button></a>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="" class="navbar-brand d-flex align-items-center">
-        <strong>Encargo</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
-</header>
-      <div class="container my-5">
-                <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                        <h1 class="display-4 fw-bold lh-1">Gestão da Manutenção</h1>
-                            <p class="lead">Uma ordem de trabalho é geralmente um formulário padronizado que contém informações sobre a tarefa a ser realizada, como o nome do solicitante, o tipo de trabalho a ser realizado, a data de início e término, os materiais necessários, os recursos necessários, as etapas do trabalho e os resultados esperados.</p>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                            <a asp-action="Create" asp-controller="Encargo"><button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Criar Encargo</button></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-                        <img class="rounded-lg-3" src="../Imagens/R (3).jpg" alt="" width="720">
-                    </div>
-                </div>
-            </div>
-    </div>
 
-    <div class="row align-items-md-stretch">
-      <div class="col-md-6">
+      <div class="col-md-6 p-2">
         <div class="h-100 p-5 bg-dark rounded-3">
-          <h2 class="text-white">Encargos em StandBy</h2>
+          <h2 class="text-white">Encargos em Execução</h2>
           <p class="text-white">Verificar os encargos em execução</p>
           <a asp-controller="Encargo" asp-action="ListNotDone"><button class="btn btn-outline-light" type="button">Ver</button></a>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Encargos Concluidos</h2>
-          <p>Aqui tem acesso aos encargos já concluidos no setor da oficina</p>
-                    <a asp-controller="Encargo" asp-action="ListDone"><button class="btn btn-outline-secondary" type="button">Ver</button></a>
+
+      <div class="col-md-6 p-2">
+        <div class="h-100 p-5 bg-dark border rounded-3">
+           <h2 class="text-white">Histórico de Encargos</h2>
+           <p class="text-white">Aqui tem acesso ao histórico de encargos no setor da oficina</p>
+           <a asp-controller="Encargo" asp-action="ListDone"><button class="btn btn-outline-light" type="button">Ver</button></a>
         </div>
       </div>
     </div>
