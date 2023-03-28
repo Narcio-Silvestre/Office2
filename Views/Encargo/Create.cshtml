@@ -99,35 +99,17 @@
     <!-- Custom styles for this template -->
     <link href="./Checkout example · Bootstrap v5.3_files/checkout.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body style="background-color:white">
 
-    <div class="container">
+    <div class="container ">
         <main>
-            <div class="row g-5 justify-content-center mt-1">
+            <div class="row g-5 justify-content-center mt-1 ">
                 
-                <div class="col-md-7 col-lg-8">
+                <div class="col-md-7 col-lg-8 py-5 bg-light shadow-lg s mt-3">
                     <h4 class="mb-3">Encargo de Oficina</h4>
                     <form class="needs-validation was-validated" runat="server" novalidate="" asp-action="Create" asp-controller="Encargo">
                         <div class="row g-3">
 
-                            <div class="col-md-4">
-                                <label for="reparacaoid" class="form-label">Reparação</label>
-                                
-                                <select class="form-select" id="reparacaoid" name="reparacaoid" required="">
-                                    <option value="">Escolher...</option>
-                                    @{
-                                        for (int x = 0; x < ViewBag.reparacao.Count; x++)
-                                        {
-
-                                            <option value="@ViewBag.reparacao[x].id">@ViewBag.reparacao[x].desc</option>
-                                        
-                                        }
-                                    }
-                                </select>
-                                <div class="invalid-feedback">
-                                    Por favor escolha uma reparação válida
-                                </div>
-                            </div>
 
                             <div class="col-md-4">
                                 <label for="moldeid" class="form-label">Nrº Molde</label>
@@ -153,21 +135,6 @@
                                 <textarea type="text" class="form-control input-lg" id="descProblema" name="descProblema" placeholder="" value="" required="" itemid="problema"></textarea>
                             </div>
 
-                                <div class="col-6">
-                                    <label for="empresa" class="form-label">Empresa</label>
-                                    <div class="input-group has-validation">
-                                        <span class="input-group-text"></span>
-                                        <input type="text" class="form-control" id="empresa" name="empresa" value="Fehst" placeholder="Empresa" required="">
-                                        <div class="invalid-feedback">
-                                            É requirido o nome da empresa.
-                                        </div>
-                                    </div>
-                                </div>
-       
-
-                                
-                            
-                            
 
                             <div class="col-6">
                                 <label for="dataNecMeio" class="form-label">Data Necessidade Meio <span class="text-muted">(Optional)</span></label>
@@ -176,6 +143,7 @@
                                     Por favor insira uma data válida
                                 </div>
                             </div>
+
 
                             <div class="col-md-4">
                                 <label for="prioridadeid" class="form-label">Prioridade</label>
@@ -191,7 +159,6 @@
                                     Por favor escolha uma prioridade válida
                                 </div>
                             </div>
-
 
 
                             <div class="form-check">

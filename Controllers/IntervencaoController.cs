@@ -66,9 +66,8 @@ namespace Office.Controllers
             data.idEntidade = _session.Id;
             data.idIntervencao =id;
             data.idEncargo = idEncargo;
-            data.nome = aux.nome;
+            data.nome = _session.Name;
             data.descricao = aux.descricao;
-            data.reparacaoid = aux.reparacaoid;
             api.HttpClient.PutAsJsonAsync("https://localhost:7271/Intervencao", data);
             return RedirectToAction("Index", "Home");
         }

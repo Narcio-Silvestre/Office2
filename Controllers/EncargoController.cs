@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Net.Http;
 using System.Net;
 using System.Reflection.Metadata.Ecma335;
+using System.IO;
 
 namespace Office.Controllers
 
@@ -18,6 +19,7 @@ namespace Office.Controllers
         protected SessionKeys? _session;
         protected SqlDataAdapter _adapter;
         protected DataTable _dataTable;
+        protected string pasta_anexos = @"C:\Users\narci\Desktop\vvg\Office\wwwroot\anexos\";
 
         public dbConnetion() {
             _connection = new SqlConnection("Data Source=lolly;Initial Catalog=WORK;Integrated Security=True");
@@ -82,6 +84,7 @@ namespace Office.Controllers
         public ActionResult Create(EncargoMolde data)
         {
             _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            
             data.data = DateTime.Now.Date;
             data.entidadeid =_session.Id;
             Console.WriteLine(data.qualidade);

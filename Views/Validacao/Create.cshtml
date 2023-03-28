@@ -103,11 +103,9 @@
     <div class="container">
         <main>
             
-
-
             <div class="row g-5 justify-content-center mt-2 ">
 
-                <div class="col-md-7 col-lg-8" >
+                <div class="col-md-7 col-lg-8 py-5 bg-light shadow-lg s mt-3">
                     <h4 class="mb-3">Validação de Encargo</h4>
                     <form class="needs-validation was-validated" novalidate="" asp-controller="Validacao" asp-action="Create" asp-route-id="@ViewBag.validacao.idValidacao" asp-route-idEncargo="@ViewBag.validacao.idEncargo" asp-route-idIntv="@ViewBag.validacao.idIntervencao">
                         <div class="row g-3">
@@ -124,16 +122,9 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-4">
-                                <label for="nome" class="form-label">Departamento</label>
-                                <input type="text" class="form-control" id="nome" name="nome" placeholder=""   readonly>
-                                <div class="invalid-feedback">
-                                    Por favor preencher responsável de validação
-                                </div>
-                            </div>
 
                             <div class="col-12">
-                                <label for="descricao" class="form-label">Descrição de Validação</label>
+                                <label for="descricao" class="form-label">Descrição</label>
                                 <textarea type="text" class="form-control" id="descricao" name="descricao" placeholder="" value="" required=""></textarea>
                             </div>
 
