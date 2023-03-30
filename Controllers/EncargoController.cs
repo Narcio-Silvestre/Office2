@@ -87,8 +87,15 @@ namespace Office.Controllers
             
             data.data = DateTime.Now.Date;
             data.entidadeid =_session.Id;
-            Console.WriteLine(data.qualidade);
-            api.HttpClient.PostAsJsonAsync("https://localhost:7271/Encargo", data);
+            Console.WriteLine("Qualidade:"+data.qualidade);
+            Console.WriteLine("Intervencao:" + data.intervencao);
+            Console.WriteLine("Reparacao:" + data.reparacaoid);
+            Console.WriteLine("Problema:" + data.descProblema);
+            Console.WriteLine("Molde:" + data.moldeid);
+            Console.WriteLine("Prioridade:" + data.prioridadeid);
+            Console.WriteLine("Data Nec.  Meio:" + data.dataNecMeio);
+            //api.HttpClient.PostAsJsonAsync("https://localhost:7271/Encargo", data);
+            
             return  RedirectToAction("Index","Home");
         }
 
@@ -142,12 +149,11 @@ namespace Office.Controllers
         }
 
         [HttpGet]
-        [Route("Encargo/{id}")]
-        public IActionResult Info(int id)
+        public IActionResult Info()
         {
-            HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/"+id.ToString()).Result;
-            string dat = response.Content.ReadAsStringAsync().Result;
-            ViewBag.encargo = JsonSerializer.Deserialize<EncargoViewModel>(dat);
+            //HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/"+id.ToString()).Result;
+            //string dat = response.Content.ReadAsStringAsync().Result;
+            //ViewBag.encargo = JsonSerializer.Deserialize<EncargoViewModel>(dat);
             return View();
         }
 

@@ -14,6 +14,7 @@ namespace Office.Models
         public string prioridadeid { get; set; }
         public int reparacaoid { get; set;}
         public int qualidade { get; set; }
+        public int intervencao { get; set; }
     }
 
     public class EncargoViewModel

@@ -27,6 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Intervencao\" />
+    <Folder Include="Views\Validacao\" />
     <Folder Include="wwwroot\anexos\" />
   </ItemGroup>
 

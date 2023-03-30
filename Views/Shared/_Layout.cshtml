@@ -118,7 +118,7 @@
   <header>
     <div class="px-3 py-2 text-bg-dark bg-dark">
       <div class="container">
-        <nav class=" d-flex flex-lg-wrap align-items-center justify-content-center justify-content-lg-start">
+        <nav class=" d-flex flex-lg-wrap align-items-center justify-content-lg-start">
           <ul class="nav col-12  my-2 justify-content-center my-md-0 text-small">
             <li>
               <a asp-action="Index" asp-controller="Home" role="navigation"  class="nav-link text-white">
@@ -126,11 +126,18 @@
                 Home
               </a>
             </li>
-            <li>
-                                <a asp-action="Index" role="navigation" asp-controller="Encargo" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
-                Encargos
-              </a>
+                            <li class="nav-item dropdown">
+
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
+                                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
+
+                                    Encargos</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Criar Encargo</a></li>
+                                        <li><a class="dropdown-item" href="#">Encargos em Execução</a></li>
+                                        <li><a class="dropdown-item" href="#">Histórico de Encargos</a></li>
+                                    </ul>
+                
             </li>
             <li>
                                 <a asp-action="Index" role="navigation"  asp-controller="Molde" class="nav-link text-white">
@@ -139,19 +146,8 @@
               </a>
             </li>
             <li>
-                                <a asp-action="Create" role="navigation"  asp-controller="Intervencao" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"></use></svg>
-                Intervenções
-              </a>
-            </li>
-            <li>
-                                <a asp-action="Index" role="navigation"  asp-controller="Validacao" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#valid"></use></svg>
-                Validações
-              </a>
-            </li>
-            <li>
-                                <a asp-action="Index" role="navigation" asp-controller="Profile" class="nav-link text-white">
+        
+                              <a asp-action="Index" role="navigation" asp-controller="Profile" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
                 Perfil
               </a>
