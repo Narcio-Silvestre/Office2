@@ -10,7 +10,13 @@ namespace Office.Controllers
 {
     public class LoginController : dbConnetion
     {
-        
+        Api api;
+
+        public LoginController()
+        {
+            api = new Api();
+        }
+
         // GET: LoginController
         [HttpGet]
         public ActionResult Index()
@@ -23,24 +29,12 @@ namespace Office.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Login login)
         {
-            _adapter = new SqlDataAdapter(("select email,password,nome,id from entidade where entidade.email=@v1 and entidade.password=@v2"),_connection);
-            _adapter.SelectCommand.Parameters.Add(new SqlParameter("v1", login.Email));
-            _adapter.SelectCommand.Parameters.Add(new SqlParameter("v2", login.Password));
-            DataTable vn = new DataTable();
-            _adapter.Fill(vn);
-            if (vn.Rows.Count > 0)
-            {
-                if (vn.Rows[0][0].ToString() == login.Email && vn.Rows[0][1].ToString() == login.Password)
-                {
-                    HttpContext.Session.SetString("User",JsonSerializer.Serialize(new SessionKeys() { Id=Convert.ToInt32(vn.Rows[0][3]),Name= vn.Rows[0][2].ToString() }));
-                    return RedirectToAction("Index","Home");
-                }
-                else
-                    return Json("problem");
-            }
-            else {
-                return Json("problem");
-            } 
+            HttpResponseMessage response = api.HttpClient.PostAsJsonAsync("https://localhost:7271/Login",login).Result;
+            
+            string dat = response.Content.ReadAsStringAsync().Result;
+            UserModel model= JsonSerializer.Deserialize<UserModel>(dat);
+            HttpContext.Session.SetString("User",JsonSerializer.Serialize(new SessionKeys() { Id=Convert.ToInt32(model.id),Name= model.name }));
+            return RedirectToAction("Index","Home");
         }
 
         [HttpGet]

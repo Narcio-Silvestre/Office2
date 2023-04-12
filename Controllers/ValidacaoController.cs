@@ -41,31 +41,31 @@ namespace Office.Controllers
             return View();
         }
 
-        [HttpGet]
-        [Route("Validacao/Create/{id}")]
-        public IActionResult Create(int id)
-        {
-            var session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
-            HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Validacao/" + id.ToString()).Result;
-            string dat = response.Content.ReadAsStringAsync().Result;
-            ViewBag.validacao = JsonSerializer.Deserialize<ValidacaoMenuModel>(dat);
-            ViewBag.name = session.Name;
-            return View();
-        }
-
         [HttpPost]
-        [Route("Validacao/Create/{id}/{idEncargo}/{idIntv}")]
-        public ActionResult Create(ValidacaoModel aux, int idEncargo, int id, int idIntv)
+        [Route("Validacao/Prod/{id}")]
+        public ActionResult Prod(ValidacaoModel aux, int id)
         {
             ValidacaoModel data = new ValidacaoModel();
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
-            data.idEntidade = _session.Id;
-            data.idIntervencao = idIntv;
-            data.idEncargo = idEncargo;
-            data.idValidacao = id;
-            data.descricao = aux.descricao;
-            data.aprovado = aux.aprovado;
-            api.HttpClient.PutAsJsonAsync("https://localhost:7271/validacao", data);
+            aux.idEntidade = _session.Id;
+            aux.idInter = id;
+            Console.WriteLine("ent:"+aux.idEntidade);
+            Console.WriteLine("idInt:"+aux.idInter);
+            Console.WriteLine("val:"+aux.aprovado);
+            Console.WriteLine("desc"+aux.descricao);
+            api.HttpClient.PutAsJsonAsync("https://localhost:7271/validacao/Prod", aux);
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [Route("Validacao/Qual/{id}")]
+        public ActionResult Qual(ValidacaoModel aux, int id)
+        {
+            ValidacaoModel data = new ValidacaoModel();
+            var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            aux.idEntidade = _session.Id;
+            aux.idInter = id;
+            api.HttpClient.PutAsJsonAsync("https://localhost:7271/Validacao/Qual", aux);
             return RedirectToAction("Index", "Home");
         }
     }

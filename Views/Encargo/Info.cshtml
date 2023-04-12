@@ -1,113 +1,86 @@
-﻿@model EncargoMolde
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
+﻿@model EncargoViewModel
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <style data-merge-styles="true"></style>
-    <style data-merge-styles="true"></style>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Nárcio Silvestre">
-    <meta name="generator" content="Nárcio Silvestre">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
-    <link href="./Checkout example · Bootstrap v5.3_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico">
-    <meta name="theme-color" content="#712cf9">
-
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-            .nav-scroller .nav {
-                display: flex;
-                flex-wrap: nowrap;
-                padding-bottom: 1rem;
-                margin-top: -1px;
-                overflow-x: auto;
-                text-align: center;
-                white-space: nowrap;
-                -webkit-overflow-scrolling: touch;
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style data-merge-styles="true"></style>
+        <style data-merge-styles="true"></style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Nárcio Silvestre">
+        <meta name="generator" content="Nárcio Silvestre">
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
+        <link href="./Checkout example · Bootstrap v5.3_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <meta name="theme-color" content="#712cf9">
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
             }
 
-            .col-auto{
-            width: 120px;
-            height: 120px;
+
+            .b-example-divider {
+                height: 3rem;
+                background-color: rgba(0, 0, 0, .1);
+                border: solid rgba(0, 0, 0, .15);
+                border-width: 1px 0;
+                box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
             }
 
-            #hov{
-            width: 100%;
-            height: 80px;
-            object-fit:cover;
-            transition: width .35s ease,
-            height .35s ease
-        }
+            .b-example-vr {
+                flex-shrink: 0;
+                width: 1.5rem;
+                height: 100vh;
+            }
 
-            #hov:hover{
+            .bi {
+                vertical-align: -.125em;
+                fill: currentColor;
+            }
+
+            .nav-scroller {
+                position: relative;
+                z-index: 2;
+                height: 2.75rem;
+                overflow-y: hidden;
+            }
+
+                .nav-scroller .nav {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    padding-bottom: 1rem;
+                    margin-top: -1px;
+                    overflow-x: auto;
+                    text-align: center;
+                    white-space: nowrap;
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                .col-auto{
+                width: 120px;
+                height: 120px;
+                }
+
+                #hov{
+                width: 100%;
+                height: 80px;
+                object-fit:cover;
+                transition: width .35s ease,
+                height .35s ease
+            }
+
+                #hov:hover{
                
-                height:100px;
-                object-fit: cover;
-            }
-    </style>
-
-
-
-    <link href="./Checkout example · Bootstrap v5.3_files/checkout.css" rel="stylesheet">
-</head>
-<body style="background-color:white">
+                    height:100px;
+                    object-fit: cover;
+                }
+        </style>
+        <link href="./Checkout example · Bootstrap v5.3_files/checkout.css" rel="stylesheet">
+    </head>
+    <body style="background-color:white">
 
     <div class="container ">
         <main>
@@ -116,259 +89,468 @@
                     <h4 class="mb-3">Encargo de Oficina</h4>
                         <div class="row g-3">
 
-
                             <div class="col-4">
                                 <label for="molde" class="form-label">Molde </label>
-                                <input type="text" class="form-control" id="molde" name="molde" readonly>
+                                <input type="text" class="form-control" id="molde" name="molde" value="@Model.molde" readonly>
                             </div>
 
                             <div class="col-12">
                                 <label for="descProblema" class="form-label">Descrição do Problema</label>
-                                <textarea type="text" class="form-control input-lg" id="descProblema" name="descProblema" readonly></textarea>
+                                <input type="text" class="form-control" id="descProblema" name="descProblema" value="@Model.descProblema" readonly style="height:max-content"></input>
                             </div>
-
 
                             <div class="col-6">
                                 <label for="dataNecMeio" class="form-label">Data Necessidade Meio</label>
-                                <input type="date" class="form-control" id="dataNecMeio" name="dataNecMeio" readonly>
+                                <input type="text" class="form-control" id="dataNecMeio" name="dataNecMeio" value="@Model.dataNecMeio" readonly>
                             </div>
 
 
                             <div class="col-md-4">
                                 <label for="prioridadeid" class="form-label">Prioridade</label>
-                            <input type="text" class="form-control" id="prioridadeid" name="prioridadeid" readonly>
+                                <input type="text" class="form-control" id="prioridadeid" name="prioridadeid" value="@Model.prioridade" readonly>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="estadoEnc" class="form-label">Estado</label>
-                            <input type="text" class="form-control" id="estadoEnc" name="estadoEnc" readonly>
+                                <input type="text" class="form-control" id="estadoEnc" name="estadoEnc" value="@Model.estado" readonly>
+                            </div>
+
+                            <div class="col-12">
+                                @if (@ViewBag.encReq!=null)
+                                {
+                                    @for (int x = 0; x < @ViewBag.encReq.Count; x++)
+                                    {
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name=">@ViewBag.encReq[x].desc" checked readonly id=">@ViewBag.encReq[x].desc">
+                                            <label class="form-check-label" for=">@ViewBag.encReq[x].desc">@ViewBag.encReq[x].desc</label>
+                                        </div>
+                                    }
+                                }
+
+                            @{
+                                @if (@ViewBag.intervencoes!=null)
+                                {
+                                    @for (int x = 0; x < @ViewBag.intervencoes.Count; x++)
+                                    {
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name=">@ViewBag.intervencoes[x].desc" readonly id=">@ViewBag.intervencoes[x].desc">
+                                            <label class="form-check-label" for=">@ViewBag.intervencoes[x].desc">@ViewBag.intervencoes[x].desc</label>
+                                        </div>
+                                    }
+                                }
+                            }
                         </div>
 
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" name="qualidade" value="1" autocomplete="on" readonly id="qualidade">
-                                <label class="form-check-label" for="qualidade">validação da qualidade</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" name="qualidade" value="1" autocomplete="on" readonly id="qualidade">
-                                <label class="form-check-label" for="qualidade">ótica</label>
-                            </div>
                         <div class="container-md">
-                            <div class="row justify-content-center">
+                            @if (@ViewBag.anexos!=null)
+                            {
+                                <div class="row justify-content-center">
+                                    @for (int x = 0; x < @ViewBag.anexos.Count; x++)
+                                    {
+                                        <div class="col-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop@(x)">
+                                            <img src="/imagens/@ViewBag.anexos[x].desc" id="hov" />
+                                        </div>
+                                    }
+                                </div>
+                                @for (int x = 0; x < @ViewBag.anexos.Count; x++)
+                                {
+                                    <div class="modal fade" id="staticBackdrop@(x)" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content" style="background-color:transparent; border-color:transparent">
 
-                                <div class="col-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <img src="/Imagens/0000200_molds-for-the-plastics-injection-industry.jpeg" id="hov" />
-                                </div>
-                                <div class="col-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-                                    <img src="/Imagens/back01.jpg" id="hov" />
-                                </div>
-                                <div class="col-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                                    <img src="/Imagens/injecao-de-plasticos-beneficios.jpg" id="hov" />
-                                </div>
-                                <div class="col-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
-                                    <img src="/Imagens/R.jpeg" id="hov" />
-                                </div>
-                                <div class="col-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
-                                    <img src="/Imagens/IMG_5032-768x512.jpg" id="hov" />
-                                </div>
-
-
-                            </div>
-                            <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="background-color:transparent; border-color:transparent">
-
-                                        <div class="modal-body">
-                                            <img src="/Imagens/0000200_molds-for-the-plastics-injection-industry.jpeg" width="100%" />
+                                                <div class="modal-body">
+                                                    <img src="/Imagens/@ViewBag.anexos[x].desc" width="100%" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="staticBackdrop2" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="background-color:transparent; border-color:transparent">
-                                        <div class="modal-body">
-                                            <img src="/Imagens/back01.jpg" width="100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="staticBackdrop3" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="background-color:transparent; border-color:transparent">
-                                        <div class="modal-body">
-                                            <img src="/Imagens/injecao-de-plasticos-beneficios.jpg" width="100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="staticBackdrop4" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="background-color:transparent; border-color:transparent">
-                                        <div class="modal-body">
-                                            <img src="/Imagens/R.jpeg" width="100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="staticBackdrop5" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="background-color:transparent; border-color:transparent">
-                                        <div class="modal-body">
-                                            <img src="/Imagens/IMG_5032-768x512.jpg" width="100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                                }
+                            }
                         </div>  
-                       
-                        
                     </div>
 
-                    <h4 class="mb-3 mt-2 mb-2">Intervencao de Oficina</h4>
 
                     <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                    Intervencao #1
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse ">
-                                <div class="accordion-body">
-                                   <div class="row g-3">
-                                    <div class="col-4">
-                                        <label for="Responsavel" class="form-label">Responsavel </label>
-                                        <input type="text" class="form-control" id="Responsavel" name="Responsavel" readonly>
-                                    </div>
+                        
+                        @if (Model.estado == "Em Intervenção")
+                        {
+                            <h4 class="mb-3 mt-2 mb-2">Intervencao de Oficina</h4>
 
-                                    <div class="col-12">
-                                        <label for="descint" class="form-label">Descrição do Trabalho</label>
-                                        <textarea type="text" class="form-control input-lg" id="descint" name="descint" readonly></textarea>
-                                    </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsetwo" aria-expanded="true" aria-controls="panelsStayOpen-collapsetwo">
+                                        Intervencao(preencher)
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapsetwo" class="accordion-collapse collapse ">
+                                    <div class="accordion-body">
+                                        <form class="needs-validation was-validated" novalidate="" asp-action="Create" asp-controller="Intervencao" asp-route-id="@Model.id">
+                                            <div class="col-md-4">
+                                                <label class="form-check-label" for="extInt">É necessário intervenção externa?</label>
+                                                <select class="form-select" id="extInt" name="extInt" required="">
+                                                    <option>Escolher...</option>
+                                                    <option value="1">Sim</option>
+                                                    <option value="0">Não</option>
+                                                </select>
+                                            </div>
 
+                                            <div class="col-12">
+                                                <label for="descricao" class="form-label">Descrição do Trabalho</label>
+                                                <textarea type="text" class="form-control" id="descricao" name="descricao" placeholder="" value="" required="" style="height:150px"></textarea>
+                                            </div>
 
-                                    <div class="col-6">
-                                        <label for="dataint" class="form-label">Data</label>
-                                        <input type="date" class="form-control" id="dataint" name="dataint" readonly>
-                                    </div>
+                                            <button class=" btn btn-primary mx-auto mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt+1)ª Intervenção de Encargo</button>
 
-                                    <div class="col-md-4">
-                                        <label for="estadoint" class="form-label">Estado</label>
-                                        <input type="text" class="form-control" id="estadoint" name="estadoint" readonly>
+                                        </form>
                                     </div>
                                 </div>
-                                  
-                                    <h4 class="mb-3 mt-2 mb-2">Validação</h4>
+                            </div>
+                        }
+                        else if(Model.estado == "Em Validação")
+                        {
+                            <h4 class="mb-3 mt-2 mb-2">Intervencao de Oficina</h4>
 
-                                    <div class="accordion-item mt-2">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                                Validacao #1
-                                            </button>
-                                        </h2>
-                                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                                            <div class="accordion-body">
-                                               <div class="row g-3">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsetwo" aria-expanded="true" aria-controls="panelsStayOpen-collapsetwo">
+                                        Intervencao @(Model.nrInt)
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapsetwo" class="accordion-collapse collapse ">
+                                    <div class="accordion-body">
+                                        <div class="row g-3">
+                                            <div class="col-4">
+                                                <label for="Responsavel" class="form-label">Responsavel </label>
+                                                <input type="text" class="form-control" id="Responsavel" name="Responsavel" value="@ViewBag.interAtual.utilizador" readonly>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label for="descint" class="form-label">Descrição do Trabalho</label>
+                                                <input type="text" class="form-control input-lg" id="descint" name="descint" value="@ViewBag.interAtual.descInt" readonly></input>
+                                            </div>
+
+
+                                            <div class="col-6">
+                                                <label for="dataint" class="form-label">Data</label>
+                                                <input type="text" class="form-control" id="dataint" name="dataint" value="@ViewBag.interAtual.data" readonly>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label for="estadoint" class="form-label">Estado</label>
+                                                <input type="text" class="form-control" id="estadoint" name="estadoint" value="@ViewBag.interAtual.estado" readonly>
+                                            </div>
+                                        </div>
+                                        <h6 class="mb-3 mt-2 mb-2">Validação</h6>
+                                        @{
+                                            
+                                            if(ViewBag.interAtual.valProducao == -1)
+                                            {
+                                                <div class="accordion-item mt-2">
+                                                    <h2 class="accordion-header">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefourteen" aria-expanded="false" aria-controls="panelsStayOpen-collapsefourteen">
+                                                            Validacao Produção
+                                                        </button>
+                                                    </h2>
+                                                    <div id="panelsStayOpen-collapsefourteen" class="accordion-collapse collapse">
+                                                        <div class="accordion-body">
+
+                                                            <form class="needs-validation was-validated" novalidate="" asp-action="Prod" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id">
+                                                                <div class="row g-3">
+                                                                    <div class="col-md-4">
+                                                                        <label for="aprovado" class="form-label">Aprovado?</label>
+
+                                                                        <select class="form-select" id="aprovado" name="aprovado" required="">
+                                                                            <option value="">Escolher...</option>
+                                                                            <option value="1">Sim</option>
+                                                                            <option value="0">Não</option>
+                                                                        </select>
+                                                                        <div class="invalid-feedback">
+                                                                            Por favor escolha uma opção válida
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="col-12">
+                                                                        <label for="descricao" class="form-label">Descrição</label>
+                                                                        <textarea style="height:150px" type="text" class="form-control" id="descricao" name="descricao" placeholder="" value="" required=""></textarea>
+                                                                    </div>
+
+
+                                                                    <button class="btn mx-2 btn-primary mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt )ª Validação de Encargo</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }else
+                                            {
+                                                <div class="accordion-item mt-2">
+                                                    <h2 class="accordion-header">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
+                                                            Validacao Produção
+                                                        </button>
+                                                    </h2>
+                                                    <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
+                                                        <div class="accordion-body">
+                                                            <div class="row g-3">
+                                                                <div class="col-4">
+                                                                    <label for="ResponsavelVal" class="form-label">Responsavel </label>
+                                                                    <input type="text" class="form-control" id="ResponsavelVal" name="ResponsavelVal" value="@ViewBag.interAtual.respValProd" readonly>
+                                                                </div>
+
+                                                                <div class="col-12">
+                                                                    <label for="descval" class="form-label">Descrição</label>
+                                                                    <input type="text" class="form-control input-lg" id="descval" name="descval" value="@ViewBag.interAtual.descProducao" readonly></input>
+                                                                </div>
+
+
+                                                                <div class="col-6">
+                                                                    <label for="dataval" class="form-label">Data</label>
+                                                                    <input type="text" class="form-control" id="dataval" name="dataval" value="@ViewBag.interAtual.dataValProd" readonly>
+                                                                </div>
+                                                                @if (@ViewBag.interAtual.valProducao == 1)
+                                                                {
+                                                                    <div class="col-md-4">
+                                                                        <label for="estadoval" class="form-label">Estado</label>
+                                                                        <input type="text" class="form-control" id="estadoval" name="estadoval" value="Válido" readonly>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="col-md-4">
+                                                                        <label for="estadoval" class="form-label">Estado</label>
+                                                                        <input type="text" class="form-control" id="estadoval" name="estadoval" value="Inválido" readonly>
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+
+
+                                        @if(ViewBag.interAtual.valQualidade == -1)
+                                        {
+                                            <div class="accordion-item mt-2">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseten" aria-expanded="false" aria-controls="panelsStayOpen-collapseten">
+                                                        Validacao Qualidade
+                                                    </button>
+                                                </h2>
+                                                <div id="panelsStayOpen-collapseten" class="accordion-collapse collapse">
+                                                    <div class="accordion-body">
+
+                                                        <form class="needs-validation was-validated" novalidate="" asp-action="Qual" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id">
+                                                            <div class="row g-3">
+                                                                <div class="col-md-4">
+                                                                    <label for="aprovado" class="form-label">Aprovado?</label>
+                                                                    <select class="form-select" id="aprovado" name="aprovado" required="">
+                                                                        <option value="">Escolher...</option>
+                                                                        <option value="1">Sim</option>
+                                                                        <option value="0">Não</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">
+                                                                        Por favor escolha uma opção válida
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="col-12">
+                                                                    <label for="descricao" class="form-label">Descrição</label>
+                                                                    <textarea style="height:150px" type="text" class="form-control" id="descricao" name="descricao" placeholder="" value="" required=""></textarea>
+                                                                </div>
+
+
+                                                                <button class="btn mx-2 btn-primary mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt)ª Validação de Encargo</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="accordion-item mt-2">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
+                                                        Validacao Qualidade
+                                                    </button>
+                                                </h2>
+                                                <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
+                                                    <div class="accordion-body">
+
+                                                        <div class="row g-3">
+                                                            <div class="col-4">
+                                                                <label for="ResponsavelVal" class="form-label">Responsavel </label>
+                                                                <input type="text" class="form-control" id="ResponsavelVal" name="ResponsavelVal" value="@ViewBag.interAtual.respValQual" readonly>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <label for="descval" class="form-label">Descrição</label>
+                                                                <input type="text" class="form-control input-lg" id="descval" name="descval" value="@ViewBag.interAtual.descQualidade" readonly></input>
+                                                            </div>
+
+
+                                                            <div class="col-6">
+                                                                <label for="dataval" class="form-label">Data</label>
+                                                                <input type="text" class="form-control" id="dataval" name="dataval" value="@ViewBag.interAtual.dataValQual" readonly>
+                                                            </div>
+                                                            @if (@ViewBag.interAtual.valQualidade == 1)
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <label for="estadoval" class="form-label">Estado</label>
+                                                                    <input type="text" class="form-control" id="estadoval" name="estadoval" value="Válido" readonly>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <label for="estadoval" class="form-label">Estado</label>
+                                                                    <input type="text" class="form-control" id="estadoval" name="estadoval" value="Inválido" readonly>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        
+                        @if(ViewBag.interAll != null)
+                        {
+                            <h4 class="mb-3 mt-2 mb-2">Intervencao de Oficina</h4>
+
+                            for(int x=0; x<ViewBag.interAll.Count; x++)
+                            {
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse@(x)" aria-expanded="true" aria-controls="panelsStayOpen-collapse@(x)">
+                                            Intervencao @(x+1)
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapse@(x)" class="accordion-collapse collapse ">
+                                        <div class="accordion-body">
+                                            <div class="row g-3">
                                                 <div class="col-4">
-                                                    <label for="ResponsavelVal" class="form-label">Responsavel </label>
-                                                    <input type="text" class="form-control" id="ResponsavelVal" name="ResponsavelVal" readonly>
+                                                    <label for="Responsavel" class="form-label">Responsavel </label>
+                                                    <input type="text" class="form-control" id="Responsavel" name="Responsavel" value="@ViewBag.interAll[x].utilizador" readonly>
                                                 </div>
 
                                                 <div class="col-12">
-                                                    <label for="descval" class="form-label">Descrição</label>
-                                                    <textarea type="text" class="form-control input-lg" id="descval" name="descval" readonly></textarea>
+                                                    <label for="descint" class="form-label">Descrição do Trabalho</label>
+                                                    <input type="text" class="form-control input-lg" id="descint" name="descint" value="@ViewBag.interAll[x].descInt" readonly></input>
                                                 </div>
 
 
                                                 <div class="col-6">
-                                                    <label for="dataval" class="form-label">Data</label>
-                                                    <input type="date" class="form-control" id="dataval" name="dataval" readonly>
+                                                    <label for="dataint" class="form-label">Data</label>
+                                                    <input type="text" class="form-control" id="dataint" name="dataint" value="@ViewBag.interAll[x].data" readonly>
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label for="estadoval" class="form-label">Estado</label>
-                                                    <input type="text" class="form-control" id="estadoval" name="estadoval" readonly>
+                                                    <label for="estadoint" class="form-label">Estado</label>
+                                                    <input type="text" class="form-control" id="estadoint" name="estadoint" value="@ViewBag.interAll[x].estado" readonly>
                                                 </div>
                                             </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsetwo" aria-expanded="true" aria-controls="panelsStayOpen-collapsetwo">
-                                    Intervencao #2
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapsetwo" class="accordion-collapse collapse ">
-                                <div class="accordion-body">
+                                            <h6 class="mb-3 mt-2 mb-2">Validação</h6>
 
-                                    <form class="needs-validation was-validated" novalidate="">
-                                        <div class="col-md-4">
-                                            <label class="form-check-label" for="reparacaoid">É necessário intervenção externa?</label>
-                                            <select class="form-select" id="reparacaoid" name="reparacaoid" required="">
-                                                <option>Escolher...</option>
-                                                <option value="2">Sim</option>
-                                                <option value="1">Não</option>
-
-                                            </select>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="descricao" class="form-label">Descrição do Trabalho</label>
-                                            <textarea type="text" class="form-control" id="descricao" name="descricao" placeholder="" value="" required="" style="height:150px"></textarea>
-                                        </div>
-
-                                        <button class=" btn btn-primary mx-auto mt-2" style=" padding:5px; width:auto" type="submit">Subtemer ª Intervenção de Encargo</button>
-
-                                    </form>
-                                    <h4 class="mb-3 mt-2 mb-2">Validação</h4>
-
-                                    <div class="accordion-item mt-2">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
-                                                Validacao #2
-                                            </button>
-                                        </h2>
-                                        <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
-                                            <div class="accordion-body">
-
-                                                <form class="needs-validation was-validated" novalidate="">
-                                                    <div class="row g-3">
-                                                        <div class="col-md-4">
-                                                            <label for="aprovado" class="form-label">Aprovado?</label>
-
-                                                            <select class="form-select" id="aprovado" name="aprovado" required="">
-                                                                <option value="">Escolher...</option>
-                                                                <option value="1">Sim</option>
-                                                                <option value="0">Não</option>
-                                                            </select>
-                                                            <div class="invalid-feedback">
-                                                                Por favor escolha uma opção válida
+                                            <div class="accordion-item mt-2">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpenProd-collapse@(x)" aria-expanded="false" aria-controls="panelsStayOpenProd-collapse@(x)">
+                                                        Validacao Produção
+                                                    </button>
+                                                </h2>
+                                                <div id="panelsStayOpenProd-collapse@(x)" class="accordion-collapse collapse">
+                                                    <div class="accordion-body">
+                                                        <div class="row g-3">
+                                                            <div class="col-4">
+                                                                <label for="ResponsavelVal" class="form-label">Responsavel </label>
+                                                                <input type="text" class="form-control" id="ResponsavelVal" name="ResponsavelVal" value="@ViewBag.interAll[x].respValProd" readonly>
                                                             </div>
+
+                                                            <div class="col-12">
+                                                                <label for="descval" class="form-label">Descrição</label>
+                                                                <input type="text" class="form-control input-lg" id="descval" name="descval" value="@ViewBag.interAll[x].descProducao" readonly></input>
+                                                            </div>
+
+
+                                                            <div class="col-6">
+                                                                <label for="dataval" class="form-label">Data</label>
+                                                                <input type="text" class="form-control" id="dataval" name="dataval" value="@ViewBag.interAll[x].dataValProd" readonly>
+                                                            </div>
+                                                            @if (@ViewBag.interAll[x].valProducao == 1)
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <label for="estadoval" class="form-label">Estado</label>
+                                                                    <input type="text" class="form-control" id="estadoval" name="estadoval" value="Válido" readonly>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <label for="estadoval" class="form-label">Estado</label>
+                                                                    <input type="text" class="form-control" id="estadoval" name="estadoval" value="Inválido" readonly>
+                                                                </div>
+                                                            }
                                                         </div>
-
-
-                                                        <div class="col-12">
-                                                            <label for="descricao" class="form-label">Descrição</label>
-                                                            <textarea style="height:150px" type="text" class="form-control" id="descricao" name="descricao" placeholder="" value="" required=""></textarea>
-                                                        </div>
-
-
-                                                        <button class="btn mx-2 btn-primary mt-2" style=" padding:5px; width:auto" type="submit">Subtemer ª Validação de Encargo</button>
                                                     </div>
-                                                    </form>
+                                                </div>
                                             </div>
+                                            <div class="accordion-item mt-2">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpenQual-collapse@(x)" aria-expanded="false" aria-controls="panelsStayOpenQual-collapse@(x)">
+                                                        Validacao Qualidade
+                                                    </button>
+                                                </h2>
+                                                <div id="panelsStayOpenQual-collapse@(x)" class="accordion-collapse collapse">
+                                                    <div class="accordion-body">
+
+                                                        <div class="row g-3">
+                                                            <div class="col-4">
+                                                                <label for="ResponsavelVal" class="form-label">Responsavel </label>
+                                                                <input type="text" class="form-control" id="ResponsavelVal" name="ResponsavelVal" value="@ViewBag.interAll[x].respValQual" readonly>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <label for="descval" class="form-label">Descrição</label>
+                                                                <input type="text" class="form-control input-lg" id="descval" name="descval" value="@ViewBag.interAll[x].descQualidade" readonly></input>
+                                                            </div>
+
+
+                                                            <div class="col-6">
+                                                                <label for="dataval" class="form-label">Data</label>
+                                                                <input type="text" class="form-control" id="dataval" name="dataval" value="@ViewBag.interAll[x].dataValQual" readonly>
+                                                            </div>
+                                                            @if (@ViewBag.interAll[x].valQualidade == 1)
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <label for="estadoval" class="form-label">Estado</label>
+                                                                    <input type="text" class="form-control" id="estadoval" name="estadoval" value="Válido" readonly>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <label for="estadoval" class="form-label">Estado</label>
+                                                                    <input type="text" class="form-control" id="estadoval" name="estadoval" value="Inválido" readonly>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                
+                            }
+                        }
                     </div>
                 </div>
             </div>

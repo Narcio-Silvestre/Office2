@@ -1,0 +1,91 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style data-merge-styles="true"></style>
+    <style data-merge-styles="true"></style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
+    <link href="./Checkout example · Bootstrap v5.3_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <meta name="theme-color" content="#712cf9">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+            .nav-scroller .nav {
+                display: flex;
+                flex-wrap: nowrap;
+                padding-bottom: 1rem;
+                margin-top: -1px;
+                overflow-x: auto;
+                text-align: center;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+    </style>
+    <link href="./Checkout example · Bootstrap v5.3_files/checkout.css" rel="stylesheet">
+    </head>
+    <body style="background-color:white">
+        <div class="container ">
+            <main>
+                <div class="row g-5 justify-content-center mt-1 ">
+
+                    <div class="col-md-7 col-lg-8 py-5 bg-light shadow-lg s mt-3 list-group-flush justify-content-center">
+                        @for (int x = 0; x < ViewBag.encargo.Count; x++)
+                        {
+                            <div class="card list-group-item list-group-item-action m-1 shadow-sm" style="max-height:18vh">
+                                <h7 class="card-header">@ViewBag.encargo[x].estado</h7>
+                                <div class="d-flex flex-md-row justify-content-between">
+                                    <div class="p-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@ViewBag.encargo[x].nrEncargo - @ViewBag.encargo[x].entidade</h5>
+                                            <p class="card-text">@ViewBag.encargo[x].data </p>
+                                        </div>
+                                    </div>
+                                    <div class="p-2">
+                                    <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-primary">Ver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script src="./Checkout example · Bootstrap v5.3_files/bootstrap.bundle.min.js.descarregar" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="./Checkout example · Bootstrap v5.3_files/checkout.js.descarregar"></script>
+    </body>
+</html>

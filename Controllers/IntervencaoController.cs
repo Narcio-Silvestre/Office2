@@ -58,17 +58,17 @@ namespace Office.Controllers
         }
 
         [HttpPost]
-        [Route("Intervencao/Create/{id}/{idEncargo}")]
-        public ActionResult Create(IntervencaoViewModel aux,int idEncargo,int id)
+        [Route("Intervencao/Create/{id}")]
+        public ActionResult Create(IntervencaoModel aux,int id)
         {
-            IntervencaoModel data = new IntervencaoModel();
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
-            data.idEntidade = _session.Id;
-            data.idIntervencao =id;
-            data.idEncargo = idEncargo;
-            data.nome = _session.Name;
-            data.descricao = aux.descricao;
-            api.HttpClient.PutAsJsonAsync("https://localhost:7271/Intervencao", data);
+            aux.idEntidade = _session.Id;
+            aux.idEncargo = id;
+            Console.WriteLine("Entidade:" + aux.idEntidade);
+            Console.WriteLine("Externa:" + aux.extInt);
+            Console.WriteLine("Descricao:" + aux.descricao);
+            Console.WriteLine("Encargo:"+aux.idEncargo);
+            api.HttpClient.PutAsJsonAsync("https://localhost:7271/Intervencao", aux);
             return RedirectToAction("Index", "Home");
         }
     }
