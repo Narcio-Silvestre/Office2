@@ -33,12 +33,13 @@ namespace Office.Controllers
             
             string dat = response.Content.ReadAsStringAsync().Result;
             UserModel model= JsonSerializer.Deserialize<UserModel>(dat);
-            HttpContext.Session.SetString("User",JsonSerializer.Serialize(new SessionKeys() { Id=Convert.ToInt32(model.id),Name= model.name }));
+            Console.WriteLine(model.funcId);
+            HttpContext.Session.SetString("User",JsonSerializer.Serialize(new SessionKeys() { Id=Convert.ToInt32(model.id),Name= model.name,funcaoid=model.funcId }));
             return RedirectToAction("Index","Home");
         }
 
         [HttpGet]
-        public ActionResult LogOut()
+        public ActionResult Out()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index");

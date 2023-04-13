@@ -1,20 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Office.Models;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Data;
 using System.Text.Json;
+
 
 namespace Office.Controllers
 {
     public class IntervencaoController : dbConnetion
     {
         Api api;
-
-        public IntervencaoController()
+        string path;
+        
+        public IntervencaoController(IWebHostEnvironment system)
         {
             api = new Api();
+            path = system.WebRootPath;
         }
 
 
@@ -58,16 +59,47 @@ namespace Office.Controllers
         }
 
         [HttpPost]
-        [Route("Intervencao/Create/{id}")]
-        public ActionResult Create(IntervencaoModel aux,int id)
+        [Route("Intervencao/Create")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IntervencaoModel aux, IEnumerable<IFormFile> files)
         {
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            if (_session.funcaoid != 4)
+            {
+                TempData["ErrorMessage"] = "Desculpe, você não tem permissão para executar intervenções.\n Por favor, contate o administrador do sistema para mais informações.";
+                return RedirectToAction("Index", "Home");
+            }
+            List<String> list = new();
+            string caminhoPasta = path + "\\Imagens\\";
+            
             aux.idEntidade = _session.Id;
-            aux.idEncargo = id;
+            
             Console.WriteLine("Entidade:" + aux.idEntidade);
             Console.WriteLine("Externa:" + aux.extInt);
             Console.WriteLine("Descricao:" + aux.descricao);
-            Console.WriteLine("Encargo:"+aux.idEncargo);
+            Console.WriteLine("Encargo:" + aux.idEncargo);
+
+            foreach (var item in files)
+            {
+                Console.WriteLine("ima:" + item.ToString());
+
+                string novoNomeImg = Guid.NewGuid().ToString() + item.FileName;
+                list.Add(novoNomeImg);
+                if (!Directory.Exists(caminhoPasta))
+                {
+                    Directory.CreateDirectory(caminhoPasta);
+                }
+
+                using var stream = System.IO.File.Create(caminhoPasta + novoNomeImg);
+                item.CopyTo(stream);
+            }
+            foreach (var inter in list)
+            {
+                Console.WriteLine("imagem:" + inter);
+
+            }
+            aux.anexos = list;
+
             api.HttpClient.PutAsJsonAsync("https://localhost:7271/Intervencao", aux);
             return RedirectToAction("Index", "Home");
         }

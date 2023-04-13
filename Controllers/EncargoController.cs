@@ -3,6 +3,7 @@ using Office.Models;
 using System.Data.SqlClient;
 using System.Data;
 using System.Text.Json;
+using Microsoft.Web.Helpers;
 
 namespace Office.Controllers
 
@@ -80,6 +81,12 @@ namespace Office.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(EncargoMolde encargo,IEnumerable<IFormFile> files)
         {
+            _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            if (_session.funcaoid != 1)
+            {
+                TempData["ErrorMessage"] = "Desculpe, você não tem permissão para criar encargos.\n Por favor, contate o administrador do sistema para mais informações.";
+                return RedirectToAction("Index","Home");
+            }
             List<String> list = new();
             string caminhoPasta = path + "\\Imagens\\";
             _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
@@ -124,56 +131,13 @@ namespace Office.Controllers
 
 
 
-        //[HttpGet]
-        //[Route("Encargo/ListDone")]
-        //[Route("Encargo/ListDone/{id}")]
-        //public ActionResult ListDone(int id)
-        //{
-        //    if (id > 0)
-        //    {
-        //        List<EncargoViewModel> list = new List<EncargoViewModel>();
-        //        HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/Completed" + id.ToString()).Result;
-        //        string dat = response.Content.ReadAsStringAsync().Result;
-        //        list.Add(JsonSerializer.Deserialize<EncargoViewModel>(dat));
-        //        ViewBag.encargo = list;
-        //    }
-        //    else
-        //    {
-
-        //        HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/Completed").Result;
-        //        string dat = response.Content.ReadAsStringAsync().Result;
-        //        ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
-        //    }
-        //    return View();
-        //}
-
-
-        //[HttpGet]
-        //[Route("Encargo/ListNotDone")]
-        //[Route("Encargo/ListNotDone/{id}")]
-        //public ActionResult ListNotDone(int id)
-        //{
-        //    if (id > 0)
-        //    {
-        //        List<EncargoViewModel> list = new List<EncargoViewModel>();
-        //        HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/" + id.ToString()).Result;
-        //        string dat = response.Content.ReadAsStringAsync().Result;
-        //        list.Add(JsonSerializer.Deserialize<EncargoViewModel>(dat));
-        //        ViewBag.encargo = list;
-        //    }
-        //    else
-        //    {
-
-        //        HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo").Result;
-        //        string dat = response.Content.ReadAsStringAsync().Result;
-        //        ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
-        //    }
-        //    return View();
-        //}
+        
 
         [HttpGet]
         public IActionResult Info(int id)
         {
+            _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            ViewBag.UserFuncId = _session.funcaoid;
             HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/" + id.ToString()).Result;
             HttpResponseMessage response2 = api.HttpClient.GetAsync("https://localhost:7271/Requisitos/" + id.ToString()).Result;
             HttpResponseMessage response3 = api.HttpClient.GetAsync("https://localhost:7271/Requisitos/notIn/"+ id.ToString()).Result;
@@ -192,8 +156,28 @@ namespace Office.Controllers
                 if(dat2!="") ViewBag.encReq = JsonSerializer.Deserialize<List<RequisitosModel>>(dat2);
                 if (dat3 != "") ViewBag.intervencoes = JsonSerializer.Deserialize<List<RequisitosModel>>(dat3);
                 if (dat4 != "") ViewBag.anexos = JsonSerializer.Deserialize<List<AnexoModel>>(dat4);
-                if (dat6 != "") ViewBag.interAtual = JsonSerializer.Deserialize<IntervencaoModel2>(dat6);
-                if (dat5 != "") ViewBag.interAll = JsonSerializer.Deserialize<List<IntervencaoModel2>>(dat5);
+                if (dat6 != "") {
+                    ViewBag.interAtual = JsonSerializer.Deserialize<IntervencaoModel2>(dat6);
+                    HttpResponseMessage response7 = api.HttpClient.GetAsync("https://localhost:7271/Anexo/Intervencao/" + ViewBag.interAtual.id).Result;
+                    string dat7 = response7.Content.ReadAsStringAsync().Result;
+                    if (dat7 != "") ViewBag.anexosInt = JsonSerializer.Deserialize<List<AnexoModel>>(dat7);
+                }
+                if (dat5 != "") {
+                    ViewBag.interAll = JsonSerializer.Deserialize<List<IntervencaoModel2>>(dat5);
+                    if (ViewBag.interAll != null)
+                    {
+                        List<List<AnexoModel>> anexosAll = new();
+                        for(int x=0; x<ViewBag.interAll.Count;x++)
+                        {
+                            HttpResponseMessage resp = api.HttpClient.GetAsync("https://localhost:7271/Anexo/Intervencao/" + ViewBag.interAll[x].id).Result;
+                            string data9 = resp.Content.ReadAsStringAsync().Result;
+                            if (data9 != "") anexosAll.Add(JsonSerializer.Deserialize<List<AnexoModel>>(data9));
+                            else anexosAll.Add(null);
+                        }
+                        ViewBag.anexosAll = anexosAll;
+                    }
+
+                } 
             }
             catch (Exception ex)
             {
@@ -204,22 +188,7 @@ namespace Office.Controllers
             return View(encargo);
         }
 
-        //[HttpGet]
-        //[Route("Encargo/{id}")]
-        //public IActionResult InfoCompleted(int id)
-        //{
-        //    HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/" + id.ToString()).Result;
-        //    string dat = response.Content.ReadAsStringAsync().Result;
-        //    ViewBag.encargo = JsonSerializer.Deserialize<EncargoViewModel>(dat);
-        //    return View();
-        //}
-
-        //[HttpGet]
-        //public IActionResult ListDone()
-        //{
-
-        //    return View();
-        //}
+        
 
         [HttpGet]
         public IActionResult All()
@@ -228,28 +197,30 @@ namespace Office.Controllers
             string dat = response.Content.ReadAsStringAsync().Result;
             ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
             return View();
-            
+           
         }
 
-        //[HttpGet]
-        //public IActionResult Done()
-        //{
-        //    HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo").Result;
-        //    string dat = response.Content.ReadAsStringAsync().Result;
-        //    ViewBag.encargos = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
-        //    return Json(ViewBag.encargos);
+        [HttpGet]
+        public IActionResult AllVal()
+        {
+            HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/AllVal").Result;
+            string dat = response.Content.ReadAsStringAsync().Result;
+            ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
+            return View();
 
-        //}
+        }
 
-        //[HttpGet]
-        //public IActionResult NotDone()
-        //{
-        //    HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo").Result;
-        //    string dat = response.Content.ReadAsStringAsync().Result;
-        //    ViewBag.encargos = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
-        //    return Json(ViewBag.encargos);
+        [HttpGet]
+        public IActionResult AllInter()
+        {
+            HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/AllInter").Result;
+            string dat = response.Content.ReadAsStringAsync().Result;
+            ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
+            return View();
 
-        //}
+        }
+
+       
 
 
 

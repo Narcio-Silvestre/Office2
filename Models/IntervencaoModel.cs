@@ -18,6 +18,7 @@
         public int idEntidade { get; set; }
         public string descricao { get; set; }
         public int extInt { get; set; }
+        public List<string> anexos { get; set; }
 
     }
 

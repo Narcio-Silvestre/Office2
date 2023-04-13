@@ -67,15 +67,15 @@
                         <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Procurar</button>
                     </form>
-                    <div id="box-2" class="col-md-7 col-lg-8 py-5 bg-light shadow-lg mt-3 list-group-flush justify-content-center">
+                    <div class="col-md-7 col-lg-8 py-5 bg-light shadow-lg mt-3 list-group-flush justify-content-center">
                         @for (int x = 0; x < ViewBag.encargo.Count; x++)
                         {
                             <div class="list-group-item list-group-item-action m-1 shadow-sm ">
                                 <p class="card-header" style="width:max-content">@ViewBag.encargo[x].estado</p>
                                 <div class=" d-flex flex-md-row justify-content-between" >
-                                    <p class="p-2"><span class="fw-bolder">Número de Encargo:</span> @ViewBag.encargo[x].nrEncargo</p>
-                                    <p class="p-2"><span class="fw-bolder">Requerente:</span> @ViewBag.encargo[x].entidade</p>
-                                    <p class="p-2"><span class="fw-bolder">Data:</span> @ViewBag.encargo[x].data </p>
+                                <p class="p-2"><span class="fw-bolder">Número de Encargo:</span> @ViewBag.encargo[x].nrEncargo</p>
+                                <p class="p-2"><span class="fw-bolder">Requerente:</span> @ViewBag.encargo[x].entidade</p>
+                                <p class="p-2"><span class="fw-bolder">Data:</span> @ViewBag.encargo[x].data </p>
                                     <div>
                                     <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn p-2 btn-primary">Ver</a>
                                     </div>

@@ -18,7 +18,7 @@ namespace Office.Models
 
     public class EncargoViewModel
     {
-        public int id { get; set; }
+        public int id { get; set;}
         public string nrEncargo { get; set; }
         public string descProblema { get; set; }
         public DateTime data { get; set; }
@@ -28,6 +28,7 @@ namespace Office.Models
         public string prioridade { get; set; }
         public string estado { get; set; }
         public int nrInt { get; set;}
+        public int validQual { get; set; }
         //public DateTime dataConc { get; set; }
     }
 }

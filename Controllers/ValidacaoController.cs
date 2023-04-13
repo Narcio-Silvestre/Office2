@@ -47,6 +47,11 @@ namespace Office.Controllers
         {
             ValidacaoModel data = new ValidacaoModel();
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            if (_session.funcaoid != 2)
+            {
+                TempData["ErrorMessage"] = "Desculpe, você não tem permissão para validar intervenções da área da produção.\n Por favor, contate o administrador do sistema para mais informações.";
+                return RedirectToAction("Index", "Home");
+            }
             aux.idEntidade = _session.Id;
             aux.idInter = id;
             Console.WriteLine("ent:"+aux.idEntidade);
@@ -63,6 +68,11 @@ namespace Office.Controllers
         {
             ValidacaoModel data = new ValidacaoModel();
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            if (_session.funcaoid != 3)
+            {
+                TempData["ErrorMessage"] = "Desculpe, você não tem permissão para validar intervenções da área da qualidade.\n Por favor, contate o administrador do sistema para mais informações.";
+                return RedirectToAction("Index","Home");
+            }
             aux.idEntidade = _session.Id;
             aux.idInter = id;
             api.HttpClient.PutAsJsonAsync("https://localhost:7271/Validacao/Qual", aux);
