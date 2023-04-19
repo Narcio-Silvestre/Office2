@@ -3,7 +3,7 @@ using Office.Models;
 using System.Data.SqlClient;
 using System.Data;
 using System.Text.Json;
-
+using System.Web.WebPages;
 
 namespace Office.Controllers
 {
@@ -68,6 +68,13 @@ namespace Office.Controllers
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para executar intervenções.\n Por favor, contate o administrador do sistema para mais informações.";
                 return RedirectToAction("Index", "Home");
+            }
+            Console.WriteLine(aux.extInt.ToString());
+            if (aux.descricao.IsEmpty() || aux.extInt<0 || aux.extInt > 1)
+            {
+                int id = aux.idEncargo;
+                TempData["ErrorMessage"] = "Por favor preencher todos os campos necessários para a intervenção!";
+                return RedirectToAction(actionName:"Info",controllerName:"Encargo",new { @id = id }) ;
             }
             List<String> list = new();
             string caminhoPasta = path + "\\Imagens\\";

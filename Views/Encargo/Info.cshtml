@@ -1,60 +1,8 @@
 ﻿@model EncargoViewModel
-<!DOCTYPE html>
-<html lang="en">
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style data-merge-styles="true"></style>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
-        <link href="./Checkout example · Bootstrap v5.3_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <script src="js/bootstrap.min.js"></script>
         <style>
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
-            }
-
-
-            .b-example-divider {
-                height: 3rem;
-                background-color: rgba(0, 0, 0, .1);
-                border: solid rgba(0, 0, 0, .15);
-                border-width: 1px 0;
-                box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-            }
-
-            .b-example-vr {
-                flex-shrink: 0;
-                width: 1.5rem;
-                height: 100vh;
-            }
-
-            .bi {
-                vertical-align: -.125em;
-                fill: currentColor;
-            }
-
-            .nav-scroller {
-                position: relative;
-                z-index: 2;
-                height: 2.75rem;
-                overflow-y: hidden;
-            }
-
-                .nav-scroller .nav {
-                    display: flex;
-                    flex-wrap: nowrap;
-                    padding-bottom: 1rem;
-                    margin-top: -1px;
-                    overflow-x: auto;
-                    text-align: center;
-                    white-space: nowrap;
-                    -webkit-overflow-scrolling: touch;
-                }
-
+            
                 .col-auto{
                 width: 120px;
                 height: 120px;
@@ -81,10 +29,19 @@
         <main>
             <div class="row g-5 justify-content-center mt-1 ">
                 <div class="col-md-7 col-lg-8 py-5 shadow-lg s mt-3 bg-light">
+                    @if (@TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["ErrorMessage"]
+                        </div>
+                    }
                     
                     <h4 class="mb-3">Encargo de Oficina</h4>
                         <div class="row g-3">
-
+                        <div class="col-4">
+                            <label for="Responsavel" class="form-label">Requente </label>
+                            <input type="text" class="form-control" id="Responsavel" name="entidade" value="@Model.entidade" readonly>
+                        </div>
                             <div class="col-4">
                                 <label for="molde" class="form-label">Molde </label>
                                 <input type="text" class="form-control" id="molde" name="molde" value="@Model.molde" readonly>
@@ -92,7 +49,7 @@
 
                             <div class="col-12">
                                 <label for="descProblema" class="form-label">Descrição do Problema</label>
-                                <input type="text" class="form-control" id="descProblema" name="descProblema" value="@Model.descProblema" readonly style="height:max-content"></input>
+                            <input type="text" class="form-control" id="descProblema" name="descProblema" value="@Model.descProblema" readonly style="height:max-content"></input>
                             </div>
 
                             <div class="col-6">
@@ -112,7 +69,7 @@
                                     @for (int x = 0; x < @ViewBag.encReq.Count; x++)
                                     {
                                         <div class="form-check col-4">
-                                            <input type="checkbox" class="form-check-input" name=">@ViewBag.encReq[x].desc" checked readonly id=">@ViewBag.encReq[x].desc">
+                                            <input type="checkbox" class="form-check-input" name=">@ViewBag.encReq[x].desc" checked onclick="return false;" id=">@ViewBag.encReq[x].desc">
                                             <label class="form-check-label" for=">@ViewBag.encReq[x].desc">@ViewBag.encReq[x].desc</label>
                                         </div>
                                     }
@@ -124,7 +81,7 @@
                                     @for (int x = 0; x < @ViewBag.intervencoes.Count; x++)
                                     {
                                         <div class="form-check col-4">
-                                            <input type="checkbox" class="form-check-input" name=">@ViewBag.intervencoes[x].desc" readonly id=">@ViewBag.intervencoes[x].desc">
+                                                <input type="checkbox" class="form-check-input" name=">@ViewBag.intervencoes[x].desc" readonly onclick="return false;" id=">@ViewBag.intervencoes[x].desc">
                                             <label class="form-check-label" for=">@ViewBag.intervencoes[x].desc">@ViewBag.intervencoes[x].desc</label>
                                         </div>
                                     }
@@ -133,7 +90,7 @@
                             </div>
                         </div>
 
-                        <div class="container-md">
+                        <div class="container-md mt-2">
                             @if (@ViewBag.anexos!=null)
                             {
                                 <div class="row justify-content-center">
@@ -176,13 +133,12 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapsetwo" class="accordion-collapse collapse.show ">
                                     <div class="accordion-body">
-                                        <form class="needs-validation was-validated" novalidate="" asp-action="Create" asp-controller="Intervencao" enctype="multipart/form-data">
+                                        <form class="needs-validation was-validated" novalidate asp-action="Create" asp-controller="Intervencao" enctype="multipart/form-data">
                                             <div class="row g-3">
-
                                             <div class="col-md-4">
                                                 <label class="form-check-label" for="extInt">É necessário intervenção externa?</label>
-                                                <select class="form-select" id="extInt" name="extInt" required="">
-                                                    <option value="">Escolher...</option>
+                                                <select class="form-select" id="extInt" name="extInt" required>
+                                                    <option value="-1">Escolher...</option>
                                                     <option value="1">Sim</option>
                                                     <option value="0">Não</option>
                                                 </select>
@@ -246,7 +202,7 @@
                                                 <input type="text" class="form-control" id="estadoint" name="estadoint" value="@ViewBag.interAtual.estado" readonly>
                                             </div>
 
-                                            <div class="container-md">
+                                            <div class="container-md mt-2">
                                                 @if (@ViewBag.anexosInt != null)
                                                 {
                                                     <div class="row justify-content-center">
@@ -287,13 +243,13 @@
                                                     <div id="panelsStayOpen-collapsefourteen" class="accordion-collapse collapse.show">
                                                         <div class="accordion-body">
 
-                                                            <form class="needs-validation was-validated" novalidate="" asp-action="Prod" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id">
+                                                            <form class="needs-validation was-validated" novalidate asp-action="Prod" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id" asp-route-idEncargo="@Model.id">
                                                                 <div class="row g-3">
                                                                     <div class="col-md-4">
                                                                         <label for="aprovado" class="form-label">Aprovado?</label>
 
                                                                         <select class="form-select" id="aprovado" name="aprovado" required="">
-                                                                            <option value="">Escolher...</option>
+                                                                            <option value="-1">Escolher...</option>
                                                                             <option value="1">Sim</option>
                                                                             <option value="0">Não</option>
                                                                         </select>
@@ -374,12 +330,12 @@
                                                 <div id="panelsStayOpen-collapseten" class="accordion-collapse collapse.show">
                                                     <div class="accordion-body">
 
-                                                        <form class="needs-validation was-validated" novalidate="" asp-action="Qual" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id">
+                                                        <form class="needs-validation was-validated" novalidate asp-action="Qual" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id" asp-route-idEncargo="@Model.id">
                                                             <div class="row g-3">
                                                                 <div class="col-md-4">
                                                                     <label for="aprovado" class="form-label">Aprovado?</label>
                                                                     <select class="form-select" id="aprovado" name="aprovado" required="">
-                                                                        <option value="">Escolher...</option>
+                                                                        <option value="-1">Escolher...</option>
                                                                         <option value="1">Sim</option>
                                                                         <option value="0">Não</option>
                                                                     </select>
@@ -620,4 +576,3 @@
         </main>
     </div>
 </body>
-</html>

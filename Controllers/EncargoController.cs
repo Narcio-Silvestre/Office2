@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Text.Json;
 using Microsoft.Web.Helpers;
+using System.Web.WebPages;
 
 namespace Office.Controllers
 
@@ -67,7 +68,16 @@ namespace Office.Controllers
             ViewBag.requisitos = JsonSerializer.Deserialize<List<RequisitosModel>>(data);
 
             string data2 = response2.Content.ReadAsStringAsync().Result;
-            ViewBag.moldes =  JsonSerializer.Deserialize<List<MoldeModel>>(data2);
+            if (data2.IsEmpty())
+            {
+                 TempData["ErrorMessage"] = "No momento não é possivel criar encargos, todos os moldes têm encargos em execução.";
+                 return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.moldes = JsonSerializer.Deserialize<List<MoldeModel>>(data2);
+
+            }
 
             string data3 = response3.Content.ReadAsStringAsync().Result;
             ViewBag.prioridade = JsonSerializer.Deserialize<List<PrioridadeModel>>(data3);
@@ -87,6 +97,13 @@ namespace Office.Controllers
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para criar encargos.\n Por favor, contate o administrador do sistema para mais informações.";
                 return RedirectToAction("Index","Home");
             }
+
+            if (encargo.moldeid<1 || encargo.descProblema.IsEmpty())
+            {
+                TempData["ErrorMessage"] = "Por favor preencha os campos necessários!";
+                return RedirectToAction("Create", "Encargo");
+            }
+
             List<String> list = new();
             string caminhoPasta = path + "\\Imagens\\";
             _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
@@ -106,13 +123,6 @@ namespace Office.Controllers
 
             
             encargo.entidadeid =_session.Id;
-            Console.WriteLine("Qualidade:"+encargo.qualidade);
-            Console.WriteLine("Intervencao:" + encargo.intervencao[0]);
-            Console.WriteLine("Intervencao:" + encargo.intervencao.Count);
-            Console.WriteLine("Problema:" + encargo.descProblema);
-            Console.WriteLine("Molde:" + encargo.moldeid);
-            Console.WriteLine("Prioridade:" + encargo.prioridadeid);
-            Console.WriteLine("Data Nec.  Meio:" + encargo.dataNecMeio);
             foreach(var inter in encargo.intervencao)
             {
                 Console.WriteLine("Intervencao:" + inter);
@@ -195,8 +205,18 @@ namespace Office.Controllers
         {
             HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo").Result;
             string dat = response.Content.ReadAsStringAsync().Result;
-            ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
+            try
+            {
+                if (dat != "") ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
+                
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return View();
+            
            
         }
 
@@ -205,7 +225,15 @@ namespace Office.Controllers
         {
             HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/AllVal").Result;
             string dat = response.Content.ReadAsStringAsync().Result;
-            ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
+            try
+            {
+                if(dat !="")  ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return View();
 
         }
@@ -215,7 +243,15 @@ namespace Office.Controllers
         {
             HttpResponseMessage response = api.HttpClient.GetAsync("https://localhost:7271/Encargo/AllInter").Result;
             string dat = response.Content.ReadAsStringAsync().Result;
-            ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
+            try
+            {
+                if (dat != "") ViewBag.encargo = JsonSerializer.Deserialize<List<EncargoViewModel>>(dat);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return View();
 
         }
