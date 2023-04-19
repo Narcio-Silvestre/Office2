@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Web.WebPages;
 
 namespace Office.Controllers
 {
@@ -32,10 +33,14 @@ namespace Office.Controllers
             HttpResponseMessage response = api.HttpClient.PostAsJsonAsync("https://localhost:7271/Login",login).Result;
             
             string dat = response.Content.ReadAsStringAsync().Result;
-            UserModel model= JsonSerializer.Deserialize<UserModel>(dat);
-            Console.WriteLine(model.funcId);
-            HttpContext.Session.SetString("User",JsonSerializer.Serialize(new SessionKeys() { Id=Convert.ToInt32(model.id),Name= model.name,funcaoid=model.funcId }));
-            return RedirectToAction("Index","Home");
+            if (!dat.IsEmpty())
+            {
+                UserModel model = JsonSerializer.Deserialize<UserModel>(dat);
+                Console.WriteLine(model.funcId);
+                HttpContext.Session.SetString("User", JsonSerializer.Serialize(new SessionKeys() { Id = Convert.ToInt32(model.id), Name = model.name, funcaoid = model.funcId }));
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
         }
 
         [HttpGet]

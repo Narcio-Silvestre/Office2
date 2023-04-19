@@ -85,7 +85,6 @@ namespace Office.Controllers
             return View();
         }
 
-        
         [HttpPost]
         [Route("Encargo/Create")]
         [ValidateAntiForgeryToken]
@@ -138,10 +137,6 @@ namespace Office.Controllers
             api.HttpClient.PostAsJsonAsync("https://localhost:7271/encargo",encargo);
             return RedirectToAction("Index","Home");
         }
-
-
-
-        
 
         [HttpGet]
         public IActionResult Info(int id)
@@ -197,8 +192,6 @@ namespace Office.Controllers
            
             return View(encargo);
         }
-
-        
 
         [HttpGet]
         public IActionResult All()
@@ -256,6 +249,11 @@ namespace Office.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult Edit()
+        {
+            return View();
+        }
        
 
 

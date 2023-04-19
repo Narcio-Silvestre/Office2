@@ -29,8 +29,11 @@
                                         <td>@ViewBag.encargo[x].entidade</td>
                                         <td>@ViewBag.encargo[x].estado</td>
                                         <td>@ViewBag.encargo[x].data</td>
-                                        <td>
-                                        <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn  btn-primary">Ver</a>
+                                        <td >
+                                            <div class="btn-group">
+                                                <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm  btn-primary">Ver</a>
+                                                <a role="button" asp-action="Edit" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm  btn-primary">Editar</a>
+                                            </div>
                                         </td>
                             </tr>
                         }
