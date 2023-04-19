@@ -1,20 +1,22 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Office.Dataset;
 using Office.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Web.WebPages;
 
 namespace Office.Controllers
 {
-    public class LoginController : dbConnetion
+    public class LoginController : Controller
     {
-        Api api;
+       
 
         public LoginController()
         {
-            api = new Api();
+            
         }
 
         // GET: LoginController
@@ -27,15 +29,22 @@ namespace Office.Controllers
         // POST: LoginController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Login login)
+        public ActionResult Create(LoginModel login)
         {
-            HttpResponseMessage response = api.HttpClient.PostAsJsonAsync("https://localhost:7271/Login",login).Result;
             
-            string dat = response.Content.ReadAsStringAsync().Result;
-            UserModel model= JsonSerializer.Deserialize<UserModel>(dat);
-            Console.WriteLine(model.funcId);
-            HttpContext.Session.SetString("User",JsonSerializer.Serialize(new SessionKeys() { Id=Convert.ToInt32(model.id),Name= model.name,funcaoid=model.funcId }));
-            return RedirectToAction("Index","Home");
+            UserModel dat = LoginDataSet.Create(login);
+            if (dat != null)
+            {
+                UserModel model = dat;
+                HttpContext.Session.SetString("User", JsonSerializer.Serialize(new SessionKeys()
+                { 
+                    Id = Convert.ToInt32(model.Id),
+                    Name = model.Name,
+                    funcaoid = model.FuncId 
+                }));
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]

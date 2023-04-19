@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Office.Controllers
 {
-    public class HomeController : dbConnetion
+    public class HomeController : Controller
     {
         
 

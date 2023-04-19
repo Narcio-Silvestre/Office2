@@ -8,8 +8,8 @@
 
     public class UserModel
     {
-        public string name { get; set; }
-        public string id { get; set; }
-        public int funcId { get; set; }
+        public string Name { get; set; }
+        public string Id { get; set; }
+        public int FuncId { get; set; }
     }
 }
