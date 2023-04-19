@@ -1,0 +1,48 @@
+﻿
+    <body style="background-color:white">
+        <div class="container ">
+            <main>
+            
+                <div class="row g-5 justify-content-center mt-1 ">
+
+                <div class="col-md-7 col-lg-8 py-5 bg-light shadow-lg mt-3 table-responsive justify-content-center">
+                    @if (ViewBag.encargo != null)
+                    {
+                        <table class="table table-hover" id="tablee">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Número de Encargo</th>
+                                    <th scope="col">Requerente</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                        @for (int x = 0; x < ViewBag.encargo.Count; x++)
+                        {
+                            
+                            <tr>
+                                
+                                        <td>@ViewBag.encargo[x].nrEncargo</td>
+                                        <td>@ViewBag.encargo[x].entidade</td>
+                                        <td>@ViewBag.encargo[x].estado</td>
+                                        <td>@ViewBag.encargo[x].data</td>
+                                        <td>
+                                        <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn  btn-primary">Ver</a>
+                                        </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    }
+                    else
+                    {
+                        <h6> No momento não existe nenhum encargo para preencher!</h6>
+                    }
+                </div>
+                </div>
+            </main>
+        </div>
+    </body>

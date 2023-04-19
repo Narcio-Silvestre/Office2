@@ -14,7 +14,7 @@ namespace Office.Controllers
         {
             var session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
             SqlConnection db = new SqlConnection("Data Source=lolly;Initial Catalog=WORK;Integrated Security=True");
-            SqlDataAdapter cmd = new SqlDataAdapter(("select email,tel,nome from entidade where entidade.id=@v1"), db);
+            SqlDataAdapter cmd = new SqlDataAdapter(("select email,nome from utilizador where utilizador.id=@v1"), db);
             cmd.SelectCommand.Parameters.Add(new SqlParameter("v1", session.Id));
             DataTable vn = new DataTable();
             cmd.Fill(vn);

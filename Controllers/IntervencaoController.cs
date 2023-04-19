@@ -1,20 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Office.Models;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Data;
 using System.Text.Json;
+using System.Web.WebPages;
 
 namespace Office.Controllers
 {
     public class IntervencaoController : dbConnetion
     {
         Api api;
-
-        public IntervencaoController()
+        string path;
+        
+        public IntervencaoController(IWebHostEnvironment system)
         {
             api = new Api();
+            path = system.WebRootPath;
         }
 
 
@@ -58,18 +59,55 @@ namespace Office.Controllers
         }
 
         [HttpPost]
-        [Route("Intervencao/Create/{id}/{idEncargo}")]
-        public ActionResult Create(IntervencaoViewModel aux,int idEncargo,int id)
+        [Route("Intervencao/Create")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IntervencaoModel aux, IEnumerable<IFormFile> files)
         {
-            IntervencaoModel data = new IntervencaoModel();
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
-            data.idEntidade = _session.Id;
-            data.idIntervencao =id;
-            data.idEncargo = idEncargo;
-            data.nome = aux.nome;
-            data.descricao = aux.descricao;
-            data.reparacaoid = aux.reparacaoid;
-            api.HttpClient.PutAsJsonAsync("https://localhost:7271/Intervencao", data);
+            if (_session.funcaoid != 4)
+            {
+                TempData["ErrorMessage"] = "Desculpe, você não tem permissão para executar intervenções.\n Por favor, contate o administrador do sistema para mais informações.";
+                return RedirectToAction("Index", "Home");
+            }
+            Console.WriteLine(aux.extInt.ToString());
+            if (aux.descricao.IsEmpty() || aux.extInt<0 || aux.extInt > 1)
+            {
+                int id = aux.idEncargo;
+                TempData["ErrorMessage"] = "Por favor preencher todos os campos necessários para a intervenção!";
+                return RedirectToAction(actionName:"Info",controllerName:"Encargo",new { @id = id }) ;
+            }
+            List<String> list = new();
+            string caminhoPasta = path + "\\Imagens\\";
+            
+            aux.idEntidade = _session.Id;
+            
+            Console.WriteLine("Entidade:" + aux.idEntidade);
+            Console.WriteLine("Externa:" + aux.extInt);
+            Console.WriteLine("Descricao:" + aux.descricao);
+            Console.WriteLine("Encargo:" + aux.idEncargo);
+
+            foreach (var item in files)
+            {
+                Console.WriteLine("ima:" + item.ToString());
+
+                string novoNomeImg = Guid.NewGuid().ToString() + item.FileName;
+                list.Add(novoNomeImg);
+                if (!Directory.Exists(caminhoPasta))
+                {
+                    Directory.CreateDirectory(caminhoPasta);
+                }
+
+                using var stream = System.IO.File.Create(caminhoPasta + novoNomeImg);
+                item.CopyTo(stream);
+            }
+            foreach (var inter in list)
+            {
+                Console.WriteLine("imagem:" + inter);
+
+            }
+            aux.anexos = list;
+
+            api.HttpClient.PutAsJsonAsync("https://localhost:7271/Intervencao", aux);
             return RedirectToAction("Index", "Home");
         }
     }
