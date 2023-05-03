@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Office.Dataset;
 using Office.Models;
-using System.Data;
-using System.Data.SqlClient;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Web.WebPages;
 
 namespace Office.Controllers
 {
@@ -44,7 +39,7 @@ namespace Office.Controllers
                 }));
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index");
+            return null;
         }
 
         [HttpGet]

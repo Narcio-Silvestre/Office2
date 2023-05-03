@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Office.Models;
-using System.Data.SqlClient;
 using System.Data;
 using System.Text.Json;
-using Microsoft.Web.Helpers;
 using System.Web.WebPages;
 using Office.Dataset;
 
@@ -11,9 +9,9 @@ namespace Office.Controllers
 
 
 {
-   
 
-   
+
+
 
     public class EncargoController : Controller
     {

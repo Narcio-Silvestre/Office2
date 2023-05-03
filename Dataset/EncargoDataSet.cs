@@ -102,7 +102,6 @@ namespace Office.Dataset
                     encargo.molde = Convert.ToString(_dataTable.Rows[x][7]);
                     encargo.prioridade = Convert.ToString(_dataTable.Rows[x][9]);
                     encargo.nrInt = Convert.ToInt32(_dataTable.Rows[x][10]);
-                    //encargo.dataConc = Convert.ToDateTime(_dataTable.Rows[x][5]);
                     encargos.Add(encargo);
                 }
                 return encargos;
@@ -133,7 +132,6 @@ namespace Office.Dataset
                     encargo.molde = Convert.ToString(_dataTable.Rows[x][7]);
                     encargo.prioridade = Convert.ToString(_dataTable.Rows[x][9]);
                     encargo.nrInt = Convert.ToInt32(_dataTable.Rows[x][10]);
-                    //encargo.dataConc = Convert.ToDateTime(_dataTable.Rows[x][5]);
                     encargos.Add(encargo);
                 }
                 return encargos;

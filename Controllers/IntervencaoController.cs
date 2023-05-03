@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Office.Models;
-using System.Data.SqlClient;
 using System.Data;
 using System.Text.Json;
 using System.Web.WebPages;
@@ -25,12 +24,12 @@ namespace Office.Controllers
         public ActionResult Create(IntervencaoModel aux, IEnumerable<IFormFile> files)
         {
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
-            if (_session.funcaoid != 4)
+            if (_session?.funcaoid != 4)
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para executar intervenções.\n Por favor, contate o administrador do sistema para mais informações.";
                 return RedirectToAction("Index", "Home");
             }
-            Console.WriteLine(aux.extInt.ToString());
+            
             if (aux.descricao.IsEmpty() || aux.extInt<0 || aux.extInt > 1)
             {
                 int id = aux.idEncargo;
