@@ -7,7 +7,7 @@ namespace Office.Dataset
 
     public class MoldeDataSet
     {
-        static SqlConnection? _connection = new SqlConnection("Data Source=Lolly;Initial Catalog=WORK;Integrated Security=True;");
+        static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 

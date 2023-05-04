@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Validacao\" />
     <Folder Include="wwwroot\anexos\" />
   </ItemGroup>
 
