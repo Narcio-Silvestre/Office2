@@ -190,5 +190,22 @@ namespace Office.Dataset
             }
             return true;
         }
+
+        public static bool Edit(EncargoViewModel encargo)
+        {
+
+
+            _adapter = new SqlDataAdapter("editEncargo", _connection);
+            _adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            _adapter.SelectCommand.Parameters.Add(new SqlParameter("@desc", encargo.descProblema));
+            _adapter.SelectCommand.Parameters.Add(new SqlParameter("@id", encargo.id));
+            _dataTable = new DataTable();
+            _adapter.Fill(_dataTable);
+            if (_dataTable.Rows.Count > 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model EncargoMolde
+﻿@model EncargoViewModel
 
 
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
                         </div>
                     }
                     <h4 class="mb-3">Encargo de Oficina</h4>
-                    <form class="needs-validation was-validated" novalidate asp-action="Edit" asp-controller="Encargo" enctype="multipart/form-data">
+                    <form class="needs-validation was-validated" novalidate asp-action="Edit" asp-controller="Encargo" >
                         <div class="row g-3">
 
                             <div class="col-4">
@@ -67,17 +67,12 @@
 
                             <div class="col-12">
                                 <label for="descProblema" class="form-label">Descrição do Problema</label>
-                                <textarea type="text" class="form-control input-lg" id="descProblema" name="descProblema" value="@ViewBag.encargo.descProblema" required style="height:20vh"></textarea>
+                                <textarea type="text" class="form-control input-lg" id="descProblema" name="descProblema" required style="height:9rem"> @ViewBag.encargo.descProblema</textarea>
                             </div>
 
                             
 
-                            <div class="col-12">
-                                <label class="form-check-label" for="save-info">
-                                    Selecione os arquivos de imagem a ser carregado no servidor:
-                                </label>
-                                <input type="file" class="form-control" id="inputImage" multiple accept="image/*" name="files">
-                            </div>
+                            
 
 
                             <button class="w-25 mx-auto btn btn-primary  mt-2" style=" padding:5px; width:auto" type="submit">Editar</button>
