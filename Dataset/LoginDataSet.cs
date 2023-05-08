@@ -8,14 +8,13 @@ namespace Office.Dataset
 
     public class LoginDataSet : ControllerBase
     {
-        static SqlConnection? _connection = new SqlConnection("Data Source=Lolly;Initial Catalog=WORK;Integrated Security=True;");
+        static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
         
 
         public static UserModel? Create(LoginModel login)
         {
-            
             _adapter = new SqlDataAdapter("Login", _connection);
             _adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             _dataTable = new DataTable();

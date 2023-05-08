@@ -1,3 +1,6 @@
+using Office.Dataset;
+using System.Configuration; 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +10,8 @@ builder.Services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinu
     options.Cookie.Name = "fehst.Session";
     options.Cookie.IsEssential = true;
 });
-builder.Configuration.GetConnectionString("Data Source=Lolly;Initial Catalog=WORK;Integrated Security=True;");
+string connection = System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString;
+builder.Configuration.GetConnectionString(connection);
 
 var app = builder.Build();
 
