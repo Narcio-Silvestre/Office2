@@ -177,11 +177,20 @@ namespace Office.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
+            ViewBag.encargo = EncargoDataSet.Encargo(id);
+
             return View();
         }
-       
+
+        [HttpPost]
+        public IActionResult Edit(EncargoViewModel encargo)
+        {
+            EncargoDataSet.Edit(encargo);
+            return RedirectToAction("Index", "Home");
+        }
+
 
 
 

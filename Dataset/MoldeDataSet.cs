@@ -24,9 +24,10 @@ namespace Office.Dataset
                 {
                     MoldeModel model = new MoldeModel();
                     model.id = Convert.ToInt32(_dataTable.Rows[x][0]);
-                    model.maxShots = Convert.ToInt32(_dataTable.Rows[x][2]);
+                    model.maxShots = Convert.ToString(_dataTable.Rows[x][2]);
                     model.nrMolde = Convert.ToString(_dataTable.Rows[x][1]);
                     list.Add(model);
+                    
                 }
                 return list;
             }
@@ -46,7 +47,7 @@ namespace Office.Dataset
             {
                 MoldeModel model = new MoldeModel();
                 model.id = Convert.ToInt32(_dataTable.Rows[0][0]);
-                model.maxShots = Convert.ToInt32(_dataTable.Rows[0][2]);
+                model.maxShots = Convert.ToString(_dataTable.Rows[0][2]) ;
                 model.nrMolde = Convert.ToString(_dataTable.Rows[0][1]);
                 return model;
             }
