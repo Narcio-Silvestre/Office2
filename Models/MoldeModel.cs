@@ -4,6 +4,6 @@
     {
         public int id { get; set; }
         public string nrMolde { get; set; }
-        public int maxShots { get; set; }
+        public string maxShots { get; set; }
     }
 }

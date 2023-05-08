@@ -177,8 +177,9 @@ namespace Office.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
+            ViewBag.encargo = EncargoDataSet.Encargo(id);
             return View();
         }
        
