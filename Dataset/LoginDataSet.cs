@@ -15,6 +15,7 @@ namespace Office.Dataset
 
         public static UserModel? Create(LoginModel login)
         {
+            if(login.Email == null || login.Password == null) { return null; }
             _adapter = new SqlDataAdapter("Login", _connection);
             _adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             _dataTable = new DataTable();
