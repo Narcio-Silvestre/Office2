@@ -14,7 +14,7 @@ namespace Office.Dataset
 
         public static List<MoldeModel>? Index()
         {
-            _adapter = new SqlDataAdapter("select id,nrMolde, maxShots from molde where molde.id not in (select moldeid from encargo where estadoid <> 1 )", _connection);
+            _adapter = new SqlDataAdapter("select id,nrMolde, maxShots,(nrMolde+'-'+nome) as descricao from molde where molde.id not in (select moldeid from encargo where estadoid <> 1 )", _connection);
             _dataTable = new DataTable();
             _adapter.Fill(_dataTable);
             List<MoldeModel> list = new List<MoldeModel>();
@@ -26,6 +26,7 @@ namespace Office.Dataset
                     model.id = Convert.ToInt32(_dataTable.Rows[x][0]);
                     model.maxShots = Convert.ToString(_dataTable.Rows[x][2]);
                     model.nrMolde = Convert.ToString(_dataTable.Rows[x][1]);
+                    model.descCompleta = Convert.ToString(_dataTable.Rows[x][3]);
                     list.Add(model);
                     
                 }
