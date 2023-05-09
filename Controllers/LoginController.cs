@@ -39,7 +39,8 @@ namespace Office.Controllers
                 }));
                 return RedirectToAction("Index", "Home");
             }
-            return null;
+            TempData["ErrorMessage"] = "Usuário não encontrado";
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpGet]
