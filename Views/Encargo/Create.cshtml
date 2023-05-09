@@ -81,10 +81,10 @@
 
                                 <div class="col-12">
                                     <label for="descProblema" class="form-label">Descrição do Problema</label>
-                                <textarea type="text" class="form-control input-lg" id="descProblema" name="descProblema" required style="height:20vh"></textarea>
+                                <textarea type="text" class="form-control input-lg" id="descProblema" name="descProblema" required style="height:12vh"></textarea>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-md-3">
                                     <label for="dataNecMeio" class="form-label">Data Necessidade Meio <span class="text-muted">(Optional)</span></label>
                                     <input type="date" class="form-control" id="dataNecMeio" name="dataNecMeio" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")">
                                     
@@ -108,16 +108,16 @@
                                 <label class="form-check-label" for="qualidade" style="color:black">É necessário validação da qualidade?</label>
                                 </div>
                             
-                                <div class="col-12">
+                                <div class="col-md-6 " >
                                     <label class="form-check-label" for="save-info">
                                         Selecione os arquivos de imagem a ser carregado no servidor:
                                     </label>
                                     <input type="file" class="form-control" id="inputImage" multiple accept="image/*" name="files">
                                 </div>
                                 
-                                <hr class="my-4">
-
-                            <button class="w-50 btn btn-primary mx-auto mt-2" style=" padding:5px; width:auto" type="submit">Criar Encargo</button>
+                                <div class="col-12">
+                                    <button class=" btn btn-primary mx-auto my-auto mt-2" type="submit">Criar Encargo</button>
+                                </div>
                             </div>
                         </form>
                     </div>
