@@ -37,7 +37,7 @@ namespace Office.Controllers
                     Name = model.Name,
                     funcaoid = model.FuncId 
                 }));
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Create", "Encargo");
             }
             TempData["ErrorMessage"] = "Usuário não encontrado";
             return RedirectToAction("Index", "Login");

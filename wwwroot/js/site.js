@@ -3,10 +3,11 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-    $('#tablee').DataTable({
+    $('.tablee').DataTable({
         language: {
             url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-PT.json',
         },
+        info: false,
     });
 
     $('.selectmolde').select2({

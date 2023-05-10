@@ -36,12 +36,14 @@ namespace Office.Controllers
             ViewBag.requisitos = data;
 
             List<MoldeModel> data2 = MoldeDataSet.Index();
+            List<MoldeModel> data3 = MoldeDataSet.MoldesEmIntv();
             if (data2 == null)
             {
                  TempData["ErrorMessage"] = "No momento não é possivel criar encargos, todos os moldes têm encargos em execução.";
                  return RedirectToAction("Index", "Home");
             }
             ViewBag.moldes = data2;      
+            ViewBag.moldesEmIntv = data3;
             return View();
         }
 
@@ -163,9 +165,13 @@ namespace Office.Controllers
         public IActionResult AllInter()
         {
             List<EncargoViewModel> dat = EncargoDataSet.AllInter();
+            List<EncargoViewModel> dat2 = EncargoDataSet.AllVal();
+
             try
             {
                 if (dat != null) ViewBag.encargo = dat;
+                if (dat2 != null) ViewBag.encargoVal = dat2;
+
 
             }
             catch (Exception ex)

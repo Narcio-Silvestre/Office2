@@ -28,7 +28,7 @@
     <div class="container ">
         <main>
             <div class="row g-5 justify-content-center mt-1 ">
-                <div class="col-md-7 col-lg-8 py-5 shadow-lg s mt-3 bg-light">
+                <div class="col-md-7 col-lg-8 py-5 shadow-lg s mt-3 bg-white">
                     @if (@TempData["ErrorMessage"] != null)
                     {
                         <div class="alert alert-danger" role="alert">
@@ -93,6 +93,8 @@
                         <div class="container-md mt-2">
                             @if (@ViewBag.anexos!=null)
                             {
+                                <h6 class="mb-3 mt-2 mb-2">Anexos de Encargo</h6>
+
                                 <div class="row justify-content-center">
                                     @for (int x = 0; x < @ViewBag.anexos.Count; x++)
                                     {
@@ -121,7 +123,7 @@
 
                     <div class="accordion" id="accordionPanelsStayOpenExample">
                         
-                        @if (Model.estado == "Em Intervenção")
+                        @if (Model.estado == "Em Intervenção" && (ViewBag.UserFuncId == 4 || ViewBag.UserFuncId==1) )
                         {
                             
 
@@ -156,7 +158,7 @@
 
                                             <div class="col-12">
                                                     <label class="form-check-label" for="anexos">
-                                                    Selecione os arquivos de imagem a ser carregado no servidor:
+                                                    Selecione os anexos de imagem da intervenção:
                                                 </label>
                                                     <input type="file" class="form-control" id="anexos" multiple accept="image/*" name="files">
                                             </div>
@@ -205,6 +207,7 @@
                                             <div class="container-md mt-2">
                                                 @if (@ViewBag.anexosInt != null)
                                                 {
+                                                    <h6 class="mb-3 mt-2 mb-2">Anexos de Intervenção</h6>
                                                     <div class="row justify-content-center">
                                                         @for (int x = 0; x < @ViewBag.anexosInt.Count; x++)
                                                         {
@@ -229,10 +232,10 @@
                                                 }
                                             </div>
                                         </div>
-                                        <h6 class="mb-3 mt-2 mb-2">Validação</h6>
+                                        
                                         @{
-                                            
-                                            if(ViewBag.interAtual.valProducao == -1)
+
+                                            if (ViewBag.interAtual.valProducao == -1 && ViewBag.UserFuncId == 2 )
                                             {
                                                 <div class="accordion-item mt-2">
                                                     <h2 class="accordion-header">
@@ -271,7 +274,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            }else
+                                            }
+                                            else if (ViewBag.interAtual.valProducao != -1)
                                             {
                                                 <div class="accordion-item mt-2">
                                                     <h2 class="accordion-header">
@@ -319,7 +323,7 @@
                                         }
 
 
-                                        @if((ViewBag.interAtual.valQualidade == -1) && (Model.validQual==1))
+                                        @if((ViewBag.interAtual.valQualidade == -1) && (Model.validQual==1) && (ViewBag.UserFuncId==3))
                                         {
                                             <div class="accordion-item mt-2">
                                                 <h2 class="accordion-header">
@@ -356,7 +360,7 @@
                                                 </div>
                                             </div>
                                         }
-                                        else if (Model.validQual == 1)
+                                        else if (Model.validQual == 1 && ViewBag.interAtual.valQualidade != -1)
                                         {
                                             <div class="accordion-item mt-2">
                                                 <h2 class="accordion-header">
@@ -413,7 +417,7 @@
                             int count = 1000;
                             for(int x=0; x<ViewBag.interAll.Count; x++)
                             {
-                                <div class="accordion-item">
+                                <div class="accordion-item ">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse@(x)" aria-expanded="true" aria-controls="panelsStayOpen-collapse@(x)">
                                             Intervencao @(x+1)
@@ -449,6 +453,7 @@
                                                 {
                                                     @if (@ViewBag.anexosAll[x] != null)
                                                     {
+                                                        <h6 class="mb-3 mt-2 mb-2">Anexos de Intervenção</h6>
                                                         <div class="row justify-content-center">
                                                             @for (int y = 0; y < @ViewBag.anexosAll[x].Count; y++)
                                                             {

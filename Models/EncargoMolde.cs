@@ -25,6 +25,7 @@ namespace Office.Models
         public DateTime dataNecMeio { get; set; }
         public string entidade { get; set; }
         public string molde { get; set; }
+        public string descMolde { get; set; }
         public string prioridade { get; set; }
         public string estado { get; set; }
         public int nrInt { get; set;}

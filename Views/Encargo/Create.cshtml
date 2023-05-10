@@ -47,13 +47,13 @@
                     }
         </style>
     </head>
-    <body style="background-color:white">
+    <body class="bg-gradient">
         <div class="container ">
             <main>
                
                 <div class="row g-5 justify-content-center mt-2 ">
                 
-                    <div class="col-md-7 col-lg-8 py-5 bg-light shadow-lg s mt-3">
+                    <div class="col-md-7 col-lg-8 py-5 bg-white shadow-lg s mt-3">
                     @if (@TempData["ErrorMessage"] != null)
                     {
                         <div class="alert alert-danger" role="alert">
@@ -110,7 +110,7 @@
                             
                                 <div class="col-md-6 " >
                                     <label class="form-check-label" for="save-info">
-                                        Selecione os arquivos de imagem a ser carregado no servidor:
+                                        Escolher os anexos de imagem para o encargo:
                                     </label>
                                     <input type="file" class="form-control" id="inputImage" multiple accept="image/*" name="files">
                                 </div>

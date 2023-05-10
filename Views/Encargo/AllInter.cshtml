@@ -5,46 +5,93 @@
             
                 <div class="row g-5 justify-content-center mt-1 ">
 
-                <div class="col-md-7 col-lg-8 py-5 bg-light shadow-lg mt-3  table-responsive justify-content-center">
-                       @if(ViewBag.encargo!=null)
-                       {
-                        <table class="table table-hover" id="tablee">
+                <div class="col-md-6 m-md-1 col-lg-8 py-5 bg-white shadow-lg mt-3  table-responsive justify-content-center" >
+                           @if(ViewBag.encargo!=null)
+                           {
+                        <table class="table table-hover tablee" style="width:100%">
+                                    <thead>
+                                       
+                                        <tr>
+                                        <th scope="col">Molde</th>
+                                        <th scope="col">Descrição Molde</th>
+                                            <th scope="col">Número de Encargo</th>
+                                            <th scope="col">Requerente</th>
+                                            <th scope="col">Estado</th>
+                                            <th scope="col">Data</th>
+                                            <th scope="col">Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @for (int x = 0; x < ViewBag.encargo.Count; x++)
+                                        {
+
+                                            <tr>
+                                            <td>@ViewBag.encargo[x].molde</td>
+                                            <td>@ViewBag.encargo[x].descMolde</td>
+                                                <td>@ViewBag.encargo[x].nrEncargo</td>
+                                                <td>@ViewBag.encargo[x].entidade</td>
+                                                <td>@ViewBag.encargo[x].estado</td>
+                                                <td>@ViewBag.encargo[x].data</td>
+                                            <td >
+                                                <div class="btn-group">
+                                                    <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm  btn-primary">Executar</a>
+                                                </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                       
+                        }
+                        else
+                        {
+                            <h6> No momento não existe nenhum encargo de molde para preencher!</h6>
+                        }
+
+                        </div>
+
+                <div class="col-md-6 m-md-1 col-lg-8  py-5 bg-white shadow-lg mt-3 table-responsive justify-content-center" >
+                        @if (ViewBag.encargoVal != null)
+                        {
+                        <table class="table table-hover tablee " style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th scope="col">Molde</th>
+                                        <th scope="col">Descrição Molde</th>
                                         <th scope="col">Número de Encargo</th>
                                         <th scope="col">Requerente</th>
                                         <th scope="col">Estado</th>
                                         <th scope="col">Data</th>
-                                        <th scope="col"></th>
+                                        <th scope="col">Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    @for (int x = 0; x < ViewBag.encargo.Count; x++)
+                                    @for (int x = 0; x < ViewBag.encargoVal.Count; x++)
                                     {
 
                                         <tr>
-
-                                            <td>@ViewBag.encargo[x].nrEncargo</td>
-                                            <td>@ViewBag.encargo[x].entidade</td>
-                                            <td>@ViewBag.encargo[x].estado</td>
-                                            <td>@ViewBag.encargo[x].data</td>
-                                        <td >
-                                            <div class="btn-group">
-                                                <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm  btn-primary">Executar</a>
-                                            </div>
+                                            <td>@ViewBag.encargoVal[x].molde</td>
+                                            <td>@ViewBag.encargoVal[x].descMolde</td>
+                                            <td>@ViewBag.encargoVal[x].nrEncargo</td>
+                                            <td>@ViewBag.encargoVal[x].entidade</td>
+                                            <td>@ViewBag.encargoVal[x].estado</td>
+                                            <td>@ViewBag.encargoVal[x].data</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargoVal[x].id" class="btn btn-sm  btn-primary">Validar</a>
+                                                </div>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                       
-                    }
-                    else
-                    {
-                        <h6> No momento não existe nenhum encargo para preencher!</h6>
-                    }
-
+                        }
+                        else
+                        {
+                            <h6> No momento não existe nenhum encargo de molde para validar!</h6>
+                        }
                     </div>
                 </div>
             </main>
