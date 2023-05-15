@@ -19,7 +19,7 @@ namespace Office.Dataset
         /// <returns>null ou uma lista de moldes</returns>
         public static List<MoldeModel>? Index()
         {
-            _adapter = new SqlDataAdapter("select id,nrMolde, maxShots,(nrMolde+'-'+nome) as descricao from molde", _connection);
+            _adapter = new SqlDataAdapter("select id,nrMolde, maxShots,(nrMolde+'-'+nome) as descricao,(select count(*) from encargo where encargo.moldeid = molde.id) as nrEncargos,shots,nome from molde", _connection);
             _dataTable = new DataTable();
             _adapter.Fill(_dataTable);
             List<MoldeModel> list = new List<MoldeModel>();
@@ -32,6 +32,10 @@ namespace Office.Dataset
                     model.maxShots = Convert.ToString(_dataTable.Rows[x][2]);
                     model.nrMolde = Convert.ToString(_dataTable.Rows[x][1]);
                     model.descCompleta = Convert.ToString(_dataTable.Rows[x][3]);
+                    model.descricao = Convert.ToString(_dataTable.Rows[x][6]);
+                    model.nrEncargos = Convert.ToInt32(_dataTable.Rows[x][4]);
+                    model.shots = Convert.ToInt32(_dataTable.Rows[x][5]);
+
                     list.Add(model);
                     
                 }
@@ -46,7 +50,7 @@ namespace Office.Dataset
         /// <returns>null ou uma lista de moldes</returns>
         public static List<MoldeModel>? MoldesEmIntv()
         {
-            _adapter = new SqlDataAdapter("select id,nrMolde, maxShots,(nrMolde+'-'+nome) as descricao from molde where molde.id in (select moldeid from encargo where estadoid <> 1 )", _connection);
+            _adapter = new SqlDataAdapter("select id,nrMolde, maxShots,(nrMolde+'-'+nome) as descricao,(select count(*) from encargo where encargo.moldeid = molde.id) as nrEncargos,shots,nome from molde where molde.id in (select moldeid from encargo where estadoid <> 1);", _connection);
             _dataTable = new DataTable();
             _adapter.Fill(_dataTable);
             List<MoldeModel> list = new List<MoldeModel>();
@@ -59,6 +63,39 @@ namespace Office.Dataset
                     model.maxShots = Convert.ToString(_dataTable.Rows[x][2]);
                     model.nrMolde = Convert.ToString(_dataTable.Rows[x][1]);
                     model.descCompleta = Convert.ToString(_dataTable.Rows[x][3]);
+                    model.descricao = Convert.ToString(_dataTable.Rows[x][6]);
+                    model.nrEncargos = Convert.ToInt32(_dataTable.Rows[x][4]);
+                    model.shots = Convert.ToInt32(_dataTable.Rows[x][5]);
+                    list.Add(model);
+
+                }
+                return list;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Obtém todos os moldes que têm encargo no momento
+        /// </summary>
+        /// <returns>null ou uma lista de moldes</returns>
+        public static List<MoldeModel>? MoldesDisp()
+        {
+            _adapter = new SqlDataAdapter("select id,nrMolde, maxShots,(nrMolde+'-'+nome) as descricao,(select count(*) from encargo where encargo.moldeid = molde.id) as nrEncargos,shots,nome from molde where molde.id not in (select moldeid from encargo where estadoid <> 1);", _connection);
+            _dataTable = new DataTable();
+            _adapter.Fill(_dataTable);
+            List<MoldeModel> list = new List<MoldeModel>();
+            if (_dataTable.Rows.Count > 0)
+            {
+                for (int x = 0; x < _dataTable.Rows.Count; x++)
+                {
+                    MoldeModel model = new MoldeModel();
+                    model.id = Convert.ToInt32(_dataTable.Rows[x][0]);
+                    model.maxShots = Convert.ToString(_dataTable.Rows[x][2]);
+                    model.nrMolde = Convert.ToString(_dataTable.Rows[x][1]);
+                    model.descCompleta = Convert.ToString(_dataTable.Rows[x][3]);
+                    model.descricao = Convert.ToString(_dataTable.Rows[x][6]);
+                    model.nrEncargos = Convert.ToInt32(_dataTable.Rows[x][4]);
+                    model.shots = Convert.ToInt32(_dataTable.Rows[x][5]);
                     list.Add(model);
 
                 }

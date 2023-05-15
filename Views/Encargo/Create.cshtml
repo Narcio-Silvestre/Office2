@@ -44,28 +44,28 @@
            }
         </style>
     </head>
-    <body class="bg-gradient">
+    <body >
         <div class="container ">
             <main>
                 <div class="row g-5 justify-content-center mt-2 ">
-                    <div class="col-md-7 col-lg-8 py-5 bg-white shadow-lg s mt-3">
+                    <div id="create" class="col-md-7 col-lg-8 py-5 bg-white shadow-lg s mt-3">
                         @if (@TempData["ErrorMessage"] != null)
                         {
                             <div class="alert alert-danger" role="alert">
                                 @TempData["ErrorMessage"]
                             </div>
                         }
-                        <h4 class="mb-3">Encargo de Oficina</h4>
-                        <form class="needs-validation was-validated"  novalidate asp-action="Create" asp-controller="Encargo" enctype="multipart/form-data">
+                        <h5 class="mb-3">Encargo de Oficina</h5>
+                        <form  asp-action="Create" asp-controller="Encargo" enctype="multipart/form-data">
                             <div class="row g-3">
-                                <div class="col-md-4">
+                                <div class="col-md-auto">
                                     <label for="moldeid" class="form-label">Nrº Molde</label>
                                     <select  class="form-select selectmolde"  id="moldeid" name="moldeid" required>  
                                         <option value="">Escolher...</option>
                                         @{
-                                            for (int x = 0; x <ViewBag.moldes.Count; x++)
+                                            for (int x = 0; x <ViewBag.moldesDisp.Count; x++)
                                             {
-                                                <option value="@ViewBag.moldes[x].id">@ViewBag.moldes[x].descCompleta</option>
+                                            <option value="@ViewBag.moldesDisp[x].id">@ViewBag.moldesDisp[x].descCompleta</option>
                                             }
                                         }
                                     </select>
@@ -74,15 +74,17 @@
                                     </div>
                                 </div>
 
+                            <div class="col-md-auto">
+                                <label for="dataNecMeio" class="form-label">Data Necessidade Meio <span class="text-muted">(Optional)</span></label>
+                                <input type="date" class="form-control" id="dataNecMeio" name="dataNecMeio" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")">
+                            </div>
+
                                 <div class="col-12">
                                     <label for="descProblema" class="form-label">Descrição do Problema</label>
                                 <textarea type="text" class="form-control input-lg" id="descProblema" name="descProblema" required style="height:12vh"></textarea>
                                 </div>
 
-                                <div class="col-md-3">
-                                    <label for="dataNecMeio" class="form-label">Data Necessidade Meio <span class="text-muted">(Optional)</span></label>
-                                    <input type="date" class="form-control" id="dataNecMeio" name="dataNecMeio" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")">
-                                </div>
+                                
 
                                  <div class="col-12">
                                     <div class="row m-auto">
@@ -101,15 +103,15 @@
                                     <label class="form-check-label" for="qualidade" style="color:black">É necessário validação da qualidade?</label>
                                 </div>
                             
-                                <div class="col-md-6 " >
+                                <div class="col-9 " >
                                     <label class="form-check-label" for="save-info">
                                         Escolher os anexos de imagem para o encargo:
                                     </label>
-                                    <input type="file" class="form-control" id="inputImage" multiple accept="image/*" name="files">
+                                    <input type="file" class="form-control" id="inputImage"  multiple accept="image/*" name="files">
                                 </div>
                                 
                                 <div class="col-12">
-                                    <button class=" btn btn-primary mx-auto my-auto mt-2" type="submit">Criar Encargo</button>
+                                    <button class=" btn btn-outline-primary mx-auto my-auto mt-2" type="submit">Criar Encargo</button>
                                 </div>
                             </div>
                         </form>

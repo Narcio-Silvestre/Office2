@@ -13,7 +13,7 @@ builder.Configuration.GetConnectionString(connection);
 var app = builder.Build();
 
 
-if (!app.Environment.IsProduction())
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();

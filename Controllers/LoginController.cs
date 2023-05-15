@@ -7,8 +7,6 @@ namespace Office.Controllers
 {
     public class LoginController : Controller
     {
-       
-
         public LoginController()
         {
             

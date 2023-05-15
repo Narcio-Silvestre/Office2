@@ -1,18 +1,134 @@
-html {
-  font-size: 14px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+*{
+    text-decoration: none;
+    outline:none;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+body, button {
+    font-family: "Poppins", sans-serif;
+
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+body{
+    background : #dfe9f5;
+    font-size: 14px;
 }
 
-body {
-  margin-bottom: 60px;
+.edit1 {
+    width: 50px;
+    justify-content:center;
+    display:flex;
+    border-radius: 3px;
+    transition:  0.5s ease;
+
 }
+
+    
+
+.tablee {
+    font-weight: 500;
+}
+
+
+
+input {
+    font-size: 14px;
+}
+
+:root {
+    --offcanvas-width: 270px;
+    --topNavbarHeight: 85px;
+}
+
+.sidebar-nav {
+    width: var(--offcanvas-width);
+    
+}
+
+.sidebar-nav li{
+    list-style-type: none;
+}
+
+@media (min-width: 992px) {
+    body{
+        overflow: auto !important;
+    }
+
+    .offcanvas-backdrop::before {
+        display: none;
+    }
+
+    main {
+        margin-left: var(--topNavbarHeight);
+        margin-top: var(--topNavbarHeight);
+    }
+
+    .sidebar-nav {
+        transform: none;
+        visibility: visible !important;
+        top: var(--topNavbarHeight);
+        height: calc(100% - var(--topNavbarHeight));
+    }
+}
+
+
+#navnav {
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    box-shadow: 20px 0 35px rgba(0,0,0,0.1);
+    background-color: #eee;
+}
+
+#navSidebar {
+    
+    background: #fff;
+    overflow: hidden;
+    box-shadow : 0 20px 35px rgba(0,0,0,0.1);
+    
+}
+
+
+    #navSidebar a {
+        position: relative;
+        color: rgb(0,0,0);
+        font-size: 14px;
+        display: table;
+        padding: 15px;
+        width: var(--offcanvas-width);
+        text-decoration: none;
+        transition: 0.35s ease-in-out;
+    }
+
+#navSidebar .bi{
+    position: relative;
+    width: 70px;
+    height:40px;
+    top: 14px;
+    font-size: 20px;
+    text-align :center;
+    
+}
+
+.nav-item{
+    position:relative;
+    top:12px;
+    margin-left: 5px;
+}
+
+#navSidebar a:hover{
+    background: #eee;
+    color: rgb(0,0,0);
+}
+
+.edit2 {
+    border-radius: 3px;
+    background-color: orange;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+
+
+
+

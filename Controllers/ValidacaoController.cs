@@ -13,14 +13,11 @@ namespace Office.Controllers
     public class ValidacaoController : Controller
     {
        
-
         public ValidacaoController()
         {
             
         }
 
-
-        
         /// <summary>
         /// Método para validar da área de produção 
         /// </summary>

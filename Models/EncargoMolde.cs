@@ -34,6 +34,7 @@ namespace Office.Models
         public string descMolde { get; set; }
         public string prioridade { get; set; }
         public string estado { get; set; }
+        public int estadoId { get; set; }
         public int nrInt { get; set;}
         public int validQual { get; set; }
         //public DateTime dataConc { get; set; }

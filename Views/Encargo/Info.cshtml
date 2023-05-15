@@ -23,7 +23,7 @@
             }
         </style>
     </head>
-    <body style="background-color:white">
+    <body>
         <div class="container ">
             <main>
                 <div class="row g-5 justify-content-center mt-1 ">
@@ -35,10 +35,10 @@
                             </div>
                         }
                     
-                        <h4 class="mb-3">Encargo de Oficina</h4>
+                        <h5 class="mb-3">Encargo de Oficina</h5>
                         <div class="row g-3">
                             <div class="col-4">
-                                <label for="Responsavel" class="form-label">Requente </label>
+                                <label for="Responsavel" class="form-label">Requerente </label>
                                 <input type="text" class="form-control" id="Responsavel" name="entidade" value="@Model.entidade" readonly>
                             </div>
 
@@ -105,7 +105,7 @@
                                     @for (int x = 0; x < @ViewBag.anexos.Count; x++)
                                     {
                                         <div class="modal fade" id="staticBackdrop@(x)" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
+                                        <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content" style="background-color:transparent; border-color:transparent">
 
                                                     <div class="modal-body">
@@ -121,17 +121,17 @@
 
                         <div class="accordion" id="accordionPanelsStayOpenExample">
                         
-                            @if (Model.estado == "Em Intervenção" && (ViewBag.UserFuncId == 4 || ViewBag.UserFuncId==1) )
+                            @if ((Model.estadoId == 2) && (ViewBag.UserFuncId == 4 || ViewBag.UserFuncId==1) )
                             {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsetwo" aria-expanded="false" aria-controls="panelsStayOpen-collapsetwo">
-                                            Intervencao (preencher)
+                                            Intervenção (preencher)
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapsetwo" class="accordion-collapse collapse.show ">
                                         <div class="accordion-body">
-                                            <form class="needs-validation was-validated" novalidate asp-action="Create" asp-controller="Intervencao" enctype="multipart/form-data">
+                                            <form asp-action="Create" asp-controller="Intervencao" enctype="multipart/form-data">
                                                 <div class="row g-3">
                                                     <div class="col-md-4">
                                                         <label class="form-check-label" for="extInt">É necessário intervenção externa?</label>
@@ -156,28 +156,28 @@
                                                         <input type="file" class="form-control" id="anexos" multiple accept="image/*" name="files">
                                                     </div>
 
-                                                    <button class=" btn btn-primary mx-auto mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt+1)ª Intervenção de Encargo</button>
+                                                    <button class=" btn btn-outline-primary mx-auto mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt+1)ª Intervenção de Encargo</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             }
-                            else if(Model.estado == "Em Validação")
+                            else if(Model.estadoId == 4)
                             {
-                                <h4 class="mb-3 mt-2 mb-2">Intervencao de Oficina</h4>
+                                <h5 class="mb-3 mt-2 mb-2">Intervenção de Oficina</h5>
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsetree" aria-expanded="true" aria-controls="panelsStayOpen-collapsetree">
-                                            Intervencao @(Model.nrInt)
+                                            Intervenção @(Model.nrInt)
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapsetree" class="accordion-collapse collapse.show ">
                                         <div class="accordion-body">
                                             <div class="row g-3">
                                                 <div class="col-4">
-                                                    <label for="Responsavel" class="form-label">Responsavel </label>
+                                                    <label for="Responsavel" class="form-label">Responsável </label>
                                                     <input type="text" class="form-control" id="Responsavel" name="Responsavel" value="@ViewBag.interAtual.utilizador" readonly>
                                                 </div>
 
@@ -196,6 +196,7 @@
                                                     <input type="text" class="form-control" id="estadoint" name="estadoint" value="@ViewBag.interAtual.estado" readonly>
                                                 </div>
 
+
                                                 <div class="container-md mt-2">
                                                     @if (@ViewBag.anexosInt != null)
                                                     {
@@ -203,20 +204,24 @@
                                                         <div class="row justify-content-center">
                                                             @for (int x = 0; x < @ViewBag.anexosInt.Count; x++)
                                                             {
-                                                                <div class="col-auto" data-bs-toggle="modal" data-bs-target="#static2Backdrop@(x)">
+                                                                <div class="col-auto" data-bs-toggle="modal" data-bs-target="#example2@(x)">
                                                                     <img src="/imagens/@ViewBag.anexosInt[x].desc" id="hov" />
                                                                 </div>
                                                             }
                                                         </div>
                                                         @for (int x = 0; x < @ViewBag.anexosInt.Count; x++)
                                                         {
-                                                            <div class="modal fade" id="static2Backdrop@(x)" tabindex="-1" aria-labelledby="static2BackdropLabel" aria-hidden="true">
-                                                                <div class="modal-dialog">
+                                                        <div class="modal" id="example2@(x)" tabindex="-1" aria-labelledby="example2@(x)Label" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content" style="background-color:transparent; border-color:transparent">
-
+                                                                  
                                                                         <div class="modal-body">
                                                                             <img src="/Imagens/@ViewBag.anexosInt[x].desc" width="100%" />
                                                                         </div>
+                                                                    <div class="modal-footer" style="border-color:transparent" >
+                                                                        <button class="btn btn-primary" data-bs-target="#example2@(x - 1)" data-bs-toggle="modal">Back</button>
+                                                                        <button class="btn btn-primary" data-bs-target="#example2@(x + 1)" data-bs-toggle="modal">Next</button>
+                                                                    </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -231,12 +236,12 @@
                                                     <div class="accordion-item mt-2">
                                                         <h2 class="accordion-header">
                                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefourteen" aria-expanded="false" aria-controls="panelsStayOpen-collapsefourteen">
-                                                                Validacao Produção
+                                                                Validação da Produção
                                                             </button>
                                                         </h2>
                                                         <div id="panelsStayOpen-collapsefourteen" class="accordion-collapse collapse.show">
                                                             <div class="accordion-body">
-                                                                <form class="needs-validation was-validated" novalidate asp-action="Prod" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id" asp-route-idEncargo="@Model.id">
+                                                                <form asp-action="Prod" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id" asp-route-idEncargo="@Model.id">
                                                                     <div class="row g-3">
                                                                         <div class="col-md-4">
                                                                             <label for="aprovado" class="form-label">Aprovado?</label>
@@ -256,7 +261,7 @@
                                                                             <textarea style="height:150px" type="text" class="form-control" id="descricao" name="descricao" placeholder="" value="" required=""></textarea>
                                                                         </div>
 
-                                                                        <button class="btn mx-2 btn-primary mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt )ª Validação de Encargo</button>
+                                                                        <button class="btn mx-2 btn-outline-primary mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt )ª Validação de Encargo</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -265,10 +270,10 @@
                                                 }
                                                 else if (ViewBag.interAtual.valProducao != -1)
                                                 {
-                                                    <div class="accordion-item mt-2">
-                                                        <h2 class="accordion-header">
-                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
-                                                                Validacao Produção
+                                                    <div class="accordion-item mt-2" >
+                                                        <h2 class="accordion-header" >
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour" style="background-color:rgba(54,23,12,0.2);">
+                                                                Validação da Produção
                                                             </button>
                                                         </h2>
                                                         <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
@@ -313,13 +318,13 @@
                                             {
                                                 <div class="accordion-item mt-2">
                                                     <h2 class="accordion-header">
-                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseten" aria-expanded="false" aria-controls="panelsStayOpen-collapseten">
-                                                            Validacao Qualidade
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseten" aria-expanded="false" aria-controls="panelsStayOpen-collapseten" style="background-color:rgba(54,23,12,0.2);">
+                                                            Validação da Qualidade
                                                         </button>
                                                     </h2>
                                                     <div id="panelsStayOpen-collapseten" class="accordion-collapse collapse.show">
                                                         <div class="accordion-body">
-                                                            <form class="needs-validation was-validated" novalidate asp-action="Qual" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id" asp-route-idEncargo="@Model.id">
+                                                            <form asp-action="Qual" asp-controller="Validacao" asp-route-id="@ViewBag.interAtual.id" asp-route-idEncargo="@Model.id">
                                                                 <div class="row g-3">
                                                                     <div class="col-md-4">
                                                                         <label for="aprovado" class="form-label">Aprovado?</label>
@@ -338,7 +343,7 @@
                                                                         <textarea style="height:150px" type="text" class="form-control" id="descricao" name="descricao" placeholder="" value="" required=""></textarea>
                                                                     </div>
 
-                                                                    <button class="btn mx-2 btn-primary mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt)ª Validação de Encargo</button>
+                                                                    <button class="btn mx-2 btn-outline-primary mt-2" style=" padding:5px; width:auto" type="submit">Subtemer @(Model.nrInt)ª Validação de Encargo</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -347,10 +352,10 @@
                                             }
                                             else if (Model.validQual == 1 && ViewBag.interAtual.valQualidade != -1)
                                             {
-                                                <div class="accordion-item mt-2">
+                                                <div class="accordion-item mt-2" >
                                                     <h2 class="accordion-header">
                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
-                                                            Validacao Qualidade
+                                                            Validação da Qualidade
                                                         </button>
                                                     </h2>
                                                     <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
@@ -405,14 +410,14 @@
                                     <div class="accordion-item ">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse@(x)" aria-expanded="true" aria-controls="panelsStayOpen-collapse@(x)">
-                                                Intervencao @(x+1)
+                                                Intervenção @(x+1)
                                             </button>
                                         </h2>
                                         <div id="panelsStayOpen-collapse@(x)" class="accordion-collapse collapse ">
                                             <div class="accordion-body">
                                                 <div class="row g-3">
                                                     <div class="col-4">
-                                                        <label for="Responsavel" class="form-label">Responsavel </label>
+                                                        <label for="Responsavel" class="form-label">Responsável </label>
                                                         <input type="text" class="form-control" id="Responsavel" name="Responsavel" value="@ViewBag.interAll[x].utilizador" readonly>
                                                     </div>
 
@@ -431,52 +436,54 @@
                                                         <label for="estadoint" class="form-label">Estado</label>
                                                         <input type="text" class="form-control" id="estadoint" name="estadoint" value="@ViewBag.interAll[x].estado" readonly>
                                                     </div>
-                                                </div>
 
-                                                <div class="container-md mt-2">
-                                                    @if (@ViewBag.anexosAll != null)
-                                                    {
-                                                        @if (@ViewBag.anexosAll[x] != null)
+                                                    <div class="container-md mt-2">
+                                                        @if (@ViewBag.anexosAll != null)
                                                         {
-                                                            <h6 class="mb-3 mt-2 mb-2">Anexos de Intervenção</h6>
-                                                            <div class="row justify-content-center">
+                                                            @if (@ViewBag.anexosAll[x] != null)
+                                                            {
+                                                                <h6 class="mb-3 mt-2 mb-2">Anexos de Intervenção</h6>
+                                                                <div class="row justify-content-center">
+                                                                    @for (int y = 0; y < @ViewBag.anexosAll[x].Count; y++)
+                                                                    {
+                                                                        <div class="col-auto" data-bs-toggle="modal" data-bs-target="#staticc@(count + y)Backdrop@(count + y)">
+                                                                            <img src="/imagens/@ViewBag.anexosAll[x][y].desc" id="hov" />
+                                                                        </div>
+                                                                    }
+                                                                </div>
                                                                 @for (int y = 0; y < @ViewBag.anexosAll[x].Count; y++)
                                                                 {
-                                                                    <div class="col-auto" data-bs-toggle="modal" data-bs-target="#staticc@(count + y)Backdrop@(count + y)">
-                                                                        <img src="/imagens/@ViewBag.anexosAll[x][y].desc" id="hov" />
-                                                                    </div>
-                                                                }
-                                                            </div>
-                                                            @for (int y = 0; y < @ViewBag.anexosAll[x].Count; y++)
-                                                            {
-                                                                <div class="modal fade" id="staticc@(count+y)Backdrop@(count+y)" tabindex="-1" aria-labelledby="staticc@(count+y)Backdrop@(count)Label" aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content" style="background-color:transparent; border-color:transparent">
+                                                                    <div class="modal fade" id="staticc@(count+y)Backdrop@(count+y)" tabindex="-1" aria-labelledby="staticc@(count+y)Backdrop@(count)Label" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content" style="background-color:transparent; border-color:transparent">
 
-                                                                            <div class="modal-body">
-                                                                                <img src="/Imagens/@ViewBag.anexosAll[x][y].desc" width="100%" />
+                                                                                <div class="modal-body">
+                                                                                    <img src="/Imagens/@ViewBag.anexosAll[x][y].desc" width="100%" />
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                }
                                                             }
                                                         }
-                                                    }
+                                                    </div>
                                                 </div>
+
+                                                
                                             
                                                 <h6 class="mb-3 mt-2 mb-2">Validação</h6>
 
                                                 <div class="accordion-item mt-2">
                                                     <h2 class="accordion-header">
                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpenProd-collapse@(x)" aria-expanded="false" aria-controls="panelsStayOpenProd-collapse@(x)">
-                                                            Validacao Produção
+                                                            Validação da Produção
                                                         </button>
                                                     </h2>
                                                     <div id="panelsStayOpenProd-collapse@(x)" class="accordion-collapse collapse">
                                                         <div class="accordion-body">
                                                             <div class="row g-3">
                                                                 <div class="col-4">
-                                                                    <label for="ResponsavelVal" class="form-label">Responsavel </label>
+                                                                    <label for="ResponsavelVal" class="form-label">Responsável </label>
                                                                     <input type="text" class="form-control" id="ResponsavelVal" name="ResponsavelVal" value="@ViewBag.interAll[x].respValProd" readonly>
                                                                 </div>
 
@@ -512,7 +519,7 @@
                                                     <div class="accordion-item mt-2">
                                                         <h2 class="accordion-header">
                                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpenQual-collapse@(x)" aria-expanded="false" aria-controls="panelsStayOpenQual-collapse@(x)">
-                                                                Validacao Qualidade
+                                                                Validação da Qualidade
                                                             </button>
                                                         </h2>
                                                         <div id="panelsStayOpenQual-collapse@(x)" class="accordion-collapse collapse">
@@ -520,7 +527,7 @@
 
                                                                 <div class="row g-3">
                                                                     <div class="col-4">
-                                                                        <label for="ResponsavelVal" class="form-label">Responsavel </label>
+                                                                        <label for="ResponsavelVal" class="form-label">Responsável </label>
                                                                         <input type="text" class="form-control" id="ResponsavelVal" name="ResponsavelVal" value="@ViewBag.interAll[x].respValQual" readonly>
                                                                     </div>
 

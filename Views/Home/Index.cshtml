@@ -1,26 +1,105 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-<html>
-<head>    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        .d-block w-100 h-auto {
-            object-fit:cover;
-        }
-    </style>
- </head>
+﻿@page
+
+
  <body >
-    <main >
-        <div class="px-4 pt-3 my-0 mt-3 text-center">
-            
+    <main>
+        <div class="row mt-5">
             @if (@TempData["ErrorMessage"] != null)
             {
                 <div class="alert alert-danger" role="alert">
                     @TempData["ErrorMessage"]
                 </div>
-            }  
+            }
+
+            <div class="row mb-4 mt-5 justify-content-center">
+                <div class="col-md-auto mb-3">
+                    <div class="card text-center shadow-lg " style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Encargos</h5>
+                            <p class="card-text">Nº de Encargos no ano de @System.DateTime.Now.Date.Year</p>
+                            <a href="#" class="btn btn-primary" style="border-radius:25px;">@ViewBag.encYear</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto mb-3">
+                    <div class="card text-center shadow-lg " style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Moldes</h5>
+                            <p class="card-text">Nº de Moldes Registados</p>
+                            <a href="#" class="btn btn-primary" style="border-radius:25px;">@ViewBag.allmoldes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto mb-3">
+                    <div class="card text-center shadow-lg " style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Completos</h5>
+                            <p class="card-text">Nº Encargos Completos em @System.DateTime.Now.Date.Year</p>
+                            <a href="#" class="btn btn-primary" style="border-radius:25px;">@ViewBag.encCompleted</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5 justify-content-center mt-1 ">
+
+                <div id="box-2" class="col-md-7 col-lg-8 py-5 bg-light shadow-lg mt-3 table-responsive justify-content-center">
+                    @if (ViewBag.encargo != null)
+                    {
+
+
+                        <table class="table table-hover tablee">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Encargo</th>
+                                    <th scope="col">Requerente</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int x = 0; x < ViewBag.encargo.Count; x++)
+                                {
+                                    if (@ViewBag.encargo[x].estadoId != 1)
+                                    {
+                                        <tr>
+                                            <td>@ViewBag.encargo[x].nrEncargo</td>
+                                            <td>@ViewBag.encargo[x].entidade</td>
+                                            @if(@ViewBag.encargo[x].estadoId == 2){
+                                                <td style="color:red">@ViewBag.encargo[x].estado</td>
+                                                <td>@ViewBag.encargo[x].data</td>
+                                                <td>
+                                                    <div class="btn-group" role="group">
+                                                        <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-warning">Editar</a>
+                                                    </div>
+
+                                                </td>
+                                            }
+                                            else{
+                                                <td style="color:darkslateblue">@ViewBag.encargo[x].estado</td>
+                                                <td>@ViewBag.encargo[x].data</td>
+                                                <td>
+                                                    <div class="btn-group" role="group">
+                                                        <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-warning">Validar</a>
+                                                    </div>
+
+                                                </td>
+                                            }
+                                            
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h6> Aqui terá acesso ao histórico de encargos para editar</h6>
+                    }
+                </div>
+            </div>
+
         </div>
     </main>
 </body>
-</html>
+

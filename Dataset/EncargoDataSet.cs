@@ -4,25 +4,20 @@ using System.Data;
 
 namespace Office.Dataset
 {
-
-    
-
     /// <summary>
     /// Classe de encargos, para criar,editar e obter todos os encargos.
     /// </summary>
     public class EncargoDataSet  
     {
-        static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
+        static SqlConnection? _connection = new (System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 
-
-
         /// <summary>
-        /// Retorna o encargo pelo id
+        /// Método para obter o encargo pelo id
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id do encargo</param>
+        /// <returns>null ou o encargo</returns>
         public static EncargoViewModel? Encargo(int id)
         {
             _adapter = new SqlDataAdapter("GetEncargobyId", _connection);
@@ -45,6 +40,8 @@ namespace Office.Dataset
                 encargo.prioridade = Convert.ToString(_dataTable.Rows[0][9]);
                 encargo.nrInt = Convert.ToInt32(_dataTable.Rows[0][10]);
                 encargo.descMolde = Convert.ToString(_dataTable.Rows[0][12]);
+                encargo.estadoId = Convert.ToInt32(_dataTable.Rows[0][13]);
+
 
                 return encargo;
             }
@@ -53,9 +50,9 @@ namespace Office.Dataset
 
         
         /// <summary>
-        /// Retorna todos os encargos
+        /// Método para obter todos os encargos
         /// </summary>
-        /// <returns></returns>
+        /// <returns>null ou uma lista de encargos</returns>
         public static List<EncargoViewModel>? Completed()
         {
             _adapter = new SqlDataAdapter("GetEncargos", _connection);
@@ -80,6 +77,8 @@ namespace Office.Dataset
                     encargo.nrInt = Convert.ToInt32(_dataTable.Rows[x][10]);
                     encargo.validQual = Convert.ToInt32(_dataTable.Rows[x][11]);
                     encargo.descMolde = Convert.ToString(_dataTable.Rows[x][12]);
+                    encargo.estadoId = Convert.ToInt32(_dataTable.Rows[x][13]);
+
 
                     //encargo.dataConc = Convert.ToDateTime(_dataTable.Rows[x][5]);
                     encargos.Add(encargo);
@@ -91,9 +90,9 @@ namespace Office.Dataset
 
 
         /// <summary>
-        /// Retorna todos os encargos em intervenção
+        /// Método para obter todos os encargos em intervenção
         /// </summary>
-        /// <returns></returns>
+        /// <returns>retorna null ou a lista de encargos em intervenção</returns>
         public static List<EncargoViewModel>? AllInter()
         {
             _adapter = new SqlDataAdapter("GetEncargosAllInInter", _connection);
@@ -117,6 +116,8 @@ namespace Office.Dataset
                     encargo.prioridade = Convert.ToString(_dataTable.Rows[x][9]);
                     encargo.nrInt = Convert.ToInt32(_dataTable.Rows[x][10]);
                     encargo.descMolde = Convert.ToString(_dataTable.Rows[x][11]);
+                    encargo.estadoId = Convert.ToInt32(_dataTable.Rows[x][12]);
+
 
                     encargos.Add(encargo);
                 }
@@ -126,9 +127,9 @@ namespace Office.Dataset
         }
 
         /// <summary>
-        /// Retorna todos os encargos em intervenção
+        /// Método para obter todos os encargos para validar
         /// </summary>
-        /// <returns></returns>
+        /// <returns>retorna null ou a lista de encargos em intervenção</returns>
         public static List<EncargoViewModel>? AllVal()
         {
             _adapter = new SqlDataAdapter("GetEncargosAllInVal", _connection);
@@ -151,7 +152,9 @@ namespace Office.Dataset
                     encargo.molde = Convert.ToString(_dataTable.Rows[x][7]);
                     encargo.prioridade = Convert.ToString(_dataTable.Rows[x][9]);
                     encargo.nrInt = Convert.ToInt32(_dataTable.Rows[x][10]);
-                    encargo.descMolde = Convert.ToString(_dataTable.Rows[0][11]);
+                    encargo.descMolde = Convert.ToString(_dataTable.Rows[x][11]);
+                    encargo.estadoId = Convert.ToInt32(_dataTable.Rows[x][12]);
+
 
                     encargos.Add(encargo);
                 }
@@ -161,10 +164,10 @@ namespace Office.Dataset
         }
 
         /// <summary>
-        /// Cria um encargo e retorna verdadeiro ou falso
+        /// Cria um encargo
         /// </summary>
-        /// <param name="encargo"></param>
-        /// <returns></returns>
+        /// <param name="encargo">modelo de encargo</param>
+        /// <returns>retorna verdadeiro se for bem-sucedido,e falso se for o contrário</returns>
         public static bool Create(EncargoMolde encargo)
         {
 
@@ -220,8 +223,8 @@ namespace Office.Dataset
         /// <summary>
         /// Edita a descrição de um encargo
         /// </summary>
-        /// <param name="encargo"></param>
-        /// <returns></returns>
+        /// <param name="encargo">modelo de vista de encargo</param>
+        /// <returns>retorna verdadeiro se for bem-sucedido,e falso se for o contrário</returns>
         public static bool Edit(EncargoViewModel encargo)
         {
 
