@@ -1,6 +1,6 @@
 ﻿
 
-    <body style="background-color:white">
+    <body >
         <div class="container ">
             <main>
                 <div class="row g-5 justify-content-center mt-1 ">
@@ -13,9 +13,9 @@
                             <table class="table table-hover tablee" >
                                 <thead>
                                     <tr>
-                                        <th scope="col">Número de Encargo</th>
+                                        <th scope="col">Encargo</th>
                                         <th scope="col">Requerente</th>
-                                        <th scope="col">Estado</th>
+                                        <th scope="col">Molde</th>
                                         <th scope="col">Data</th>
                                         <th scope="col"></th>
                                     </tr>
@@ -23,16 +23,23 @@
                                 <tbody>
                                     @for (int x = 0; x < ViewBag.encargo.Count; x++)
                                     {
-                                        <tr>
-                                            <td>@ViewBag.encargo[x].nrEncargo</td>
-                                            <td>@ViewBag.encargo[x].entidade</td>
-                                            <td>@ViewBag.encargo[x].estado</td>
-                                            <td>@ViewBag.encargo[x].data</td>
-                                            <td>
-                                                <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-primary">Ver</a>
-                                            </td>
-                                        </tr>
-                                    }
+                                        if (@ViewBag.encargo[x].estadoId == 1)
+                                        {
+                                            <tr>
+                                                <td>@ViewBag.encargo[x].nrEncargo</td>
+                                                <td>@ViewBag.encargo[x].entidade</td>
+                                                <td>@ViewBag.encargo[x].molde</td>
+                                                <td>@ViewBag.encargo[x].data</td>
+                                                <td>
+                                                    <div class="btn-group" role="group">
+                                                        <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-primary">Ver</a>
+                                                        <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-success">Download</a>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        }
+                                }
                                 </tbody>
                             </table>
                         }

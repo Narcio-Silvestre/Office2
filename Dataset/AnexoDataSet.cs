@@ -9,15 +9,15 @@ namespace Office.Dataset
     /// </summary>
     public class AnexoDataSet 
     {
-        static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
+        static SqlConnection? _connection = new (System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 
         /// <summary>
-        /// Retorna o caminho dos anexos de encargo
+        /// Obtém o caminho dos anexos de encargo
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id do encargo</param>
+        /// <returns>retorna null se não houver anexos ou uma lista de caminhos para os anexos</returns>
         public static List<AnexoModel>? Index(int id)
         {
             _adapter = new SqlDataAdapter("select anexo.path from anexo where encargoid = @id;", _connection);
@@ -39,12 +39,12 @@ namespace Office.Dataset
             return null;
         }
 
-        
+
         /// <summary>
-        /// Retorna os anexos de uma intervenção
+        /// Obtém os anexos de uma intervenção
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id da intervenção</param>
+        /// <returns>retorna null se não houver anexos ou uma lista de caminhos para os anexos</returns>
         public static List<AnexoModel>? Index2(int id)
         {
             _adapter = new SqlDataAdapter("select anexoIntv.path from anexoIntv where intervencaoid = @id;", _connection);

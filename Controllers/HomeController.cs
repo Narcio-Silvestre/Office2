@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Office.Dataset;
 using Office.Models;
 using System.Diagnostics;
 
@@ -16,18 +17,20 @@ namespace Office.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            List<EncargoViewModel> dat = EncargoDataSet.Completed();
+            ViewBag.encYear = HomeDataSet.allNumEncargos();
+            ViewBag.encCompleted = HomeDataSet.allEncCompleted() ;
+            ViewBag.allmoldes = MoldeDataSet.Index().Count;
+            try
+            {
+                if (dat != null) ViewBag.encargo = dat;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

@@ -4,6 +4,7 @@ using System.Data;
 using System.Text.Json;
 using System.Web.WebPages;
 using Office.Dataset;
+using System.Text;
 
 namespace Office.Controllers
 
@@ -25,10 +26,6 @@ namespace Office.Controllers
             path = system.WebRootPath;
         }
 
-
-       
-
-
         /// <summary>
         /// Método para obter a página de Criar Encargo
         /// </summary>
@@ -42,14 +39,14 @@ namespace Office.Controllers
             ViewBag.requisitos = data;
 
             List<MoldeModel> data2 = MoldeDataSet.Index();
-            List<MoldeModel> data3 = MoldeDataSet.MoldesEmIntv();
+            List<MoldeModel> data3 = MoldeDataSet.MoldesDisp();
             if (data2 == null)
             {
                  TempData["ErrorMessage"] = "No momento não é possivel criar encargos, todos os moldes têm encargos em execução.";
                  return RedirectToAction("Index", "Home");
             }
             ViewBag.moldes = data2;      
-            ViewBag.moldesEmIntv = data3;
+            ViewBag.moldesDisp = data3;
             return View();
         }
 
@@ -79,6 +76,7 @@ namespace Office.Controllers
                 TempData["ErrorMessage"] = "Por favor preencha os campos necessários!";
                 return RedirectToAction("Create", "Encargo");
             }
+           
 
 
             foreach (var item in files)
@@ -175,7 +173,7 @@ namespace Office.Controllers
             List<EncargoViewModel> dat = EncargoDataSet.AllVal();
             try
             {
-                if(dat != null)  ViewBag.encargo = dat;
+                if(dat != null)  ViewBag.encargoVal = dat;
 
             }
             catch (Exception ex)
@@ -194,12 +192,12 @@ namespace Office.Controllers
         public IActionResult AllInter()
         {
             List<EncargoViewModel> dat = EncargoDataSet.AllInter();
-            List<EncargoViewModel> dat2 = EncargoDataSet.AllVal();
+            
 
             try
             {
                 if (dat != null) ViewBag.encargo = dat;
-                if (dat2 != null) ViewBag.encargoVal = dat2;
+                
 
 
             }
@@ -219,21 +217,38 @@ namespace Office.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.encargo = EncargoDataSet.Encargo(id);
-
+            List<EncargoViewModel> dat = EncargoDataSet.Completed();
+            try
+            {
+                if (dat != null) ViewBag.encargo = dat;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return View();
         }
 
-        /// <summary>
-        /// Método para editar o encargo
-        /// </summary>
-        /// <param name="encargo">molde de encargo</param>
-        /// <returns>a página home se for bem-sucedido</returns>
+        
         [HttpPost]
-        public IActionResult Edit(EncargoViewModel encargo)
+        public IActionResult Edit(string desc,int id)
         {
-            EncargoDataSet.Edit(encargo);
-            return RedirectToAction("Index", "Home");
+            _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            ViewBag.UserFuncId = _session.funcaoid;
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine(desc);
+            stringBuilder.AppendLine(_session.Name);
+            EncargoDataSet.Edit(stringBuilder.ToString(),id);
+            return RedirectToAction("Index","Home");
+        }
+
+        [HttpGet]
+        public IActionResult Edit2(int id)
+        {
+            _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            ViewBag.UserFuncId = _session.funcaoid;
+            EncargoViewModel encargo = EncargoDataSet.Encargo(id);
+            return View(encargo);
         }
 
 

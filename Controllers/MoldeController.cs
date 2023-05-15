@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Office.Models;
 using Office.Dataset;
+using System.Data;
+using System.Text.Json;
+using System.Web.WebPages;
 
 namespace Office.Controllers
 {
@@ -9,25 +12,59 @@ namespace Office.Controllers
     /// </summary>
     public class MoldeController : Controller
     {
-        
+        SessionKeys? _session;
+        string path;
 
-        public MoldeController()
+        public MoldeController(IWebHostEnvironment system)
         {
-            
+            path = system.WebRootPath;
         }
-        /// <summary>
-        /// Método para obter a página de moldes
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>a página de moldes</returns>
+
         [HttpGet]
         [Route("Molde/")]
         public ActionResult Index()
         {
-            List<MoldeModel>? dat = MoldeDataSet.Index();
-            ViewBag.molde =dat;
+            _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            ViewBag.UserFuncId = _session.funcaoid;
+            List<MoldeModel> dat = MoldeDataSet.Index();
+            List<MoldeModel> dat2 = MoldeDataSet.MoldesEmIntv();
+            try
+            {
+                if (dat != null) ViewBag.allMoldes = dat;
+                if (dat2 != null) ViewBag.molIntv = dat2;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return View();
         }
+
+
+        [HttpGet]
+        [Route("Molde/Create")]
+        public ActionResult Create()
+        {
+
+          
+            return View();
+        }
+
+        /// <summary>
+        /// Criar um molde
+        /// </summary>
+        /// <param name="molde"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Molde/Create")]
+        public ActionResult Create(MoldeModel molde)
+        {
+
+            MoldeDataSet.Create(molde);                  
+            return RedirectToAction("Index", "Home");
+        }
+
 
         /// <summary>
         /// Método para obter um molde pelo id
@@ -39,7 +76,8 @@ namespace Office.Controllers
         public IActionResult Info(int id)
         {
             MoldeModel? dat = MoldeDataSet.Get(id);
-            ViewBag.molde = dat;
+            if(dat != null) { ViewBag.molde = dat; }
+
             return View();
         }
 
