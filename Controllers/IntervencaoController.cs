@@ -7,6 +7,9 @@ using Office.Dataset;
 
 namespace Office.Controllers
 {
+    /// <summary>
+    /// Classe controladora de intervenções
+    /// </summary>
     public class IntervencaoController : Controller
     {
        
@@ -18,6 +21,12 @@ namespace Office.Controllers
             path = system.WebRootPath;
         }
 
+        /// <summary>
+        /// Método para criar intervenções com anexos
+        /// </summary>
+        /// <param name="aux">modelo de intervenção</param>
+        /// <param name="files">anexos</param>
+        /// <returns>retorna a página home se for bem-sucedido ou a página de encargos caso falhe</returns>
         [HttpPost]
         [Route("Intervencao/Create")]
         [ValidateAntiForgeryToken]

@@ -4,14 +4,19 @@ using System.Data;
 
 namespace Office.Dataset
 {
-
+    /// <summary>
+    /// Classe para obter os moldes
+    /// </summary>
     public class MoldeDataSet
     {
-        static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
+        static SqlConnection? _connection = new (System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 
-
+        /// <summary>
+        /// Método para obter todos os moldes
+        /// </summary>
+        /// <returns>null ou uma lista de moldes</returns>
         public static List<MoldeModel>? Index()
         {
             _adapter = new SqlDataAdapter("select id,nrMolde, maxShots,(nrMolde+'-'+nome) as descricao from molde", _connection);
@@ -35,6 +40,10 @@ namespace Office.Dataset
             return null;
         }
 
+        /// <summary>
+        /// Obtém todos os moldes que têm encargo no momento
+        /// </summary>
+        /// <returns>null ou uma lista de moldes</returns>
         public static List<MoldeModel>? MoldesEmIntv()
         {
             _adapter = new SqlDataAdapter("select id,nrMolde, maxShots,(nrMolde+'-'+nome) as descricao from molde where molde.id in (select moldeid from encargo where estadoid <> 1 )", _connection);
@@ -58,10 +67,11 @@ namespace Office.Dataset
             return null;
         }
 
-      
-
-
-        
+        /// <summary>
+        /// Obtém o molde pelo id
+        /// </summary>
+        /// <param name="id">id do molde</param>
+        /// <returns>retorna null ou um molde</returns>
         public static MoldeModel? Get(int id)
         {
 

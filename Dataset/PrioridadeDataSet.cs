@@ -7,7 +7,7 @@ namespace Office.Dataset
 
     public class PrioridadeDataSet
     {
-        static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
+        static SqlConnection? _connection = new (System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 

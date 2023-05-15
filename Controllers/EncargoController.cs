@@ -12,7 +12,9 @@ namespace Office.Controllers
 
 
 
-
+    /// <summary>
+    /// Classe Controladora de Encargos
+    /// </summary>
     public class EncargoController : Controller
     {
         SessionKeys? _session;
@@ -23,10 +25,14 @@ namespace Office.Controllers
             path = system.WebRootPath;
         }
 
-        public ActionResult Index() { return View(); }
+
+       
 
 
-        
+        /// <summary>
+        /// Método para obter a página de Criar Encargo
+        /// </summary>
+        /// <returns>a página de criar encargo</returns>
         [HttpGet]
         [Route("Encargo/Create")]
         public ActionResult Create()
@@ -47,7 +53,12 @@ namespace Office.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// Método para criar um encargo
+        /// </summary>
+        /// <param name="encargo">molde de encargo</param>
+        /// <param name="files">anexos de encargo</param>
+        /// <returns>a página home se for bem-sucedido e a página de encargo se falhar</returns>
         [HttpPost]
         [Route("Encargo/Create")]
         [ValidateAntiForgeryToken]
@@ -89,6 +100,12 @@ namespace Office.Controllers
             return RedirectToAction("Index","Home");
         }
 
+
+        /// <summary>
+        /// Obtém a página de informação de um encargo
+        /// </summary>
+        /// <param name="id">id do encargo</param>
+        /// <returns>a página do encargo se for bem-sucedido e a página home se falhar</returns>
         [HttpGet]
         public IActionResult Info(int id)
         {
@@ -129,6 +146,10 @@ namespace Office.Controllers
             return View(encargo);
         }
 
+        /// <summary>
+        /// Obtém a página de todos os moldes
+        /// </summary>
+        /// <returns>a página de todos os moldes</returns>
         [HttpGet]
         public IActionResult All()
         {
@@ -144,6 +165,10 @@ namespace Office.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Obtém a página de todos os moldes em validação
+        /// </summary>
+        /// <returns>a página de todos os moldes em validação</returns>
         [HttpGet]
         public IActionResult AllVal()
         {
@@ -161,6 +186,10 @@ namespace Office.Controllers
 
         }
 
+        /// <summary>
+        /// Obtém a página de todos os moldes em intervenção
+        /// </summary>
+        /// <returns>a página de todos os moldes em intervenção</returns>
         [HttpGet]
         public IActionResult AllInter()
         {
@@ -182,6 +211,11 @@ namespace Office.Controllers
 
         }
 
+        /// <summary>
+        /// Método para obter a página para editar o encargo
+        /// </summary>
+        /// <param name="id">id do encargo</param>
+        /// <returns>a página para editar o encargo</returns>
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -190,6 +224,11 @@ namespace Office.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Método para editar o encargo
+        /// </summary>
+        /// <param name="encargo">molde de encargo</param>
+        /// <returns>a página home se for bem-sucedido</returns>
         [HttpPost]
         public IActionResult Edit(EncargoViewModel encargo)
         {

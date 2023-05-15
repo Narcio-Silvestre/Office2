@@ -1,5 +1,8 @@
 ﻿namespace Office.Models
 {
+    /// <summary>
+    /// Modelo de Validação
+    /// </summary>
     public class ValidacaoMenuModel
     {
         public int idValidacao { get; set; }
@@ -12,6 +15,10 @@
         //public string desc { get; set; }
     }
 
+
+    /// <summary>
+    /// Segundo Modelo de Validação
+    /// </summary>
     public class ValidacaoModel
     {
         

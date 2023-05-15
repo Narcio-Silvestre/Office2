@@ -5,7 +5,9 @@ using System.Data.SqlClient;
 namespace Office.Dataset
 {
 
-
+    /// <summary>
+    /// Classe para validar os encargos
+    /// </summary>
     public class ValidacaoDataSet
     {
         static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
@@ -13,12 +15,13 @@ namespace Office.Dataset
         static DataTable? _dataTable;
 
 
-        public static bool Get(string id)
-        {
-            return true;
-        }
-
         
+
+        /// <summary>
+        /// Método para validar o encargo na área da qualidade
+        /// </summary>
+        /// <param name="data">modelo de validação</param>
+        /// <returns>verdadeiro ou falso</returns>
         public static bool Qualidade(ValidacaoModel data)
         {
             Console.WriteLine("ent:" + data.idEntidade);
@@ -40,7 +43,11 @@ namespace Office.Dataset
             return true;
         }
 
-        
+        /// <summary>
+        /// Método para validar o encargo na área da produção
+        /// </summary>
+        /// <param name="data">modelo de validação</param>
+        /// <returns>verdadeiro ou falso</returns>
         public static bool Producao(ValidacaoModel data)
         {
             Console.WriteLine("ent:" + data.idEntidade);

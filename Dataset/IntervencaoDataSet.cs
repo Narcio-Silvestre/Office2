@@ -12,7 +12,11 @@ namespace Office.Dataset
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 
-
+        /// <summary>
+        /// Retorna todas as intervenções já concluídas
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<IntervencaoModel2>? Intervencao(int id)
         {
             _adapter = new SqlDataAdapter("GetInterValidbyEncargo", _connection);
@@ -48,6 +52,11 @@ namespace Office.Dataset
         }
 
       
+        /// <summary>
+        /// Retorna a intervenção atual que precisa de validação
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static IntervencaoModel2? Intervencao2(int id)
         {
             _adapter = new SqlDataAdapter("GetNextInter", _connection);
@@ -78,7 +87,11 @@ namespace Office.Dataset
             return null;
         }
 
-        
+        /// <summary>
+        /// Cria uma intervenção
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static bool Intervencao(IntervencaoModel data)
         {
 

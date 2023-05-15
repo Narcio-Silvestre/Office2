@@ -7,7 +7,9 @@ namespace Office.Dataset
 
     
 
-    
+    /// <summary>
+    /// Classe de encargos, para criar,editar e obter todos os encargos.
+    /// </summary>
     public class EncargoDataSet  
     {
         static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
@@ -16,7 +18,11 @@ namespace Office.Dataset
 
 
 
-
+        /// <summary>
+        /// Retorna o encargo pelo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static EncargoViewModel? Encargo(int id)
         {
             _adapter = new SqlDataAdapter("GetEncargobyId", _connection);
@@ -46,6 +52,10 @@ namespace Office.Dataset
         }
 
         
+        /// <summary>
+        /// Retorna todos os encargos
+        /// </summary>
+        /// <returns></returns>
         public static List<EncargoViewModel>? Completed()
         {
             _adapter = new SqlDataAdapter("GetEncargos", _connection);
@@ -80,7 +90,10 @@ namespace Office.Dataset
         }
 
 
-        
+        /// <summary>
+        /// Retorna todos os encargos em intervenção
+        /// </summary>
+        /// <returns></returns>
         public static List<EncargoViewModel>? AllInter()
         {
             _adapter = new SqlDataAdapter("GetEncargosAllInInter", _connection);
@@ -112,7 +125,10 @@ namespace Office.Dataset
             return null;
         }
 
-        
+        /// <summary>
+        /// Retorna todos os encargos em intervenção
+        /// </summary>
+        /// <returns></returns>
         public static List<EncargoViewModel>? AllVal()
         {
             _adapter = new SqlDataAdapter("GetEncargosAllInVal", _connection);
@@ -144,6 +160,11 @@ namespace Office.Dataset
             return null;
         }
 
+        /// <summary>
+        /// Cria um encargo e retorna verdadeiro ou falso
+        /// </summary>
+        /// <param name="encargo"></param>
+        /// <returns></returns>
         public static bool Create(EncargoMolde encargo)
         {
 
@@ -196,6 +217,11 @@ namespace Office.Dataset
             return true;
         }
 
+        /// <summary>
+        /// Edita a descrição de um encargo
+        /// </summary>
+        /// <param name="encargo"></param>
+        /// <returns></returns>
         public static bool Edit(EncargoViewModel encargo)
         {
 

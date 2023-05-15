@@ -4,14 +4,20 @@ using System.Data;
 
 namespace Office.Dataset
 {
-
+    /// <summary>
+    /// Essa é a classe de anexos de encargos e intervenções
+    /// </summary>
     public class AnexoDataSet 
     {
         static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 
-        
+        /// <summary>
+        /// Retorna o caminho dos anexos de encargo
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<AnexoModel>? Index(int id)
         {
             _adapter = new SqlDataAdapter("select anexo.path from anexo where encargoid = @id;", _connection);
@@ -34,6 +40,11 @@ namespace Office.Dataset
         }
 
         
+        /// <summary>
+        /// Retorna os anexos de uma intervenção
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<AnexoModel>? Index2(int id)
         {
             _adapter = new SqlDataAdapter("select anexoIntv.path from anexoIntv where intervencaoid = @id;", _connection);

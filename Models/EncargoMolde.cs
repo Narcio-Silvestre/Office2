@@ -2,6 +2,9 @@
 
 namespace Office.Models
 {
+    /// <summary>
+    /// Modelo de Encargo
+    /// </summary>
     public class EncargoMolde
     {
         public string descProblema{ get; set; }
@@ -16,6 +19,9 @@ namespace Office.Models
 
     }
 
+    /// <summary>
+    /// Modelo de Vista de Encargo
+    /// </summary>
     public class EncargoViewModel
     {
         public int id { get; set;}

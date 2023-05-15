@@ -4,10 +4,16 @@ using System.Diagnostics;
 
 namespace Office.Controllers
 {
+    /// <summary>
+    /// Classe controladora da página Home
+    /// </summary>
     public class HomeController : Controller
     {
         
-
+        /// <summary>
+        /// Método que retorna a página home
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();

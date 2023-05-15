@@ -1,5 +1,8 @@
 ﻿namespace Office.Models
 {
+    /// <summary>
+    /// Modelo de Sessão
+    /// </summary>
     public class SessionKeys
     {
         public SessionKeys() { }

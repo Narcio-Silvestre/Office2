@@ -1,5 +1,8 @@
 ﻿namespace Office.Models
 {
+    /// <summary>
+    /// Modelo de Intervenção 
+    /// </summary>
     public class IntervencaoMenuModel
     {
         public int idIntervencao { get; set; }
@@ -11,6 +14,9 @@
 
     }
 
+    /// <summary>
+    /// Segundo Modelo de Intervenção
+    /// </summary>
     public class IntervencaoModel
     {
 
@@ -22,6 +28,9 @@
 
     }
 
+    /// <summary>
+    /// Modelo de Vista de Intervenção
+    /// </summary>
     public class IntervencaoViewModel
     {
         public string nome { get; set; }
@@ -30,12 +39,18 @@
 
     }
 
+    /// <summary>
+    /// Modelo de Anexos
+    /// </summary>
     public class AnexoModel
     {
         public string desc { get; set; }
 
     }
 
+    /// <summary>
+    /// Terceiro modelo de intervenção
+    /// </summary>
     public class IntervencaoModel2
     {
         public int id { get; set; }

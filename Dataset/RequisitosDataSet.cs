@@ -4,14 +4,19 @@ using System.Data;
 
 namespace Office.Dataset
 {
-
+    /// <summary>
+    /// Classe para obter todos os tipos de intervenção
+    /// </summary>
     public class RequisitosDataSet
     {
         static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 
-
+        /// <summary>
+        /// Obtém todos os tipos de intervenção
+        /// </summary>
+        /// <returns>null ou uma lista de requisitos de intervenção</returns>
         public static List<RequisitosModel>? Index()
         {
             _adapter = new SqlDataAdapter("select * from tipoIntv", _connection);
@@ -32,7 +37,11 @@ namespace Office.Dataset
             return null;
         }
 
-        
+        /// <summary>
+        /// Obtém todos os tipos de intervenção de um encargo
+        /// </summary>
+        /// <param name="id">id do encargo</param>
+        /// <returns>null ou uma lista de requisitos de intervenção</returns>
         public static List<RequisitosModel>? Index(int id)
         {
             _adapter = new SqlDataAdapter("select id,tipoIntv.\"desc\" from EncReq join tipoIntv on tipoIntv.id = tipoIntvid where encargoid = @id", _connection);
@@ -55,7 +64,11 @@ namespace Office.Dataset
             return null;
         }
 
-        
+        /// <summary>
+        /// Obtém todos os tipos de intervenção que não estão num encargo
+        /// </summary>
+        /// <param name="id">id do encargo</param>
+        /// <returns>null ou uma lista de requisitos de intervenção</returns>
         public static List<RequisitosModel>? Index2(int id)
         {
             _adapter = new SqlDataAdapter("select * from (select tipoIntv.\"desc\" from tipoIntv )A where A.\"desc\" not in (select tipoIntv.\"desc\" from tipoIntv  join EncReq on tipoIntv.id = tipoIntvid where encargoid = @id) \r\n", _connection);

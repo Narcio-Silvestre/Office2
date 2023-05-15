@@ -5,14 +5,20 @@ using System.Data.SqlClient;
 
 namespace Office.Dataset
 {
-
-    public class LoginDataSet : ControllerBase
+    /// <summary>
+    /// Classe de login na aplicação
+    /// </summary>
+    public class LoginDataSet
     {
-        static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
+        static SqlConnection? _connection = new (System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
         
-
+        /// <summary>
+        /// Método de login na aplicação
+        /// </summary>
+        /// <param name="login">modelo de login</param>
+        /// <returns>null ou o usuário</returns>
         public static UserModel? Create(LoginModel login)
         {
             if(login.Email == null || login.Password == null) { return null; }

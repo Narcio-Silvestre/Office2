@@ -7,6 +7,9 @@ using Office.Dataset;
 
 namespace Office.Controllers
 {
+    /// <summary>
+    /// Classe controladora de validação
+    /// </summary>
     public class ValidacaoController : Controller
     {
        
@@ -18,7 +21,13 @@ namespace Office.Controllers
 
 
         
-
+        /// <summary>
+        /// Método para validar da área de produção 
+        /// </summary>
+        /// <param name="aux">modelo da validação</param>
+        /// <param name="id">id da intervenção</param>
+        /// <param name="idEncargo">id do encargo</param>
+        /// <returns>a página home se for bem-sucedido, caso contrário retorna a página do encargo</returns>
         [HttpPost]
         [Route("Validacao/Prod/{id}")]
         public ActionResult Prod(ValidacaoModel aux, int id, int idEncargo)
@@ -41,6 +50,13 @@ namespace Office.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Método para validar da área de qualidade 
+        /// </summary>
+        /// <param name="aux">modelo da validação</param>
+        /// <param name="id">id da intervenção</param>
+        /// <param name="idEncargo">id do encargo</param>
+        /// <returns>a página home se for bem-sucedido, caso contrário retorna a página do encargo</returns>
         [HttpPost]
         [Route("Validacao/Qual/{id}")]
         public ActionResult Qual(ValidacaoModel aux, int id, int idEncargo)

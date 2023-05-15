@@ -1,5 +1,8 @@
 ﻿namespace Office.Models
 {
+    /// <summary>
+    /// Modelo de Molde
+    /// </summary>
     public class MoldeModel
     {
         public int id { get; set; }
