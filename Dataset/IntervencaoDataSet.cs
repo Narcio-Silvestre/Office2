@@ -5,18 +5,20 @@ using System.Data.SqlClient;
 
 namespace Office.Dataset
 {
-
+    /// <summary>
+    /// Classe para obter e criar as intervenções
+    /// </summary>
     public class IntervencaoDataSet 
     {
-        static SqlConnection? _connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
+        static SqlConnection? _connection = new (System.Configuration.ConfigurationManager.ConnectionStrings["_connection"].ConnectionString);
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 
         /// <summary>
-        /// Retorna todas as intervenções já concluídas
+        /// Método para obter todas as intervenções já concluídas
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id do encargo</param>
+        /// <returns>null ou a lista de intervenções concluídas</returns>
         public static List<IntervencaoModel2>? Intervencao(int id)
         {
             _adapter = new SqlDataAdapter("GetInterValidbyEncargo", _connection);
@@ -53,10 +55,10 @@ namespace Office.Dataset
 
       
         /// <summary>
-        /// Retorna a intervenção atual que precisa de validação
+        /// Método para obter a intervenção atual que precisa de validação
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id do encargo</param>
+        /// <returns>null ou a intervenção atual</returns>
         public static IntervencaoModel2? Intervencao2(int id)
         {
             _adapter = new SqlDataAdapter("GetNextInter", _connection);
@@ -90,8 +92,8 @@ namespace Office.Dataset
         /// <summary>
         /// Cria uma intervenção
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
+        /// <param name="data">modelo de intervenção</param>
+        /// <returns>verdadeiro se tudo estiver correto e falso se for o contrário</returns>
         public static bool Intervencao(IntervencaoModel data)
         {
 

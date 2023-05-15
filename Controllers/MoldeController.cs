@@ -10,7 +10,6 @@ namespace Office.Controllers
     public class MoldeController : Controller
     {
         
-
         public MoldeController()
         {
             

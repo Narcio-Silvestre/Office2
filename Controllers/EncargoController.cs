@@ -25,10 +25,6 @@ namespace Office.Controllers
             path = system.WebRootPath;
         }
 
-
-       
-
-
         /// <summary>
         /// Método para obter a página de Criar Encargo
         /// </summary>

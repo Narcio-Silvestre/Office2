@@ -14,9 +14,6 @@ namespace Office.Dataset
         static SqlDataAdapter? _adapter;
         static DataTable? _dataTable;
 
-
-        
-
         /// <summary>
         /// Método para validar o encargo na área da qualidade
         /// </summary>
