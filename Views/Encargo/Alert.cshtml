@@ -1,0 +1,28 @@
+﻿
+ <body >
+    <main>
+        <div class="row mt-5">
+            
+
+            <div class="row mb-4 mt-5 justify-content-center">
+
+                @if (@TempData["ErrorMessage"] != null)
+                {
+                    <div class="col-md-7 col-lg-8  py-5 alert-danger shadow-lg mt-3 table-responsive justify-content-center">
+
+                        <h6>  @TempData["ErrorMessage"] </h6>
+                   </div>                   
+                }
+                @if (@TempData["Message"] != null)
+                {
+                    <div class="col-md-7 col-lg-8  py-5 alert-danger shadow-lg mt-3 table-responsive justify-content-center">
+
+                        <h6> @TempData["Message"] </h6>
+                    </div>
+                }
+               
+            </div>
+        </div>
+    </main>
+</body>
+

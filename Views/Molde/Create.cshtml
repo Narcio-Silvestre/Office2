@@ -55,6 +55,12 @@
                                 @TempData["ErrorMessage"]
                             </div>
                         }
+                        @if (@TempData["Message"] != null)
+                        {
+                            <div class="alert alert-primary" role="alert">
+                                @TempData["Message"]
+                            </div>
+                        }
                         <h5 class="mb-3">Molde</h5>
                         <form asp-action="Create" asp-controller="Molde">
                         <div class="row g-3">

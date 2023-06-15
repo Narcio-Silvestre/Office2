@@ -60,68 +60,41 @@
                         </div>
                     }
                     <h5 class="mb-3">Molde</h5>
+                    <form asp-action="Edit" asp-controller="Molde">
                         <div class="row g-3">
 
                             <div class="col-md-auto">
                                 <label for="nrmolde" class="form-label">Nrº Molde</label>
-                                <input type="text" class="form-control" id="nrmolde" value="@ViewBag.molde.nrMolde" readonly>
+                                <input type="text" class="form-control" id="nrmolde" value="@ViewBag.molde.nrMolde" name="nrMolde" required>
+                            </div>
+
+                            <div class="col-md-auto" style="display:none">
+                                <input type="text" class="form-control" id="id" value="@ViewBag.molde.id" name="id">
                             </div>
 
                             <div class="col-md-auto">
                                 <label for="fornecedor" class="form-label">Fornecedor</label>
-                                <input type="text" class="form-control" id="fornecedor" value="@ViewBag.molde.descricao" readonly>
+                                <input type="text" class="form-control" id="fornecedor" value="@ViewBag.molde.descricao" name="descricao" required>
                             </div>
 
                             <div class="col-9">
                                 <label for="descricao" class="form-label">Descrição </label>
-                                <textarea type="text" class="form-control" id="descricao" style="height:10vh">@ViewBag.molde.descCompleta</textarea>
+                                <textarea type="text" class="form-control" id="descricao" style="height:10vh" required name="descCompleta">@ViewBag.molde.descCompleta</textarea>
                             </div>
 
                             <div class="col-md-auto">
                                 <label for="maxshots" class="form-label">MaxShots</label>
-                                <input type="text" class="form-control" id="maxshots" value="@ViewBag.molde.maxShots" readonly>
+                                <input type="text" class="form-control" id="maxshots" value="@ViewBag.molde.maxShots" required name="maxShots">
                             </div>
 
-
-                           
-                        </div>
+                            <div class="col-12">
+                                <button class=" btn btn-primary mx-auto my-auto mt-2" type="submit">Editar</button>
+                            </div>
+                     </div>
+                        </form>
                    
                 </div>
-                <div class="col-md-7 col-lg-8  py-5 bg-white shadow-lg mt-3 table-responsive justify-content-center">
-                   
-                        <table class="table table-hover tablee ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Molde</th>
-                                    <th scope="col">Encargo</th>
-                                    <th scope="col">Requerente</th>
-                                    <th scope="col">Data</th>
-                                    <th scope="col">Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                 @if (ViewBag.encargoVal != null)
-                            {
-                                @for (int x = 0; x < ViewBag.encargoVal.Count; x++)
-                                {
-                                    <tr>
-                                        <td>@ViewBag.encargoVal[x].molde</td>
-                                        <td>@ViewBag.encargoVal[x].nrEncargo</td>
-                                        <td>@ViewBag.encargoVal[x].entidade</td>
-                                        <td>@ViewBag.encargoVal[x].data</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargoVal[x].id" class="btn btn-sm  btn-primary">Ver <i class="bi bi-eye-fill"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            }
-                        </tbody>
-                        </table>
-                    
-                    
-                </div>
+              
             </div>
         </main>
     </div>

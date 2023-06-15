@@ -49,17 +49,23 @@
             <main>
                 <div class="row g-5 justify-content-center mt-2 ">
                     <div id="create" class="col-md-7 col-lg-8 py-5 bg-white shadow-lg s mt-3">
-                        @if (@TempData["ErrorMessage"] != null)
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                @TempData["ErrorMessage"]
-                            </div>
-                        }
-                        <h5 class="mb-3">Encargo de Oficina</h5>
+                    @if (@TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["ErrorMessage"]
+                        </div>
+                    }
+                    @if (@TempData["Message"] != null)
+                    {
+                        <div class="alert alert-primary" role="alert">
+                            @TempData["Message"]
+                        </div>
+                    }
+                        <h5 class="mb-3" >Encargo de Oficina</h5>
                         <form  asp-action="Create" asp-controller="Encargo" enctype="multipart/form-data">
                             <div class="row g-3">
                                 <div class="col-md-auto">
-                                    <label for="moldeid" class="form-label">Nrº Molde</label>
+                                    <label for="moldeid" class="form-label" >Nrº Molde</label>
                                     <select  class="form-select selectmolde"  id="moldeid" name="moldeid" required>  
                                         <option value="">Escolher...</option>
                                         @{

@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Home\Alert.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Encargo\Alert.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />

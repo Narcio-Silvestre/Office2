@@ -127,6 +127,21 @@ input {
     padding-right: 5px;
 }
 
+.tablee thead{
+    color: rgb(0,0,177);
+}
+
+#create h5{
+    color: rgb(0,0,177);
+}
+
+#create h6 {
+    color: rgb(0,0,177);
+}
+
+
+
+
 
 
 

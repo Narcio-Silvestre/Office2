@@ -4,6 +4,7 @@ using Office.Dataset;
 using System.Data;
 using System.Text.Json;
 using System.Web.WebPages;
+using System.Text;
 
 namespace Office.Controllers
 {
@@ -28,10 +29,13 @@ namespace Office.Controllers
             ViewBag.UserFuncId = _session.funcaoid;
             List<MoldeModel> dat = MoldeDataSet.Index();
             List<MoldeModel> dat2 = MoldeDataSet.MoldesEmIntv();
+            List<MoldeModel> dat3 = MoldeDataSet.MoldesSemEncargo();
+
             try
             {
                 if (dat != null) ViewBag.allMoldes = dat;
                 if (dat2 != null) ViewBag.molIntv = dat2;
+                if (dat3 != null) ViewBag.molSemEnc = dat3;
 
             }
             catch (Exception ex)
@@ -61,8 +65,17 @@ namespace Office.Controllers
         public ActionResult Create(MoldeModel molde)
         {
 
-            MoldeDataSet.Create(molde);                  
-            return RedirectToAction("Index", "Home");
+            if (!MoldeDataSet.Create(molde))
+            {
+                TempData["ErrorMessage"] = "Campos inválidos! Tente alterar os dados. ";
+
+                return RedirectToAction("Create","Molde");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Molde");
+
+            }
         }
 
 
@@ -76,9 +89,45 @@ namespace Office.Controllers
         public IActionResult Info(int id)
         {
             MoldeModel? dat = MoldeDataSet.Get(id);
-            if(dat != null) { ViewBag.molde = dat; }
-
+            if(dat != null) {
+                ViewBag.molde = dat; 
+                List<EncargoViewModel> dat2 = EncargoDataSet.AllByMolde(ViewBag.molde.id);
+                if (dat != null) ViewBag.encargoVal = dat2;
+            }
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(MoldeModel molde)
+        {
+            MoldeDataSet.Edit(molde);
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            MoldeModel? dat = MoldeDataSet.Get(id);
+            if (dat != null)
+            {
+                ViewBag.molde = dat;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            if (!MoldeDataSet.Delete(id))
+            {
+                TempData["ErrorMessage"] = "No momento não é possível apagar o molde.";
+                return RedirectToAction("Index", "Molde");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Molde");
+
+            }
         }
 
     }

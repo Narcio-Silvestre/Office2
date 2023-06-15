@@ -10,7 +10,7 @@ namespace Office.Controllers
     /// </summary>
     public class HomeController : Controller
     {
-        
+        [HttpGet]
         /// <summary>
         /// Método que retorna a página home
         /// </summary>
@@ -20,7 +20,14 @@ namespace Office.Controllers
             List<EncargoViewModel> dat = EncargoDataSet.Completed();
             ViewBag.encYear = HomeDataSet.allNumEncargos();
             ViewBag.encCompleted = HomeDataSet.allEncCompleted() ;
-            ViewBag.allmoldes = MoldeDataSet.Index().Count;
+            if( MoldeDataSet.Index() == null)
+            {
+                ViewBag.allmoldes = 0;
+            }
+            else
+            {
+                ViewBag.allmoldes = MoldeDataSet.Index().Count();
+            }
             try
             {
                 if (dat != null) ViewBag.encargo = dat;
@@ -31,6 +38,8 @@ namespace Office.Controllers
             }
             return View();
         }
+
+        
 
     }
 }

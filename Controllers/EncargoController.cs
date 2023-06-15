@@ -43,7 +43,12 @@ namespace Office.Controllers
             if (data2 == null)
             {
                  TempData["ErrorMessage"] = "No momento não é possivel criar encargos, todos os moldes têm encargos em execução.";
-                 return RedirectToAction("Index", "Home");
+                 return RedirectToAction("Alert", "Encargo");
+            }
+            if (data3 == null)
+            {
+                TempData["ErrorMessage"] = "No momento não é possivel criar encargos, todos os moldes têm encargos em execução.";
+                return RedirectToAction("Alert", "Encargo");
             }
             ViewBag.moldes = data2;      
             ViewBag.moldesDisp = data3;
@@ -151,7 +156,7 @@ namespace Office.Controllers
         [HttpGet]
         public IActionResult All()
         {
-            List<EncargoViewModel> dat = EncargoDataSet.Completed();
+            List<EncargoViewModel> dat = EncargoDataSet.GetEncargosCompleted();
             try
             {
                 if (dat != null) ViewBag.encargo = dat;
@@ -218,6 +223,8 @@ namespace Office.Controllers
         public IActionResult Edit(int id)
         {
             List<EncargoViewModel> dat = EncargoDataSet.Completed();
+            _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
+            ViewBag.UserFuncId = _session.funcaoid;
             try
             {
                 if (dat != null) ViewBag.encargo = dat;
@@ -251,7 +258,27 @@ namespace Office.Controllers
             return View(encargo);
         }
 
+        [HttpGet]
+        public IActionResult Alert()
+        {
 
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            if (!EncargoDataSet.Delete(id))
+            {
+                TempData["ErrorMessage"] = "No momento não é possível apagar o encargo.";
+                return RedirectToAction("Alert", "Encargo");
+            }
+            else
+            {
+                return RedirectToAction("Edit", "Encargo");
+
+            }
+        }
 
 
     }

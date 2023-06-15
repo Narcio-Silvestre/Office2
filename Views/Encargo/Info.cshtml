@@ -27,13 +27,19 @@
         <div class="container ">
             <main>
                 <div class="row g-5 justify-content-center mt-1 ">
-                    <div class="col-md-7 col-lg-8 py-5 shadow-lg s mt-3 bg-white">
-                        @if (@TempData["ErrorMessage"] != null)
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                @TempData["ErrorMessage"]
-                            </div>
-                        }
+                    <div id="create" class="col-md-7 col-lg-8 py-5 shadow-lg s mt-3 bg-white">
+                    @if (@TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["ErrorMessage"]
+                        </div>
+                    }
+                    @if (@TempData["Message"] != null)
+                    {
+                        <div class="alert alert-primary" role="alert">
+                            @TempData["Message"]
+                        </div>
+                    }
 
                     <h5 class="mb-3" >Encargo de Oficina</h5>
                         <div class="row g-3">
@@ -49,7 +55,7 @@
 
                             <div class="col-12">
                                 <label for="descProblema" class="form-label">Descrição do Problema</label>
-                                <input type="text" class="form-control" id="descProblema" name="descProblema" value="@Model.descProblema" readonly style="height:max-content"></input>
+                            <textarea type="text" class="form-control" id="descProblema" readonly style="height:max-content">@Model.descProblema</textarea>
                             </div>
 
                             <div class="col-6">

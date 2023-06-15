@@ -165,6 +165,44 @@ namespace Office.Dataset
         }
 
         /// <summary>
+        /// Método para obter todos os encargos para validar
+        /// </summary>
+        /// <returns>retorna null ou a lista de encargos em intervenção</returns>
+        public static List<EncargoViewModel>? AllByMolde(int id)
+        {
+            _adapter = new SqlDataAdapter("AllEncargoByMolde", _connection);
+            _adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            _adapter.SelectCommand.Parameters.Add(new SqlParameter("id", id));
+            _dataTable = new DataTable();
+            _adapter.Fill(_dataTable);
+            List<EncargoViewModel> encargos = new List<EncargoViewModel>();
+            if (_dataTable.Rows.Count > 0)
+            {
+                for (int x = 0; x < _dataTable.Rows.Count; x++)
+                {
+                    EncargoViewModel encargo = new();
+                    encargo.id = Convert.ToInt32(_dataTable.Rows[x][0]);
+                    encargo.descProblema = Convert.ToString(_dataTable.Rows[x][3]);
+                    encargo.dataNecMeio = Convert.ToDateTime(_dataTable.Rows[x][4]);
+                    encargo.data = Convert.ToDateTime(_dataTable.Rows[x][1]);
+                    encargo.nrEncargo = Convert.ToString(_dataTable.Rows[x][2]);
+                    encargo.entidade = Convert.ToString(_dataTable.Rows[x][6]);
+                    encargo.estado = Convert.ToString(_dataTable.Rows[x][8]);
+                    encargo.molde = Convert.ToString(_dataTable.Rows[x][7]);
+                    encargo.prioridade = Convert.ToString(_dataTable.Rows[x][9]);
+                    encargo.nrInt = Convert.ToInt32(_dataTable.Rows[x][10]);
+                    encargo.descMolde = Convert.ToString(_dataTable.Rows[x][11]);
+                    encargo.estadoId = Convert.ToInt32(_dataTable.Rows[x][12]);
+
+
+                    encargos.Add(encargo);
+                }
+                return encargos;
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Cria um encargo
         /// </summary>
         /// <param name="encargo">modelo de encargo</param>
@@ -242,5 +280,57 @@ namespace Office.Dataset
             }
             return true;
         }
+
+        public static List<EncargoViewModel>? GetEncargosCompleted()
+        {
+            _adapter = new SqlDataAdapter("GetEncargosCompleted", _connection);
+            _adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            _dataTable = new DataTable();
+            _adapter.Fill(_dataTable);
+            List<EncargoViewModel> encargos = new List<EncargoViewModel>();
+            if (_dataTable.Rows.Count > 0)
+            {
+                for (int x = 0; x < _dataTable.Rows.Count; x++)
+                {
+                    EncargoViewModel encargo = new();
+                    encargo.id = Convert.ToInt32(_dataTable.Rows[x][0]);
+                    encargo.descProblema = Convert.ToString(_dataTable.Rows[x][3]);
+                    encargo.dataNecMeio = Convert.ToDateTime(_dataTable.Rows[x][4]);
+                    encargo.data = Convert.ToDateTime(_dataTable.Rows[x][1]);
+                    encargo.nrEncargo = Convert.ToString(_dataTable.Rows[x][2]);
+                    encargo.entidade = Convert.ToString(_dataTable.Rows[x][6]);
+                    encargo.estado = Convert.ToString(_dataTable.Rows[x][8]);
+                    encargo.molde = Convert.ToString(_dataTable.Rows[x][7]);
+                    encargo.prioridade = Convert.ToString(_dataTable.Rows[x][9]);
+                    encargo.nrInt = Convert.ToInt32(_dataTable.Rows[x][10]);
+                    encargo.validQual = Convert.ToInt32(_dataTable.Rows[x][11]);
+                    encargo.descMolde = Convert.ToString(_dataTable.Rows[x][12]);
+                    encargo.estadoId = Convert.ToInt32(_dataTable.Rows[x][13]);
+
+
+                    //encargo.dataConc = Convert.ToDateTime(_dataTable.Rows[x][5]);
+                    encargos.Add(encargo);
+                }
+                return encargos;
+            }
+            return null;
+        }
+
+        public static bool Delete(int id)
+        {
+
+            _adapter = new SqlDataAdapter("deleteAllByEncargo", _connection);
+            _adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            _adapter.SelectCommand.Parameters.Add(new SqlParameter("@id", id));
+            _dataTable = new DataTable();
+            _adapter.Fill(_dataTable);
+            if (_dataTable.Rows.Count > 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
+
+
 }
