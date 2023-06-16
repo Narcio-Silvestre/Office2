@@ -70,7 +70,7 @@
                                         <td>
                                             <div style="display:flex; justify-content:center; gap:2px;" >
                                                 <a role="button" asp-action="Info" asp-controller="Molde" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm  btn-primary"> <i class="bi bi-eye-fill"></i></a>
-                                                <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm btn-info"> <i class="bi bi-cloud-download"></i></a>
+                                                <a asp-action="InfoMolde" asp-controller="Pdf" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm btn-info"> <i class="bi bi-cloud-download"></i></a>
 
                                                 @if (@ViewBag.UserFuncId==1){
                                                     <a role="button" asp-action="Edit" asp-controller="Molde" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm  btn-warning"> <i class="bi bi-pencil-square"></i></a>
