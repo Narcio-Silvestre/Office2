@@ -33,7 +33,7 @@ namespace Office.Controllers
         public ActionResult Create(IntervencaoModel aux, IEnumerable<IFormFile> files)
         {
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
-            if (_session?.funcaoid != 4  && _session?.funcaoid != 1)
+            if (_session?.funcaoid != 4  && _session?.funcaoid != 1 &&  _session?.funcaoid != 5)
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para executar intervenções.\n Por favor, contate o administrador do sistema para mais informações.";
                 return RedirectToAction("Alert", "Encargo");

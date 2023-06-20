@@ -70,7 +70,7 @@ namespace Office.Controllers
             _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
             string caminhoPasta = path + "\\Imagens\\";
 
-            if (_session.funcaoid != 1 && _session.funcaoid != 2)
+            if (_session.funcaoid != 1 && _session.funcaoid != 2 && _session.funcaoid != 5)
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para criar encargos.\n Por favor, contate o administrador do sistema para mais informações.";
                 return RedirectToAction("Alert","Encargo");

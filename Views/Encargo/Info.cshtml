@@ -130,7 +130,7 @@
 
                         <div class="accordion" id="accordionPanelsStayOpenExample">
                         
-                            @if ((Model.estadoId == 2) && (ViewBag.UserFuncId == 4 || ViewBag.UserFuncId==1) )
+                            @if ((Model.estadoId == 2) && (ViewBag.UserFuncId == 4 || ViewBag.UserFuncId==1 || ViewBag.UserFuncId == 5) )
                             {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
@@ -239,7 +239,7 @@
                                             </div>
                                
                                             @{
-                                                if (ViewBag.interAtual.valProducao == -1 && ViewBag.UserFuncId == 2 )
+                                                if (ViewBag.interAtual.valProducao == -1 && (ViewBag.UserFuncId == 2 || ViewBag.UserFuncId == 5) )
                                                 {
                                                     <div class="accordion-item mt-2">
                                                         <h2 class="accordion-header">
@@ -322,7 +322,7 @@
                                                     </div>
                                                 }
                                             }
-                                            @if((ViewBag.interAtual.valQualidade == -1) && (Model.validQual==1) && (ViewBag.UserFuncId == 3))
+                                            @if((ViewBag.interAtual.valQualidade == -1) && (Model.validQual==1) && (ViewBag.UserFuncId == 3 || ViewBag.UserFuncId == 5))
                                             {
                                                 <div class="accordion-item mt-2">
                                                     <h2 class="accordion-header">

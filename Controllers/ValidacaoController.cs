@@ -31,7 +31,7 @@ namespace Office.Controllers
         {
             ValidacaoModel data = new ValidacaoModel();
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
-            if (_session?.funcaoid != 2)
+            if (_session?.funcaoid != 2 && _session.funcaoid != 5)
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para validar intervenções da área da produção.\n Por favor, contate o administrador do sistema para mais informações.";
                 return RedirectToAction("Alert", "Encargo");
@@ -60,10 +60,10 @@ namespace Office.Controllers
         {
             ValidacaoModel data = new ValidacaoModel();
             var _session = JsonSerializer.Deserialize<SessionKeys>(HttpContext.Session.GetString("User"));
-            if (_session?.funcaoid != 3)
+            if (_session?.funcaoid != 3 && _session.funcaoid != 5)
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para validar intervenções da área da qualidade.\n Por favor, contate o administrador do sistema para mais informações.";
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Alert","Encargo");
             }
             if (aux.descricao.IsEmpty() || aux.aprovado < 0 || aux.aprovado > 1)
             {
