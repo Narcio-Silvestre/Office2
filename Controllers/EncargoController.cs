@@ -73,7 +73,7 @@ namespace Office.Controllers
             if (_session.funcaoid != 1 && _session.funcaoid != 2)
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para criar encargos.\n Por favor, contate o administrador do sistema para mais informações.";
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Alert","Encargo");
             }
 
             if (encargo.moldeid<1 || encargo.descProblema.IsEmpty())

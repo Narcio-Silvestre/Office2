@@ -117,6 +117,9 @@
                                                     <div class="modal-body">
                                                         <img src="/Imagens/@ViewBag.anexos[x].desc" width="100%" />
                                                     </div>
+                                                <div class="modal-footer" style="border-color:transparent">
+                                                    <a href="/Imagens/@ViewBag.anexos[x].desc" download><button class="btn btn-primary" data-bs-target="#staticBackdrop@(x)" data-bs-toggle="modal">Download</button></a>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -225,8 +228,7 @@
                                                                             <img src="/Imagens/@ViewBag.anexosInt[x].desc" width="100%" />
                                                                         </div>
                                                                     <div class="modal-footer" style="border-color:transparent" >
-                                                                        <button class="btn btn-primary" data-bs-target="#example2@(x - 1)" data-bs-toggle="modal">Back</button>
-                                                                        <button class="btn btn-primary" data-bs-target="#example2@(x + 1)" data-bs-toggle="modal">Next</button>
+                                                                        <a href="/Imagens/@ViewBag.anexosInt[x].desc" download><button class="btn btn-primary" data-bs-target="#example2@(x)" data-bs-toggle="modal">Download</button></a>
                                                                     </div>
                                                                     </div>
                                                                 </div>

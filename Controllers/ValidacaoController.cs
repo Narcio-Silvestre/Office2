@@ -34,7 +34,7 @@ namespace Office.Controllers
             if (_session?.funcaoid != 2)
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para validar intervenções da área da produção.\n Por favor, contate o administrador do sistema para mais informações.";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Alert", "Encargo");
             }
             if (aux.descricao.IsEmpty() || aux.aprovado < 0 || aux.aprovado > 1)
             {

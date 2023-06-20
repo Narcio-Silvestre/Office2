@@ -36,7 +36,7 @@ namespace Office.Controllers
             if (_session?.funcaoid != 4  && _session?.funcaoid != 1)
             {
                 TempData["ErrorMessage"] = "Desculpe, você não tem permissão para executar intervenções.\n Por favor, contate o administrador do sistema para mais informações.";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Alert", "Encargo");
             }
             
             if (aux.descricao.IsEmpty() || aux.extInt<0 || aux.extInt > 1)
