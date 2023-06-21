@@ -44,5 +44,31 @@ namespace Office.Dataset
             }
             return null;
         }
+
+
+        public static UserModel? Create2(string login)
+        {
+            if (login == null) { return null; }
+            _adapter = new SqlDataAdapter("Login2", _connection);
+            _adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            _dataTable = new DataTable();
+            _adapter.SelectCommand.Parameters.Add(new SqlParameter("@name", login));
+            DataTable vn = new();
+            _adapter.Fill(vn);
+            if (vn.Rows.Count > 0)
+            {
+
+                if (vn.Rows[0][2].ToString() == login)
+                {
+
+                    UserModel user = new UserModel();
+                    user.Name = vn.Rows[0][2].ToString();
+                    user.Id = vn.Rows[0][3].ToString();
+                    user.FuncId = Convert.ToInt32(vn.Rows[0][4]);
+                    return user;
+                }
+            }
+            return null;
+        }
     }
 }

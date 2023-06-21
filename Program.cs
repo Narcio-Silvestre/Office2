@@ -28,7 +28,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=login}/{action=index}/{id?}");
+    pattern: "{controller=login}/{action=index2}/{id?}");
 
 Rotativa.AspNetCore.RotativaConfiguration.Setup(app.Environment.WebRootPath,"../Rotativa");
 app.Run();

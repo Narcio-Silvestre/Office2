@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Home\Alert.cshtml" />
+    <Content Remove="wwwroot\Imagens\sea-clouds-horizon-beach-calm-nature-1523161-wallhere.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +22,8 @@
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
+    <None Include="wwwroot\anexos\sea-clouds-horizon-beach-calm-nature-1523161-wallhere.jpg" />
+    <None Include="wwwroot\Imagens\sea-clouds-horizon-beach-calm-nature-1523161-wallhere.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,10 +44,6 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.Net.Primitives" Version="4.3.1" />
     <PackageReference Include="System.Text.Json" Version="7.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\anexos\" />
   </ItemGroup>
 
 </Project>
