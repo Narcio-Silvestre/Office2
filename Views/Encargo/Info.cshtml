@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="col-6">
-                                <label for="dataNecMeio" class="form-label">Data Necessidade Meio</label>
+                            <label for="dataNecMeio" class="form-label">Data de Necessidade do Meio <span class="text-muted">(Opcional)</span></label>
                                 <input type="text" class="form-control" id="dataNecMeio" name="dataNecMeio" value="@DateOnly.FromDateTime(@Model.dataNecMeio)" readonly>
                             </div>
 
@@ -145,7 +145,7 @@
                                                     <div class="col-md-4">
                                                         <label class="form-check-label" for="extInt">É necessário intervenção externa?</label>
                                                         <select class="form-select" id="extInt" name="extInt" required>
-                                                            <option value="-1">Escolher...</option>
+                                                            <option value="">Escolher...</option>
                                                             <option value="1">Sim</option>
                                                             <option value="0">Não</option>
                                                         </select>
@@ -255,7 +255,7 @@
                                                                             <label for="aprovado" class="form-label">Aprovado?</label>
 
                                                                             <select class="form-select" id="aprovado" name="aprovado" required="">
-                                                                                <option value="-1">Escolher...</option>
+                                                                                <option value="">Escolher...</option>
                                                                                 <option value="1">Sim</option>
                                                                                 <option value="0">Não</option>
                                                                             </select>
@@ -337,7 +337,7 @@
                                                                     <div class="col-md-4">
                                                                         <label for="aprovado" class="form-label">Aprovado?</label>
                                                                         <select class="form-select" id="aprovado" name="aprovado" required="">
-                                                                            <option value="-1">Escolher...</option>
+                                                                            <option value="">Escolher...</option>
                                                                             <option value="1">Sim</option>
                                                                             <option value="0">Não</option>
                                                                         </select>

@@ -99,6 +99,11 @@ namespace Office.Controllers
 
             encargo.entidadeid =_session.Id;
             encargo.anexos = list;
+            if(encargo.dataNecMeio < DateTime.Today)
+            {
+                encargo.dataNecMeio = DateTime.Now;
+
+            }
             EncargoDataSet.Create(encargo);
             return RedirectToAction("Index","Home");
         }
