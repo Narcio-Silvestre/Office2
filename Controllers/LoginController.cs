@@ -59,6 +59,33 @@ namespace Office.Controllers
         }
 
         /// <summary>
+        /// Método para fazer o login na aaplicação
+        /// </summary>
+        /// <param name="login">modelo de login</param>
+        /// <returns>a página home se for bem-sucedido ou a página inicial de login caso falhe</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create2(string login)
+        {
+
+            UserModel dat = LoginDataSet.Create2(login);
+            if (dat != null)
+            {
+                UserModel model = dat;
+                HttpContext.Session.SetString("User", JsonSerializer.Serialize(new SessionKeys()
+                {
+                    Id = Convert.ToInt32(model.Id),
+                    Name = model.Name,
+                    funcaoid = model.FuncId
+                }));
+                Console.WriteLine(login);
+                return RedirectToAction("Create", "Encargo");
+            }
+            TempData["ErrorMessage"] = "Usuário não encontrado";
+            return RedirectToAction("Index2", "Login");
+        }
+
+        /// <summary>
         /// Método para terminar a sessão no site
         /// </summary>
         /// <returns>retorna a página de login</returns>
@@ -67,6 +94,13 @@ namespace Office.Controllers
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Out2()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index2");
         }
     }
 }

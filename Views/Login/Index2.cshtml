@@ -142,10 +142,18 @@ body {
         <img id="imgLogin" src="~/Imagens/sea-clouds-horizon-beach-calm-nature-1523161-wallhere.jpg" style="width: 100%;" />
 
         <div class="form-signin" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
-            <form>
+
+            
+            <form asp-action="Create2" asp-controller="Login" asp-route-login="@User.Identity.Name">
+                @if (@TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-info" role="alert">
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
                 <h1 id="current-time"></h1>
-                <h1 class="h3 mb-3 fw-bolder">Fehst Components</h1>
-                <a asp-action="Create" asp-controller="Encargo"  class="btn btn-primary w-100 py-2" type="button">Continuar</a>
+                <h1 class="h3 mb-3 fw-bolder">Fehst Components </h1>
+                <button class="btn btn-primary w-100 py-2" type="submit">Continuar</button>
             </form>
         </div>
     </div>
