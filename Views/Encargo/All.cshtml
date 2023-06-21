@@ -19,10 +19,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                            @if (ViewBag.encargo != null)
+                            {
                                     @for (int x = 0; x < ViewBag.encargo.Count; x++)
                                     {
-                                @if (ViewBag.encargo != null)
-                                {
+                                
 
                                     if (@ViewBag.encargo[x].estadoId == 1)
                                     {
