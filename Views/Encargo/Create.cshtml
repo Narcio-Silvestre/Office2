@@ -42,10 +42,19 @@
 
           #checkboxes label:hover {
            }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+            .fade-in.active {
+                opacity: 1;
+            }
         </style>
     </head>
     <body >
-        <div class="container ">
+        <div class="container " >
             <main>
                 <div class="row g-5 justify-content-center mt-2 ">
                     <div id="create" class="col-md-7 col-lg-8 py-5 bg-white shadow-lg s mt-3">

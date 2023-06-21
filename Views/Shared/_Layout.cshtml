@@ -12,9 +12,18 @@
         <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
-        
+    <style>
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+            .fade-in.active {
+                opacity: 1;
+            }
+    </style>
     </head>
-    <body>
+<body >
         <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navnav">
             <div class="container-fluid">
@@ -124,14 +133,20 @@
 
         </header>
         <div class="container">
-           
-            <main role="main" class="pb-3">
+
+        <main role="main" class="pb-3 fade-in" id="page">
                 <div class="container-fluid">
                 @RenderBody()
                 </div>
             </main>
             
         </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var page = document.getElementById("page");
+            page.classList.add("active");
+        });
+        </script>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/sc-2.1.1/datatables.min.js"></script>

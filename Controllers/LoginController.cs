@@ -23,6 +23,16 @@ namespace Office.Controllers
         }
 
         /// <summary>
+        /// Método para obter a página de login
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Index2()
+        {
+            return View();
+        }
+
+        /// <summary>
         /// Método para fazer o login na aaplicação
         /// </summary>
         /// <param name="login">modelo de login</param>
