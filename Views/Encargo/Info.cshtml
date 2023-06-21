@@ -197,7 +197,7 @@
 
                                                 <div class="col-6">
                                                     <label for="dataint" class="form-label">Data</label>
-                                                    <input type="text" class="form-control" id="dataint" name="dataint" value="@ViewBag.interAtual.data" readonly>
+                                                    <input type="text" class="form-control" id="dataint" name="dataint" value="@DateOnly.FromDateTime(@ViewBag.interAtual.data)" readonly>
                                                 </div>
 
                                                 <div class="col-md-4">
@@ -300,7 +300,7 @@
 
                                                                     <div class="col-6">
                                                                         <label for="dataval" class="form-label">Data</label>
-                                                                        <input type="text" class="form-control" id="dataval" name="dataval" value="@ViewBag.interAtual.dataValProd" readonly>
+                                                                        <input type="text" class="form-control" id="dataval" name="dataval" value="@DateOnly.FromDateTime(@ViewBag.interAtual.dataValProd)" readonly>
                                                                     </div>
                                                                     @if (@ViewBag.interAtual.valProducao == 1)
                                                                     {
@@ -383,7 +383,7 @@
 
                                                                 <div class="col-6">
                                                                     <label for="dataval" class="form-label">Data</label>
-                                                                    <input type="text" class="form-control" id="dataval" name="dataval" value="@ViewBag.interAtual.dataValQual" readonly>
+                                                                    <input type="text" class="form-control" id="dataval" name="dataval" value="@DateOnly.FromDateTime(@ViewBag.interAtual.dataValQual)" readonly>
                                                                 </div>
                                                                 @if (@ViewBag.interAtual.valQualidade == 1)
                                                                 {
@@ -437,7 +437,7 @@
 
                                                     <div class="col-6">
                                                         <label for="dataint" class="form-label">Data</label>
-                                                        <input type="text" class="form-control" id="dataint" name="dataint" value="@ViewBag.interAll[x].data" readonly>
+                                                        <input type="text" class="form-control" id="dataint" name="dataint" value="@DateOnly.FromDateTime(@ViewBag.interAll[x].data)" readonly>
                                                     </div>
 
                                                     <div class="col-md-4">
@@ -503,7 +503,7 @@
 
                                                                 <div class="col-6">
                                                                     <label for="dataval" class="form-label">Data</label>
-                                                                    <input type="text" class="form-control" id="dataval" name="dataval" value="@ViewBag.interAll[x].dataValProd" readonly>
+                                                                    <input type="text" class="form-control" id="dataval" name="dataval" value="@DateOnly.FromDateTime(@ViewBag.interAll[x].dataValProd)" readonly>
                                                                 </div>
                                                                 @if (@ViewBag.interAll[x].valProducao == 1)
                                                                 {
@@ -547,7 +547,7 @@
 
                                                                     <div class="col-6">
                                                                         <label for="dataval" class="form-label">Data</label>
-                                                                        <input type="text" class="form-control" id="dataval" name="dataval" value="@ViewBag.interAll[x].dataValQual" readonly>
+                                                                        <input type="text" class="form-control" id="dataval" name="dataval" value="@DateOnly.FromDateTime(@ViewBag.interAll[x].dataValQual)" readonly>
                                                                     </div>
                                                                     @if (@ViewBag.interAll[x].valQualidade == 1)
                                                                     {
