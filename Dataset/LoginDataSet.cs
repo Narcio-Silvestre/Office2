@@ -58,7 +58,7 @@ namespace Office.Dataset
             if (vn.Rows.Count > 0)
             {
 
-                if (vn.Rows[0][2].ToString() == login)
+                if (vn.Rows[0][0].ToString() == login)
                 {
 
                     UserModel user = new UserModel();
