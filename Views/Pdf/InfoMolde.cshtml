@@ -1,152 +1,43 @@
 ﻿@model MoldeModel
-
+@{
+    Layout = "";
+}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Relatório com Formulário</title>
+   
     <style>
-
-        header{
-            display:none;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        h2 {
-            color: rgb(0,0,0);
-            padding: 10px;
-            text-align: center;
-        }
-
-      
-
-        form {
-            margin-top: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-
-        }
-
-
-
-        #myTextarea {
-          
-            height: auto;
-            min-height: 100px; /* Defina uma altura mínima desejada */
-            overflow: hidden;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
+        input,textarea{
             border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
+            border-bottom:solid 1px;
+            padding: 10px;
+            width: 100%
+                    }
 
         
-
-        /* checkbox-rect */
-        .checkbox-rect input[type="checkbox"] {
-            display: none;
-        }
-
-            .checkbox-rect input[type="checkbox"] + label {
-                display: block;
-                position: relative;
-                padding-left: 35px;
-                margin-bottom: 20px;
-                font: 14px/20px "Open Sans", Arial, sans-serif;
-                cursor: pointer;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-            }
-
-            .checkbox-rect input[type="checkbox"]:hover + label:hover {
-                color: rgb(23, 86, 228);
-            }
-
-            .checkbox-rect input[type="checkbox"]:hover + label:before {
-                background: #50565a;
-                box-shadow: inset 0px 0px 0px 2px #f7f2f2;
-            }
-
-            .checkbox-rect input[type="checkbox"] + label:last-child {
-                margin-bottom: 0;
-            }
-
-            .checkbox-rect input[type="checkbox"] + label:before {
-                content: "";
-                display: block;
-                width: 1.4em;
-                height: 1.4em;
-                border: 1px solid #343a3f;
-                border-radius: 0.2em;
-                position: absolute;
-                left: 0;
-                top: 0;
-                -webkit-transition: all 0.2s, background 0.2s ease-in-out;
-                transition: all 0.2s, background 0.2s ease-in-out;
-                background: #f3f3f3;
-            }
-
-            .checkbox-rect input[type="checkbox"]:checked + label:before {
-                width: 1.3em;
-                height: 1.3em;
-                border-radius: 0.2em;
-                border: 2px solid #fff;
-                -webkit-transform: rotate(90deg);
-                transform: rotate(90deg);
-                background: #50565a;
-                box-shadow: 0 0 0 1px #000;
-            }
-        /* checkbox-rect end */
-        #titles{
-
-            
-            color: rgb(0,0,177);
-        }
-
-       
-         
-          
-            
     </style>
 </head>
 <body>
     <div id="titles">
+     
         <h2>Molde</h2>
     </div>
-   
-    <div class="forma">
+   <hr />
+    <div >
         <div>
-            <label for="nrmolde">Nrº Molde:</label>
-            <input type="text"  id="nrmolde" value="@Model.nrMolde" readonly>
+            <label for="nrmolde">Nrº Molde</label>     <input type="text"  id="nrmolde" value="@Model.nrMolde" >
         </div>
         <div>
-            <label for="fornecedor" >Fornecedor:</label>
-            <input type="text"  id="fornecedor" value="@Model.descricao" readonly>
+            <label for="fornecedor" >Fornecedor</label>
+            <input type="text"  id="fornecedor" value="@Model.descricao" >
         </div>
         <div>
-            <label for="maxshots" >MaxShots:</label>
-            <input type="text"  id="maxshots" value="@Model.maxShots" readonly>
+            <label for="maxshots" >MaxShots</label>
+            <input type="text"  id="maxshots" value="@Model.maxShots" >
         </div>
-        <div>
-            <label for="myTextarea">Descrição: </label>
-            <textarea type="text" id="myTextarea" >@Model.descCompleta</textarea>
+        <div >
+            <label for="myTextarea">Descrição</label>
+            <input type="text" id="myTextarea" value="@Model.descCompleta" >
             
         </div>
         
