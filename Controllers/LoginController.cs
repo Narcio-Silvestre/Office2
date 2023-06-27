@@ -23,7 +23,7 @@ namespace Office.Controllers
         }
 
         /// <summary>
-        /// Método para obter a página de login
+        /// Método para obter a página de login pelo active directory
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -33,7 +33,7 @@ namespace Office.Controllers
         }
 
         /// <summary>
-        /// Método para fazer o login na aaplicação
+        /// Método para fazer o login na aplicação
         /// </summary>
         /// <param name="login">modelo de login</param>
         /// <returns>a página home se for bem-sucedido ou a página inicial de login caso falhe</returns>
@@ -59,7 +59,7 @@ namespace Office.Controllers
         }
 
         /// <summary>
-        /// Método para fazer o login na aaplicação
+        /// Método para fazer o login na aplicação pelo active directory
         /// </summary>
         /// <param name="login">modelo de login</param>
         /// <returns>a página home se for bem-sucedido ou a página inicial de login caso falhe</returns>
@@ -96,6 +96,10 @@ namespace Office.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Método para terminar a sessão pelo active directory
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Out2()
         {

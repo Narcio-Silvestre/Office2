@@ -1,10 +1,9 @@
 ﻿
-    <body >
+    <body>
         <div class="container ">
             <main>
                 <div class="row g-5 justify-content-center mt-1 ">
-                        
-                            <div class="col-md-7 col-lg-8 py-5 bg-white shadow-lg mt-3  table-responsive justify-content-center">
+                        <div class="col-md-7 col-lg-8 py-5 bg-white shadow-lg mt-3  table-responsive justify-content-center">
 
                             <table class="table table-hover tablee" >
                                 <thead>
@@ -17,30 +16,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                            @if (ViewBag.encargo != null)
-                            {
-                                @for (int x = 0; x < ViewBag.encargo.Count; x++)
-                                {
-                                    <tr>
-                                        <td>@ViewBag.encargo[x].molde</td>
-                                        <td>@ViewBag.encargo[x].nrEncargo</td>
-                                        <td>@ViewBag.encargo[x].entidade</td>
-                                        <td>@ViewBag.encargo[x].data</td>
-                                        <td >
-                                            <div class="btn-group">
-                                                <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm  btn-danger"> <i class="bi bi-tools"></i>   </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            }
-                        </tbody>
+                                    @if (ViewBag.encargo != null)
+                                    {
+                                        @for (int x = 0; x < ViewBag.encargo.Count; x++)
+                                        {
+                                            <tr>
+                                                <td>@ViewBag.encargo[x].molde</td>
+                                                <td>@ViewBag.encargo[x].nrEncargo</td>
+                                                <td>@ViewBag.encargo[x].entidade</td>
+                                                <td>@ViewBag.encargo[x].data</td>
+                                                <td >
+                                                    <div class="btn-group">
+                                                        <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm  btn-danger"> <i class="bi bi-tools"></i>   </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
                             </table>
-                    </div>
-
-                       
-
-                   
+                        </div>
                 </div>
             </main>
         </div>

@@ -4,9 +4,7 @@
         <div class="container ">
             <main>
                 <div class="row g-5 justify-content-center mt-1 ">
-                
                         <div id="box-2" class="col-md-7 col-lg-8 py-5 bg-light shadow-lg mt-3 table-responsive justify-content-center">
-
 
                             <table class="table table-hover tablee" >
                                 <thead>
@@ -19,35 +17,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                            @if (ViewBag.encargo != null)
-                            {
-                                    @for (int x = 0; x < ViewBag.encargo.Count; x++)
+                                    @if (ViewBag.encargo != null)
                                     {
+                                            @for (int x = 0; x < ViewBag.encargo.Count; x++)
+                                            {
                                 
 
-                                    if (@ViewBag.encargo[x].estadoId == 1)
-                                    {
-                                        <tr>
-                                            <td>@ViewBag.encargo[x].nrEncargo</td>
-                                            <td>@ViewBag.encargo[x].entidade</td>
-                                            <td>@ViewBag.encargo[x].molde</td>
-                                            <td>@ViewBag.encargo[x].data</td>
-                                            <td>
-                                                <div style="display:flex; justify-content:center; gap:2px;">
-                                                    <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-primary"> <i class="bi bi-eye-fill"></i></a>
-                                                    <a asp-action="Info" asp-controller="Pdf" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-info"> <i class="bi bi-cloud-download"></i></a>
-                                                </div>
+                                            if (@ViewBag.encargo[x].estadoId == 1)
+                                            {
+                                                <tr>
+                                                    <td>@ViewBag.encargo[x].nrEncargo</td>
+                                                    <td>@ViewBag.encargo[x].entidade</td>
+                                                    <td>@ViewBag.encargo[x].molde</td>
+                                                    <td>@ViewBag.encargo[x].data</td>
+                                                    <td>
+                                                        <div style="display:flex; justify-content:center; gap:2px;">
+                                                            <a asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-primary"> <i class="bi bi-eye-fill"></i></a>
+                                                            <a asp-action="Info" asp-controller="Pdf" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-info"> <i class="bi bi-cloud-download"></i></a>
+                                                        </div>
 
-                                            </td>
-                                        </tr>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
                                     }
-                                }
-                            }
                                 </tbody>
                             </table>
-                             </div>
-
-                       
+                        </div>
                 </div>
             </main>
         </div>

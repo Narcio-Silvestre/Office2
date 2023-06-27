@@ -12,6 +12,11 @@ namespace Office.Controllers
         SessionKeys? _session;
         string path;
 
+        /// <summary>
+        /// Método para obter o pdf do encargo pelo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Info(int id)
         {
@@ -46,9 +51,14 @@ namespace Office.Controllers
             };
         }
 
+
+        /// <summary>
+        /// Método para obter o pdf do molde pelo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IActionResult InfoMolde(int id)
         {
-           
 
             MoldeModel? dat = MoldeDataSet.Get(id);
             MoldeModel model = new MoldeModel();

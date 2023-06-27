@@ -159,13 +159,11 @@ namespace Office.Dataset
             return null;
         }
 
-
-
         /// <summary>
-        /// Edita a descrição de um encargo
+        /// Método para criar um molde
         /// </summary>
-        /// <param name="encargo">modelo de vista de encargo</param>
-        /// <returns>retorna verdadeiro se for bem-sucedido,e falso se for o contrário</returns>
+        /// <param name="molde"></param>
+        /// <returns></returns>
         public static bool Create(MoldeModel molde)
         {
 
@@ -193,7 +191,11 @@ namespace Office.Dataset
             return true;
         }
 
-        
+        /// <summary>
+        /// Método para editar um molde
+        /// </summary>
+        /// <param name="molde"></param>
+        /// <returns></returns>
         public static bool Edit(MoldeModel molde)
         {
 
@@ -214,6 +216,11 @@ namespace Office.Dataset
             return true;
         }
 
+        /// <summary>
+        /// Método para apagar um molde
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static bool Delete(int id)
         {
 

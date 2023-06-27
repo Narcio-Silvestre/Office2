@@ -21,36 +21,33 @@
                             </thead>
                             <tbody>
                                 @if (ViewBag.encargo != null)
-                            {
-                                @for (int x = 0; x < ViewBag.encargo.Count; x++)
                                 {
-                                    if (@ViewBag.encargo[x].estadoId == 2)
+                                    @for (int x = 0; x < ViewBag.encargo.Count; x++)
                                     {
-                                        <tr>
-                                            <td>@ViewBag.encargo[x].nrEncargo</td>
-                                            <td>@ViewBag.encargo[x].entidade</td>
-                                            <td>@ViewBag.encargo[x].molde</td>
-                                            <td>@ViewBag.encargo[x].data</td>
-                                            <td>
-                                                <div style="display:flex; justify-content:center; gap:2px;">
-                                                    <a asp-action="Edit2" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-warning"> <i class="bi bi-pencil-square"></i></a>
-                                                    @if (@ViewBag.UserFuncId == 1)
-                                                    {
-                                                        <a role="button" asp-action="Delete" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm  btn-danger"> <i class="bi bi-trash"></i></a>
+                                        if (@ViewBag.encargo[x].estadoId == 2)
+                                        {
+                                            <tr>
+                                                <td>@ViewBag.encargo[x].nrEncargo</td>
+                                                <td>@ViewBag.encargo[x].entidade</td>
+                                                <td>@ViewBag.encargo[x].molde</td>
+                                                <td>@ViewBag.encargo[x].data</td>
+                                                <td>
+                                                    <div style="display:flex; justify-content:center; gap:2px;">
+                                                        <a asp-action="Edit2" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm btn-warning"> <i class="bi bi-pencil-square"></i></a>
+                                                        @if (@ViewBag.UserFuncId == 5)
+                                                        {
+                                                            <a role="button" asp-action="Delete" asp-controller="Encargo" asp-route-id="@ViewBag.encargo[x].id" class="btn btn-sm  btn-danger"> <i class="bi bi-trash"></i></a>
 
-                                                    }
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                        }
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
                                     }
                                 }
-                            }
-                        </tbody>
+                            </tbody>
                         </table>
-                </div>
-
-                    
-                   
+                    </div>
             </div>
         </main>
     </div>

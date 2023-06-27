@@ -220,7 +220,7 @@ namespace Office.Controllers
         }
 
         /// <summary>
-        /// Método para obter a página para editar o encargo
+        /// Método para obter a página para editar os encargos
         /// </summary>
         /// <param name="id">id do encargo</param>
         /// <returns>a página para editar o encargo</returns>
@@ -241,7 +241,12 @@ namespace Office.Controllers
             return View();
         }
 
-        
+        /// <summary>
+        /// Método para editar um encargo pelo seu id
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="id"></param>
+        /// <returns>a página inicial</returns>
         [HttpPost]
         public IActionResult Edit(string desc,int id)
         {
@@ -254,6 +259,11 @@ namespace Office.Controllers
             return RedirectToAction("Index","Home");
         }
 
+        /// <summary>
+        /// Método para obter a página de editar um encargo pelo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Edit2(int id)
         {
@@ -263,6 +273,10 @@ namespace Office.Controllers
             return View(encargo);
         }
 
+        /// <summary>
+        /// Método para página de alertas
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Alert()
         {
@@ -270,6 +284,11 @@ namespace Office.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Método para deletar um encargo pleo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Delete(int id)
         {

@@ -101,23 +101,23 @@
                             </thead>
                             <tbody>
                                  @if (ViewBag.encargoVal != null)
-                            {
-                                @for (int x = 0; x < ViewBag.encargoVal.Count; x++)
                                 {
-                                    <tr>
-                                        <td>@ViewBag.encargoVal[x].molde</td>
-                                        <td>@ViewBag.encargoVal[x].nrEncargo</td>
-                                        <td>@ViewBag.encargoVal[x].entidade</td>
-                                        <td>@ViewBag.encargoVal[x].data</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargoVal[x].id" class="btn btn-sm  btn-primary">Ver <i class="bi bi-eye-fill"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @for (int x = 0; x < ViewBag.encargoVal.Count; x++)
+                                    {
+                                        <tr>
+                                            <td>@ViewBag.encargoVal[x].molde</td>
+                                            <td>@ViewBag.encargoVal[x].nrEncargo</td>
+                                            <td>@ViewBag.encargoVal[x].entidade</td>
+                                            <td>@ViewBag.encargoVal[x].data</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a role="button" asp-action="Info" asp-controller="Encargo" asp-route-id="@ViewBag.encargoVal[x].id" class="btn btn-sm  btn-primary">Ver <i class="bi bi-eye-fill"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
                                 }
-                            }
-                        </tbody>
+                            </tbody>
                         </table>
                     
                     

@@ -39,33 +39,33 @@
                         </div>
                     }
                     <form  asp-action="Edit" asp-controller="Encargo" asp-route-id="@Model.id">
-                    <h5 class="mb-3">Encargo de Oficina</h5>
-                    <div class="row g-3">
-                        <div class="col-4">
-                            <label for="Responsavel" class="form-label">Requerente </label>
-                            <input type="text" class="form-control" id="Responsavel" name="entidade" value="@Model.entidade" readonly>
-                        </div>
-
-                        <div class="col-4">
-                            <label for="molde" class="form-label">Molde </label>
-                            <input type="text" class="form-control" id="molde" name="molde" value="@Model.molde" readonly>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="descProblema" class="form-label">Descrição do Problema</label>
-                                <textarea class="form-control" id="descProblema" name="descProblema" readonly style="height:12vh">@Model.descProblema</textarea>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="descProblema2" class="form-label">Adicionar Descrição</label>
-                            <textarea type="text" class="form-control input-lg" id="descProblema2" name="desc" required style="height:12vh"></textarea>
-                        </div>
-
-                            <div class="col-12">
-                                <button class=" btn btn-primary mx-auto my-auto mt-2" type="submit">Adicionar</button>
+                        <h5 class="mb-3">Encargo de Oficina</h5>
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <label for="Responsavel" class="form-label">Requerente </label>
+                                <input type="text" class="form-control" id="Responsavel" name="entidade" value="@Model.entidade" readonly>
                             </div>
 
-                    </div>
+                            <div class="col-4">
+                                <label for="molde" class="form-label">Molde </label>
+                                <input type="text" class="form-control" id="molde" name="molde" value="@Model.molde" readonly>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="descProblema" class="form-label">Descrição do Problema</label>
+                                    <textarea class="form-control" id="descProblema" name="descProblema" readonly style="height:12vh">@Model.descProblema</textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="descProblema2" class="form-label">Adicionar Descrição</label>
+                                <textarea type="text" class="form-control input-lg" id="descProblema2" name="desc" required style="height:12vh"></textarea>
+                            </div>
+
+                                <div class="col-12">
+                                    <button class=" btn btn-primary mx-auto my-auto mt-2" type="submit">Adicionar</button>
+                                </div>
+
+                        </div>
                     </form>
                 </div>
             </div>

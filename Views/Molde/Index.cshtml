@@ -5,55 +5,61 @@
             <div class="row g-5 justify-content-center mt-1 ">
 
 
-                @if (@TempData["ErrorMessage"] != null)
-                {
-                    <div class="col-md-7 col-lg-8  py-5 alert-danger shadow-lg mt-3 table-responsive justify-content-center">
+                    @if (@TempData["ErrorMessage"] != null)
+                    {
+                        <div class="col-md-7 col-lg-8  py-5 alert-danger shadow-lg mt-3 table-responsive justify-content-center">
 
-                        <h6>  @TempData["ErrorMessage"] </h6>
-                    </div>
-                }
-                @if (@TempData["Message"] != null)
-                {
-                    <div class="col-md-7 col-lg-8  py-5 alert-danger shadow-lg mt-3 table-responsive justify-content-center">
+                            <h6>  @TempData["ErrorMessage"] </h6>
+                        </div>
+                    }
+                    @if (@TempData["Message"] != null)
+                    {
+                        <div class="col-md-7 col-lg-8  py-5 alert-danger shadow-lg mt-3 table-responsive justify-content-center">
 
-                        <h6> @TempData["Message"] </h6>
-                    </div>
-                }
+                            <h6> @TempData["Message"] </h6>
+                        </div>
+                    }
                     @if (ViewBag.allMoldes != null)
                     {
-                    <div class="col-md-7 col-lg-8  py-5 bg-white shadow-lg mt-3 table-responsive justify-content-center">
+                        <div class="col-md-7 col-lg-8  py-5 bg-white shadow-lg mt-3 table-responsive justify-content-center">
 
-                        <table class="table table-hover tablee ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Molde</th>
-                                    <th scope="col">Descrição</th>
-                                    <th scope="col">Estado</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                                @for (int x = 0; x < ViewBag.allMoldes.Count; x++)
-                                {
+                            <table class="table table-hover tablee ">
+                                <thead>
                                     <tr>
-                                        <td>@ViewBag.allMoldes[x].nrMolde</td>
-                                        <td>@ViewBag.allMoldes[x].descricao</td>
-                                        @{
-                                            if (ViewBag.molIntv != null)
-                                            {
-                                                int has = 0;
-                                                @for (int y = 0; y < ViewBag.molIntv.Count; y++)
+                                        <th scope="col">Molde</th>
+                                        <th scope="col">Descrição</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                               
+                                    @for (int x = 0; x < ViewBag.allMoldes.Count; x++)
+                                    {
+                                        <tr>
+                                            <td>@ViewBag.allMoldes[x].nrMolde</td>
+                                            <td>@ViewBag.allMoldes[x].descricao</td>
+                                            @{
+                                                if (ViewBag.molIntv != null)
                                                 {
-                                                    if (ViewBag.molIntv[y].id == ViewBag.allMoldes[x].id)
+                                                    int has = 0;
+                                                    @for (int y = 0; y < ViewBag.molIntv.Count; y++)
                                                     {
-                                                        has = 1;
+                                                        if (ViewBag.molIntv[y].id == ViewBag.allMoldes[x].id)
+                                                        {
+                                                            has = 1;
+                                                        }
                                                     }
-                                                }
-                                                if (has == 1)
-                                                {
-                                                    <td>Em Uso</td>
-                                                    has = 0;
+                                                    if (has == 1)
+                                                    {
+                                                        <td>Em Uso</td>
+                                                        has = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>Disponível</td>
+                                                    }
+
                                                 }
                                                 else
                                                 {
@@ -61,62 +67,53 @@
                                                 }
 
                                             }
-                                            else
-                                            {
-                                                <td>Disponível</td>
-                                            }
+                                            <td>
+                                                <div style="display:flex; justify-content:center; gap:2px;" >
+                                                    <a role="button" asp-action="Info" asp-controller="Molde" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm  btn-primary"> <i class="bi bi-eye-fill"></i></a>
+                                                    <a asp-action="InfoMolde" asp-controller="Pdf" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm btn-info"> <i class="bi bi-cloud-download"></i></a>
 
-                                        }
-                                        <td>
-                                            <div style="display:flex; justify-content:center; gap:2px;" >
-                                                <a role="button" asp-action="Info" asp-controller="Molde" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm  btn-primary"> <i class="bi bi-eye-fill"></i></a>
-                                                <a asp-action="InfoMolde" asp-controller="Pdf" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm btn-info"> <i class="bi bi-cloud-download"></i></a>
-
-                                                @if (@ViewBag.UserFuncId==1 || @ViewBag.UserFuncId==5){
-                                                    <a role="button" asp-action="Edit" asp-controller="Molde" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm  btn-warning"> <i class="bi bi-pencil-square"></i></a>
-                                                    @if (@ViewBag.UserFuncId == 5)
-                                                    {
-                                                        @if (@ViewBag.molSemEnc != null)
+                                                    @if (@ViewBag.UserFuncId==1 || @ViewBag.UserFuncId==5){
+                                                        <a role="button" asp-action="Edit" asp-controller="Molde" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm  btn-warning"> <i class="bi bi-pencil-square"></i></a>
+                                                        @if (@ViewBag.UserFuncId == 5)
                                                         {
-                                                            for (int d = 0; d < ViewBag.molSemEnc.Count; d++)
+                                                            @if (@ViewBag.molSemEnc != null)
                                                             {
-                                                                if (ViewBag.molSemEnc[d].id == ViewBag.allMoldes[x].id)
+                                                                for (int d = 0; d < ViewBag.molSemEnc.Count; d++)
                                                                 {
-                                                                    <a role="button" asp-action="Delete" asp-controller="Molde" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm  btn-danger"> <i class="bi bi-trash"></i></a>
+                                                                    if (ViewBag.molSemEnc[d].id == ViewBag.allMoldes[x].id)
+                                                                    {
+                                                                        <a role="button" asp-action="Delete" asp-controller="Molde" asp-route-id="@ViewBag.allMoldes[x].id" class="btn btn-sm  btn-danger"> <i class="bi bi-trash"></i></a>
 
+                                                                    }
                                                                 }
                                                             }
                                                         }
-                                                    }
                                                    
-                                                }
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                        @if (@ViewBag.UserFuncId == 5)
-                        {
-                            <a asp-action="Create" asp-controller="Molde"> <button class="btn btn-primary">Criar Molde</button> </a>
-                        }
-                        </div>
-
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            @if (@ViewBag.UserFuncId == 5)
+                            {
+                                <a asp-action="Create" asp-controller="Molde"> <button class="btn btn-primary">Criar Molde</button> </a>
+                            }
+                         </div>
                     }
                     else
                     {
-                    <div class="col-md-7 col-lg-8  py-5 alert-danger shadow-lg mt-3 table-responsive justify-content-center">
+                        <div class="col-md-7 col-lg-8  py-5 alert-danger shadow-lg mt-3 table-responsive justify-content-center">
 
-                        <h6 class="mb-3"> No momento não existe nenhum molde registado!</h6>
-                        @if (@ViewBag.UserFuncId == 5)
-                        {
-                            <a asp-action="Create" asp-controller="Molde"> <button class="btn btn-danger">Criar Molde</button> </a>
-                        }
-                    </div>
+                            <h6 class="mb-3"> No momento não existe nenhum molde registado!</h6>
+                            @if (@ViewBag.UserFuncId == 5)
+                            {
+                                <a asp-action="Create" asp-controller="Molde"> <button class="btn btn-danger">Criar Molde</button> </a>
+                            }
+                        </div>
 
-                    }
-               
-                    
+                    } 
             </div>
         </main>
     </div>

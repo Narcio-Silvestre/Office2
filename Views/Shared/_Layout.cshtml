@@ -25,111 +25,114 @@
     </head>
 <body >
         <header>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navnav">
-            <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navnav">
+                <div class="container-fluid">
                
-                <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    <span class="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
-                </button>
-                <a class="navbar-brand fw-bold me-auto " asp-action="Index" asp-controller="Home" >Encargos</a>
+                    <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        <span class="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
+                    </button>
+                    <a class="navbar-brand fw-bold me-auto " asp-action="Index" asp-controller="Home" >Encargos</a>
                
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     
-                    <form class="d-flex ms-auto" role="search">
-                        <div class="input-group mb-3 my-3 my-lg-8">
-                            <input type="text" class="form-control" placeholder="Pesquisar" aria-label="pesquisar" aria-describedby="button-addon2">
-                            <button class="btn btn-primary" type="button" id="button-addon2"> <i class="bi bi-search"></i> </button>
-                        </div>
+                        <form class="d-flex ms-auto" role="search">
+                        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                            <li>
+                                <a href="https://www.fehstgroup.com/pt/" id="menu" class="nav-link">
+                                    Fehst Components
+                                </a>
+                            </li>
+                        </ul>
                     </form>
                    
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
       
 
-        <div class="offcanvas offcanvas-start bg-light sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas offcanvas-start bg-light sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             
-            <div class="offcanvas-body p-0" id="navSidebar">
+                <div class="offcanvas-body p-0" id="navSidebar">
                
-                   <ul>
-                       <li>
-                           <a asp-action="Index" asp-controller="Home">
-                                <i class="bi bi-house"></i>
-                               <span class="nav-item">
-                                   Home
-                               </span>
-                           </a>
-                       </li>
-                        <li>
-                        <a asp-action="Create" asp-controller="Encargo">
-                                <i class="bi bi-card-text"></i>
-                                <span class="nav-item">
-                                    Criar
-                                </span>
-                            </a>
-                        </li>
-                    <li>
-                        <a asp-action="Edit" asp-controller="Encargo">
-                            <i class="bi bi-pencil-square"></i>
-                            <span class="nav-item">
-                                Editar
-                            </span>
-                        </a>
-                    </li>
-                        <li>
-                        <a asp-action="AllInter" asp-controller="Encargo">
-                                <i class="bi bi-tools"></i>
-                                <span class="nav-item">
-                                    Intervir
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                        <a asp-action="AllVal" asp-controller="Encargo">
-                                <i class="bi bi-check2"></i>
-                                <span class="nav-item">
-                                    Validar
-                                </span>
-                            </a>
-                        </li>
+                       <ul>
+                           <li>
+                               <a asp-action="Index" asp-controller="Home">
+                                    <i class="bi bi-house"></i>
+                                   <span class="nav-item">
+                                       Home
+                                   </span>
+                               </a>
+                           </li>
+                            <li>
+                            <a asp-action="Create" asp-controller="Encargo">
+                                    <i class="bi bi-card-text"></i>
+                                    <span class="nav-item">
+                                        Criar
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Edit" asp-controller="Encargo">
+                                    <i class="bi bi-pencil-square"></i>
+                                    <span class="nav-item">
+                                        Editar
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                            <a asp-action="AllInter" asp-controller="Encargo">
+                                    <i class="bi bi-tools"></i>
+                                    <span class="nav-item">
+                                        Intervir
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                            <a asp-action="AllVal" asp-controller="Encargo">
+                                    <i class="bi bi-check2"></i>
+                                    <span class="nav-item">
+                                        Validar
+                                    </span>
+                                </a>
+                            </li>
                         
                         
                         
-                        <li>
-                        <a asp-action="All" asp-controller="Encargo">
-                                <i class="bi bi-three-dots"></i>
-                                <span class="nav-item">
-                                    Concluídos
-                                </span>
-                            </a>
-                        </li>
-                    <li>
-                        <a asp-action="Index" asp-controller="Molde">
-                            <i class="bi bi-collection-fill"></i>
-                            <span class="nav-item">
-                                Moldes
-                            </span>
-                        </a>
-                    </li>
+                            <li>
+                            <a asp-action="All" asp-controller="Encargo">
+                                    <i class="bi bi-three-dots"></i>
+                                    <span class="nav-item">
+                                        Concluídos
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Molde">
+                                    <i class="bi bi-collection-fill"></i>
+                                    <span class="nav-item">
+                                        Moldes
+                                    </span>
+                                </a>
+                            </li>
 
 
-                    <li>
-                        <hr />
-                    </li>
-                    <li id="logout" >
-                        <a asp-action="Out2" asp-controller="Login">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span class="nav-item">
-                                Sair
-                            </span>
-                        </a>
-                    </li>
+                            <li>
+                                <hr />
+                            </li>
+                            <li id="logout" >
+                                <a asp-action="Out2" asp-controller="Login">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span class="nav-item">
+                                        Sair
+                                    </span>
+                                </a>
+                            </li>
 
-                   </ul>
+                       </ul>
 
                
+                </div>
             </div>
-        </div>
 
         </header>
         <div class="container">

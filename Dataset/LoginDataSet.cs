@@ -45,7 +45,11 @@ namespace Office.Dataset
             return null;
         }
 
-
+        /// <summary>
+        /// Método de login pelo active directory
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         public static UserModel? Create2(string login)
         {
             if (login == null) { return null; }

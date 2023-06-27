@@ -21,6 +21,10 @@ namespace Office.Controllers
             path = system.WebRootPath;
         }
 
+        /// <summary>
+        /// Método para obter a página de moldes
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("Molde/")]
         public ActionResult Index()
@@ -45,7 +49,10 @@ namespace Office.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// Método para obter a página para criar moldes
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("Molde/Create")]
         public ActionResult Create()
@@ -78,7 +85,6 @@ namespace Office.Controllers
             }
         }
 
-
         /// <summary>
         /// Método para obter um molde pelo id
         /// </summary>
@@ -97,6 +103,11 @@ namespace Office.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Método para editar a informação de um molde
+        /// </summary>
+        /// <param name="molde"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Edit(MoldeModel molde)
         {
@@ -104,6 +115,11 @@ namespace Office.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Método para obter a página de editar molde pelo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -115,6 +131,11 @@ namespace Office.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Método para deletar um molde pelo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Delete(int id)
         {

@@ -49,7 +49,6 @@ namespace Office.Dataset
             return null;
         }
 
-        
         /// <summary>
         /// Método para obter todos os encargos
         /// </summary>
@@ -88,7 +87,6 @@ namespace Office.Dataset
             }
             return null;
         }
-
 
         /// <summary>
         /// Método para obter todos os encargos em intervenção
@@ -165,7 +163,7 @@ namespace Office.Dataset
         }
 
         /// <summary>
-        /// Método para obter todos os encargos para validar
+        /// Método para obter todos os encargos de um molde
         /// </summary>
         /// <returns>retorna null ou a lista de encargos em intervenção</returns>
         public static List<EncargoViewModel>? AllByMolde(int id)
@@ -281,6 +279,10 @@ namespace Office.Dataset
             return true;
         }
 
+        /// <summary>
+        /// Método para obter todos os encargos cooncluidos
+        /// </summary>
+        /// <returns></returns>
         public static List<EncargoViewModel>? GetEncargosCompleted()
         {
             _adapter = new SqlDataAdapter("GetEncargosCompleted", _connection);
@@ -306,9 +308,6 @@ namespace Office.Dataset
                     encargo.validQual = Convert.ToInt32(_dataTable.Rows[x][11]);
                     encargo.descMolde = Convert.ToString(_dataTable.Rows[x][12]);
                     encargo.estadoId = Convert.ToInt32(_dataTable.Rows[x][13]);
-
-
-                    //encargo.dataConc = Convert.ToDateTime(_dataTable.Rows[x][5]);
                     encargos.Add(encargo);
                 }
                 return encargos;
@@ -316,6 +315,11 @@ namespace Office.Dataset
             return null;
         }
 
+        /// <summary>
+        /// Método para deletar um encargo
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static bool Delete(int id)
         {
 
