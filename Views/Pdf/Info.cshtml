@@ -9,6 +9,7 @@
         header {
             display: none;
         }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -21,124 +22,112 @@
         }
 
         h3 {
-            color: rgb(0,0,0);
+            color: #555;
             padding: 10px;
-            text-align: center;
             font-weight: 600;
         }
 
-      
+
 
         form {
             margin-top: 20px;
         }
 
         label {
-            display: block;
             margin-bottom: 10px;
-            padding:5px;
+            padding: 5px;
+        }
+
+
+
+        input[type="text"], textarea {
+            border: none;
             font-weight: 700;
         }
 
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-        }
 
 
-
-        #myTextarea {
-          
+        .myTextarea {
             height: auto;
-            min-height: 300px; /* Defina uma altura mínima desejada */
             overflow: hidden;
+            border: solid 1px #bbb;
+            color: black;
+            width: 100%;
+            text-size-adjust: auto;
         }
 
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
 
-      
+
+
 
         /* checkbox-rect */
         .checkbox-rect input[type="checkbox"] {
             display: none;
         }
 
-            .checkbox-rect input[type="checkbox"] + label {
-                display: block;
-                position: relative;
-                padding-left: 35px;
-                margin-bottom: 20px;
-                font: 14px/20px "Open Sans", Arial, sans-serif;
-                cursor: pointer;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-            }
-
-            .checkbox-rect input[type="checkbox"]:hover + label:hover {
-                color: rgb(23, 86, 228);
-            }
-
-            .checkbox-rect input[type="checkbox"]:hover + label:before {
-                background: #50565a;
-                box-shadow: inset 0px 0px 0px 2px #f7f2f2;
-            }
-
-            .checkbox-rect input[type="checkbox"] + label:last-child {
-                margin-bottom: 0;
-            }
-
-            .checkbox-rect input[type="checkbox"] + label:before {
-                content: "";
-                display: block;
-                width: 1.4em;
-                height: 1.4em;
-                border: 1px solid #343a3f;
-                border-radius: 0.2em;
-                position: absolute;
-                left: 0;
-                top: 0;
-                -webkit-transition: all 0.2s, background 0.2s ease-in-out;
-                transition: all 0.2s, background 0.2s ease-in-out;
-                background: #f3f3f3;
-            }
-
-            .checkbox-rect input[type="checkbox"]:checked + label:before {
-                width: 1.3em;
-                height: 1.3em;
-                border-radius: 0.2em;
-                border: 2px solid #fff;
-                -webkit-transform: rotate(90deg);
-                transform: rotate(90deg);
-                background: #50565a;
-                box-shadow: 0 0 0 1px #000;
-            }
-        /* checkbox-rect end */
-        #titles{
-
-            
-            color: rgb(0,0,0);
+        .checkbox-rect label {
+            font-weight: 700;
+            color: black;
         }
 
-       
-         
-          
-            
+        .checkbox-rect input[type="checkbox"] + label {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+            font: 14px/20px "Open Sans", Arial, sans-serif;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .checkbox-rect input[type="checkbox"]:hover + label:hover {
+            color: rgb(23, 86, 228);
+        }
+
+        .checkbox-rect input[type="checkbox"]:hover + label:before {
+            background: #50565a;
+            box-shadow: inset 0px 0px 0px 2px #f7f2f2;
+        }
+
+        .checkbox-rect input[type="checkbox"] + label:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkbox-rect input[type="checkbox"] + label:before {
+            content: "";
+            display: block;
+            width: 1.4em;
+            height: 1.4em;
+            border: 1px solid #343a3f;
+            border-radius: 0.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+            -webkit-transition: all 0.2s, background 0.2s ease-in-out;
+            transition: all 0.2s, background 0.2s ease-in-out;
+            background: #f3f3f3;
+        }
+
+        .checkbox-rect input[type="checkbox"]:checked + label:before {
+            width: 1.3em;
+            height: 1.3em;
+            border-radius: 0.2em;
+            border: 2px solid #fff;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            background: #50565a;
+            box-shadow: 0 0 0 1px #000;
+        }
     </style>
 </head>
 <body>
-    
+
     <div id="titles">
         <h2>Encargo de Oficina  </h2>
     </div>
-   
+    <hr />
     <div class="forma">
         <div>
             <label for="encargo">Nº Encargo:</label>
@@ -153,43 +142,11 @@
             <input type="text" id="molde" name="molde" value="@Model.Encargo.molde" readonly>
         </div>
         <div>
-            <label for="data">Data de Necessidade do meio:</label> <input type="text" id="data" name="data" value="@DateOnly.FromDateTime(@Model.Encargo.dataNecMeio)">
-        </div>
-        <div>
-            <label for="myTextarea">Descrição do Problema:</label>
-            <textarea id="myTextarea">@Model.Encargo.descProblema</textarea>
+            <label for="data">Data:</label> <input type="text" id="data" name="data" value="@DateOnly.FromDateTime(@Model.Encargo.data)">
         </div>
 
-        
-        @if (@Model.Requisitos != null)
-        {
-            @for (int x = 0; x < @Model.Requisitos.Count; x++)
-            {
-                <div class="checkbox-rect" style="margin-top:5px">
-                    <input type="checkbox" name=">@Model.Requisitos[x].desc" checked onclick="return false;" id=">@Model.Requisitos[x].desc">
-                    <label for=">@Model.Requisitos[x].desc">@Model.Requisitos[x].desc</label>
-                </div>
-                
-            }
-        }
-        @{
-            @if (@Model.Requisitos2 != null)
-            {
-                @for (int x = 0; x < @Model.Requisitos2.Count; x++)
-                {
-                    <div class="checkbox-rect" style="margin-top:5px">
 
-                    <input type="checkbox" name=">@Model.Requisitos2[x].desc" onclick="return false;" id=">@Model.Requisitos2[x].desc">
-                    <label  for=">@Model.Requisitos2[x].desc">@Model.Requisitos2[x].desc</label>
-                     </div>
-                  
-                }
-            }
-        }
-   
-                
-                
-           
+
     </div>
 
     @if (@Model.interAll != null)
@@ -198,62 +155,60 @@
         int count = 1000;
         for (int x = 0; x < @Model.interAll.Count; x++)
         {
-            <div >
-              
-                    <h3 id="titles" style="margin-top:10px;"   >
-                        @(x + 1)ª Intervenção
-                    </h3>
-        
-                <div >
-                    <div >
-                        <div >
-                            <div >
-                                <label for="Responsavel" >Responsável: </label>
+            <hr />
+            <div>
+
+                <h3 id="titles" style="margin-top:10px;">
+                    @(x + 1)ª Intervenção
+                </h3>
+
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <label for="Responsavel">Responsável:</label>
                                 <input type="text" id="Responsavel" name="Responsavel" value="@Model.interAll[x].utilizador" readonly>
                             </div>
 
                             <div>
-                                <label for="descint" >Descrição do Trabalho:</label>
-                                <textarea type="text"  id="descint" name="descint" readonly>@Model.interAll[x].descInt</textarea>
+                                <label for="dataint">Data:</label>
+                                <input type="text" id="dataint" name="dataint" value="@DateOnly.FromDateTime(@Model.interAll[x].data)" readonly>
                             </div>
 
 
-                            <div >
-                                <label for="dataint" >Data:</label>
-                                <input type="text"  id="dataint" name="dataint" value="@DateOnly.FromDateTime(@Model.interAll[x].data)" readonly>
-                            </div>
+
+
 
                         </div>
 
 
 
-                     
 
-                        <div >
-                          
-                                <h3 id="titles" >
-                                    @(x + 1)ª Validação da Produção
-                                </h3>
-                           
+
+                        <div>
+
+                            <h3 id="titles">
+                                @(x + 1)ª Validação da Produção
+                            </h3>
+
                             <div>
-                                <div >
+                                <div>
                                     <div>
                                         <div>
-                                            <label for="ResponsavelVal" >Responsável: </label>
-                                            <input type="text"  id="ResponsavelVal" name="ResponsavelVal" value="@Model.interAll[x].respValProd" readonly>
+                                            <label for="ResponsavelVal">Responsável:</label>
+                                            <input type="text" id="ResponsavelVal" name="ResponsavelVal" value="@Model.interAll[x].respValProd" readonly>
                                         </div>
 
-                                        <div >
-                                            <label for="descval" >Descrição:</label>
-                                            <textarea type="text"  id="descval" name="descval" readonly>@Model.interAll[x].descProducao</textarea>
-                                        </div>
-
-
-                                        <div >
+                                        <div>
                                             <label for="dataval">Data:</label>
-                                            <input type="text"  id="dataval" name="dataval" value="@DateOnly.FromDateTime(@Model.interAll[x].dataValProd)" readonly>
+                                            <input type="text" id="dataval" name="dataval" value="@DateOnly.FromDateTime(@Model.interAll[x].dataValProd)" readonly>
                                         </div>
-                                      
+
+
+
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -261,31 +216,30 @@
                         @if (Model.Encargo.validQual == 1)
                         {
                             <div>
-                              
-                                    <h3 id="titles" >
-                                        @(x + 1)ª Validação da Qualidade
-                                    </h3>
-                               
-                                <div >
+
+                                <h3 id="titles">
+                                    @(x + 1)ª Validação da Qualidade
+                                </h3>
+
+                                <div>
                                     <div>
 
-                                        <div >
-                                            <div >
-                                                <label for="ResponsavelVal" >Responsável: </label>
-                                                <input type="text"  id="ResponsavelVal" name="ResponsavelVal" value="@Model.interAll[x].respValQual" readonly>
+                                        <div>
+                                            <div>
+                                                <label for="ResponsavelVal">Responsável:</label>
+                                                <input type="text" id="ResponsavelVal" name="ResponsavelVal" value="@Model.interAll[x].respValQual" readonly>
                                             </div>
 
-                                            <div >
-                                                <label for="descval" >Descrição:</label>
-                                                <textarea type="text" id="descval" name="descval" readonly>@Model.interAll[x].descQualidade</textarea>
+                                            <div>
+                                                <label for="dataval">Data:</label>
+                                                <input type="text" id="dataval" value="@DateOnly.FromDateTime(@Model.interAll[x].dataValQual)" readonly>
                                             </div>
 
 
-                                            <div >
-                                                <label for="dataval" >Data:</label>
-                                                <input type="text"  id="dataval" value="@DateOnly.FromDateTime(@Model.interAll[x].dataValQual)" readonly>
-                                            </div>
-                                          
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -299,7 +253,7 @@
         }
     }
 
-   
+
     <script>
         const textarea = document.getElementById("myTextarea");
 
