@@ -55,7 +55,7 @@
 
                             <div class="col-12">
                                 <label for="descProblema" class="form-label">Descrição do Problema</label>
-                            <textarea type="text" class="form-control" id="descProblema" readonly style="height:max-content">@Model.descProblema</textarea>
+                            <textarea type="text" rows="4" class="form-control" id="descProblema" readonly style="height:max-content">@Model.descProblema</textarea>
                             </div>
 
                             <div class="col-6">
@@ -192,7 +192,7 @@
 
                                                 <div class="col-12">
                                                     <label for="descint" class="form-label">Descrição do Trabalho</label>
-                                                    <input type="text" class="form-control input-lg" id="descint" name="descint" value="@ViewBag.interAtual.descInt" readonly></input>
+                                                    <textarea type="text" rows="4" class="form-control" id="descint" readonly style="height:max-content">@ViewBag.interAtual.descInt</textarea>
                                                 </div>
 
                                                 <div class="col-6">
@@ -294,8 +294,9 @@
 
                                                                     <div class="col-12">
                                                                         <label for="descval" class="form-label">Descrição</label>
-                                                                        <input type="text" class="form-control input-lg" id="descval" name="descval" value="@ViewBag.interAtual.descProducao" readonly></input>
-                                                                    </div>
+                                                                    <textarea type="text" rows="4" class="form-control" id="descval" readonly style="height:max-content">@ViewBag.interAtual.descProducao</textarea>
+
+                                                                </div>
 
 
                                                                     <div class="col-6">
@@ -377,8 +378,9 @@
 
                                                                 <div class="col-12">
                                                                     <label for="descval" class="form-label">Descrição</label>
-                                                                    <input type="text" class="form-control input-lg" id="descval" name="descval" value="@ViewBag.interAtual.descQualidade" readonly></input>
-                                                                </div>
+                                                                <textarea type="text" rows="4" class="form-control" id="descval" readonly style="height:max-content">@ViewBag.interAtual.descQualidade</textarea>
+
+                                                            </div>
 
 
                                                                 <div class="col-6">
@@ -431,8 +433,9 @@
 
                                                     <div class="col-12">
                                                         <label for="descint" class="form-label">Descrição do Trabalho</label>
-                                                        <input type="text" class="form-control input-lg" id="descint" name="descint" value="@ViewBag.interAll[x].descInt" readonly></input>
-                                                    </div>
+                                                    <textarea type="text" rows="4" class="form-control" id="descint" readonly style="height:max-content">@ViewBag.interAll[x].descInt</textarea>
+
+                                                </div>
 
 
                                                     <div class="col-6">
@@ -468,6 +471,9 @@
                                                                                 <div class="modal-body">
                                                                                     <img src="/Imagens/@ViewBag.anexosAll[x][y].desc" width="100%" />
                                                                                 </div>
+                                                                                <div class="modal-footer" style="border-color:transparent">
+                                                                                <a href="/Imagens/@ViewBag.anexosAll[x][y].desc" download><button class="btn btn-primary" data-bs-target="#staticc@(count + y)Backdrop@(count + y)" data-bs-toggle="modal">Download</button></a>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -497,8 +503,9 @@
 
                                                                 <div class="col-12">
                                                                     <label for="descval" class="form-label">Descrição</label>
-                                                                    <input type="text" class="form-control input-lg" id="descval" name="descval" value="@ViewBag.interAll[x].descProducao" readonly></input>
-                                                                </div>
+                                                                    <textarea type="text" rows="4" class="form-control" id="descval" readonly style="height:max-content">@ViewBag.interAll[x].descProducao</textarea>
+
+                                                            </div>
 
 
                                                                 <div class="col-6">
@@ -541,7 +548,8 @@
 
                                                                     <div class="col-12">
                                                                         <label for="descval" class="form-label">Descrição</label>
-                                                                        <input type="text" class="form-control input-lg" id="descval" name="descval" value="@ViewBag.interAll[x].descQualidade" readonly></input>
+                                                                        <textarea type="text" rows="4" class="form-control" id="descval" readonly style="height:max-content">@ViewBag.interAll[x].descQualidade</textarea>
+
                                                                     </div>
 
 
