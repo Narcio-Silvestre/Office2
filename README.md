@@ -58,4 +58,4 @@ Aqui estão algumas imagens da aplicação web desenvolvida
 <img width="494" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/a91cbaa2-91db-4e86-ab4a-d9ad98000b99">
 
 Para visualizar o site a funcionar pode acessar o seguinte link no youtube
-[]()
+[Sistema de Encargos](https://www.youtube.com/playlist?list=PL8GIWvXex8WtzfYemtaO8ctr-Gtec2xDm)
