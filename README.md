@@ -7,7 +7,9 @@ Foi proposto desenvolver durante três meses um sistema que fizesse a gestão de
 de oficina. Os encargos são ordens de trabalho feitas em papel para manutenções 
 corretivas ou preventivas de moldes de injeção. 
 
-<img width="297" alt="Encargo de Oficina" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/4e2cdb41-c4fd-4db2-a9ab-9541a7a1c9c1">
+
+<img width="274" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/7c127d77-a90f-48aa-9076-49469a6e5de8">
+
 
 Durante o período de estágio foi desenvolvido um sistema que serve para substituir os encargos
 no formato de papel para o formato digital. O processo aplicado é focado na área de transformação
@@ -35,7 +37,9 @@ entrada, interage com o modelo para obter os dados necessários e
 seleciona a visualização apropriada para exibir os dados..
 
 ## Base de dados estruturada para o projeto ##
-<img width="536" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/b0d0aca2-a77d-4fe0-8a1a-0b510861f356">
+
+<img width="476" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/59804f3e-0174-45db-972f-22886692a419">
+
 
 
 ## Resultado Final ##
@@ -46,17 +50,21 @@ projeto ao longo dos três meses.
 Aqui estão algumas imagens da aplicação web desenvolvida
 
 ##### Login #####
-<img width="497" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/0461eb87-dc41-436b-992e-8ea4e1d04ed6">
+<img width="434" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/07abc713-e64a-4b53-a183-ac0ffa979bdc">
 
 ##### Dashboard Principal #####
-<img width="495" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/94e0e1b4-182b-4cbd-971a-6e35c36016d6">
+<img width="455" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/41ed718e-be17-42ae-bd92-477ed2762944">
+
 
 ##### Dashboard Para Criar os Encargos #####
-<img width="511" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/bcff862e-4d54-4f52-ab9f-53fdd55d692d">
+<img width="472" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/ba4e010a-a014-4f51-810c-87c154d45dff">
+
 
 ##### Exemplo de um Encargo Preenchido com Anexos #####
-<img width="494" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/a91cbaa2-91db-4e86-ab4a-d9ad98000b99">
+<img width="450" alt="image" src="https://github.com/Narcio-Silvestre/Office2/assets/76704200/711b520a-3562-4977-9886-295955e2d284">
+
 
 Para visualizar o site a funcionar pode acessar o seguinte link no youtube
 [Sistema de Encargos](https://www.youtube.com/playlist?list=PL8GIWvXex8WtzfYemtaO8ctr-Gtec2xDm)
+
 
